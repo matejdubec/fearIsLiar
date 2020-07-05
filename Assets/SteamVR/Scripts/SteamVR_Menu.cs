@@ -167,6 +167,7 @@ namespace Valve.VR
                 {
                     if (GUILayout.Button("Switch to Standing"))
                         SteamVR.settings.trackingSpace = ETrackingUniverseOrigin.TrackingUniverseStanding;
+
                     if (GUILayout.Button("Center View"))
                     {
                         var system = OpenVR.System;
