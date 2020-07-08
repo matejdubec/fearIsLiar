@@ -17,7 +17,7 @@ MonoBehaviour:
   SkipPromptForVersion: 
   StereoRenderingMode: 1
   InitializationType: 1
-  EditorAppKey: application.generated.unity.fearisliar.1009257088.exe
+  EditorAppKey: application.generated.unity.fearisliar.exe
   ActionManifestFileRelativeFilePath: StreamingAssets/SteamVR/actions.json
   MirrorViewMode: 3
   HasCopiedDefaults: 0
