@@ -317,7 +317,7 @@ Material:
     - g_vWorldAlignedTextureNormal: {r: 0, g: 1, b: 0, a: 0}
     - g_vWorldAlignedTexturePosition: {r: 0, g: 0, b: 0, a: 0}
     - g_vWorldAlignedTextureSize: {r: 1, g: 1, b: 1, a: 0}
---- !u!114 &6786676617686492747
+--- !u!114 &306486061707646906
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
