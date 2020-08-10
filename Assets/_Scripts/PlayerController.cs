@@ -12,10 +12,12 @@ public class PlayerController : MonoBehaviour
     private CharacterController characterController;
     private float fallingVelocity, gravityForce = 9.81f;
     private float respawnBoundary = -45;
+    private Vector3 playerSpawn;
 
     private void Start()
     {
         characterController = GetComponent<CharacterController>();
+        playerSpawn = new Vector3(0, 0, 0);
     }
 
     // Update is called once per frame
@@ -34,6 +36,6 @@ public class PlayerController : MonoBehaviour
 		}
 
         if (Player.instance.hmdTransform.position.y < respawnBoundary)
-            Player.instance.hmdTransform.position = new Vector3(0, 0, 0);
+            this.transform.position = playerSpawn;
     }
 }
