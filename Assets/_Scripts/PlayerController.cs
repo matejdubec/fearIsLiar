@@ -8,7 +8,7 @@ using Valve.VR.InteractionSystem;
 public class PlayerController : MonoBehaviour
 {
     public SteamVR_Action_Vector2 input;
-    public float speed = 1;
+    public float speed = 1.0f;
     private CharacterController characterController;
     private float fallingVelocity, gravityForce = 9.81f;
     private float respawnBoundary = -45;
