@@ -84,9 +84,9 @@ public class VRController : MonoBehaviour
 
         //gravity
         if (m_CharacterController.isGrounded)
-            m_FallingVelocity = 0.0f;
+            m_FallingVelocity = 0.0f;  
         else
-            m_FallingVelocity -= m_Gravity * Time.deltaTime;
+            m_FallingVelocity += m_Gravity * Time.deltaTime;
 
         movement.y -= m_FallingVelocity;
 
