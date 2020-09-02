@@ -1,11 +1,20 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using Valve.VR;
 
-
+[RequireComponent(typeof(SteamVR_LoadLevel))]
 public class SceneLoader : MonoBehaviour
 {
-	public void LoadScene(string sceneName)
+    private SteamVR_LoadLevel loadinator = null;
+
+    private void Start()
+    {
+        loadinator = GetComponent<SteamVR_LoadLevel>();
+    }
+
+    public void LoadScene(string sceneName)
 	{
-		SceneManager.LoadScene(sceneName);
-	}
+        loadinator.levelName = sceneName;
+        loadinator.Trigger();
+    }
 }

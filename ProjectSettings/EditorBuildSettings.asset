@@ -5,9 +5,18 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
+  - enabled: 0
+    path: Assets/Scenes/samplescene.unity
     guid: cbfe36cfddfde964d9dfce63a355d5dd
+  - enabled: 1
+    path: Assets/_Scenes/MainMenu.unity
+    guid: 12b45e557535eaa43b18b5c0e4f1b73d
+  - enabled: 1
+    path: Assets/_Scenes/Levels/ClosingIn.unity
+    guid: 9cceec5b86456684884578bdbdbf5b3f
+  - enabled: 1
+    path: Assets/_Scenes/Levels/Skyscrapers.unity
+    guid: c7a825758ca1c4db5bb0bc4904250df5
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: efb304c7b93d74325a6683b4fea743a8,
       type: 2}
