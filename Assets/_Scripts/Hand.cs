@@ -7,6 +7,7 @@ public class Hand : MonoBehaviour
 {
     [SerializeField]
     private SteamVR_Action_Boolean m_GrabAction = null;
+    private Socket m_socket = null;
 
     private SteamVR_Behaviour_Pose m_Pose = null;
     private FixedJoint m_Joint = null;
@@ -18,6 +19,7 @@ public class Hand : MonoBehaviour
     {
         m_Pose = GetComponent<SteamVR_Behaviour_Pose>();
         m_Joint = GetComponent<FixedJoint>();
+        m_socket = GetComponent<Socket>();
     }
 
     // Update is called once per frame
@@ -78,6 +80,11 @@ public class Hand : MonoBehaviour
 
     }
 
+    public void PickUp(Interactable interactable)
+	{
+        interactable.AttachNewSocket(m_socket);
+	}
+
     public void Drop()
     {
         if (m_CurrentInteractable)
@@ -92,6 +99,23 @@ public class Hand : MonoBehaviour
             m_CurrentInteractable = null;
         }
 
+    }
+
+    public Interactable DropToSlot()
+	{
+		if (!HasHeldObject())
+		{
+            return null;
+		}
+
+        Interactable detachedObject = m_socket.StoredObject;
+        detachedObject.ReleaseOldSocket();
+
+        Rigidbody rigidbody = detachedObject.gameObject.GetComponent<Rigidbody>();
+        rigidbody.velocity = m_Pose.GetVelocity();
+        rigidbody.angularVelocity = m_Pose.GetAngularVelocity();
+
+        return detachedObject;
     }
 
     private Interactable GetNearestInteractable()
@@ -112,5 +136,10 @@ public class Hand : MonoBehaviour
         }
 
         return nearest;
-    }
+    }  
+    
+    public bool HasHeldObject()
+	{
+        return m_socket.StoredObject;
+	}
 }
