@@ -27,13 +27,7 @@ public class Slot : Interactable
 
 	private void TryStore(Hand hand)
 	{
-		if (socket.StoredObject)
-		{
-			return;
-		}
 
-		Interactable objectToStore = hand.DropToSlot();
-		objectToStore.AttachNewSocket(socket);
 	}
 
 	private void TryRetrieve(Hand hand)
@@ -46,4 +40,24 @@ public class Slot : Interactable
 		Interactable objectToRetrieve = socket.StoredObject;
 		hand.PickUp(objectToRetrieve);
 	}
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Hand hand = other.gameObject.GetComponent<Hand>();
+
+        Debug.LogWarning(other.gameObject.name);
+
+        if (socket.StoredObject)
+        {
+            return;
+        }
+
+        if (hand)
+        {
+            Interactable objectToStore = hand.DropToSlot();
+
+            if(objectToStore)
+                objectToStore.AttachNewSocket(socket);
+        }
+    }
 }

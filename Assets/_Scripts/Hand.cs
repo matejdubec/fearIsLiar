@@ -62,22 +62,17 @@ public class Hand : MonoBehaviour
     {
         m_CurrentInteractable = GetNearestInteractable();
 
-        if (m_CurrentInteractable)
+        if (!m_CurrentInteractable)
         {
-            //check if it is already held by any hand
-            if(m_CurrentInteractable.m_Hand)
-            {
-                m_CurrentInteractable.m_Hand.Drop();
-            }
-
-            m_CurrentInteractable.transform.position = this.transform.position;
-
-            Rigidbody targetBody = m_CurrentInteractable.GetComponent<Rigidbody>();
-            m_Joint.connectedBody = targetBody;
-
-            m_CurrentInteractable.m_Hand = this;
+            return;
         }
 
+        m_CurrentInteractable.transform.position = this.transform.position;
+
+        Rigidbody targetBody = m_CurrentInteractable.GetComponent<Rigidbody>();
+        m_Joint.connectedBody = targetBody;
+
+        m_CurrentInteractable.m_Hand = this;
     }
 
     public void PickUp(Interactable interactable)
