@@ -1,49 +1,64 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Valve.VR;
 
 public class Slot : Interactable
 {
-	private Socket socket = null;
+	private Interactable storedObject = null;
+	private FixedJoint joint = null;
 
 	private void Awake()
 	{
-		socket = GetComponent<Socket>();
+		joint = GetComponent<FixedJoint>();
 	}
 
-	public override void StartInteraction(Hand hand)
+	private void OnCollisionStay(Collision collision)
 	{
-		//base.StartInteraction(hand);
+		Hand hand = collision.gameObject.GetComponent<Hand>();
 
-		if (hand.HasHeldObject())
+		if (hand)
 		{
-			TryStore(hand);
-		}
-		else
-		{
-			TryRetrieve(hand);
+			if (hand.CurrentInteractable && hand.GrabAction.GetStateUp(hand.Pose.inputSource) )
+			{
+				AttachObject(hand);
+			}
+			else if (!hand.CurrentInteractable && hand.GrabAction.GetStateDown(hand.Pose.inputSource))
+			{
+				ReleaseObject(hand);
+			}
 		}
 	}
 
-	private void TryStore(Hand hand)
+	private void ReleaseObject(Hand hand)
 	{
-		if (socket.StoredObject)
+		if (hand)
 		{
-			return;
-		}
+			if (!hand.CurrentInteractable && storedObject)
+			{
+				hand.PickUp(storedObject);
+				joint.connectedBody = null;
+				storedObject = null;
+			}
 
-		Interactable objectToStore = hand.DropToSlot();
-		objectToStore.AttachNewSocket(socket);
+		}
 	}
 
-	private void TryRetrieve(Hand hand)
+	private void AttachObject(Hand hand)
 	{
-		if (!socket.StoredObject)
+		if (hand)
 		{
-			return;
-		}
+			if (hand.CurrentInteractable)
+			{
+				storedObject = hand.CurrentInteractable;
+				hand.Drop();
 
-		Interactable objectToRetrieve = socket.StoredObject;
-		hand.PickUp(objectToRetrieve);
+				storedObject.transform.position = this.transform.position;
+				storedObject.transform.rotation = Quaternion.identity;
+
+				Rigidbody targetBody = storedObject.gameObject.GetComponent<Rigidbody>();
+				joint.connectedBody = targetBody;
+			}
+		}
 	}
 }

@@ -10,45 +10,4 @@ public class Interactable : MonoBehaviour
 
 	private bool isAvailable = true;
 	public bool IsAvailable { get { return isAvailable; } private set { } }
-
-	public void Interaction(Hand hand)
-	{
-
-	}
-
-	public virtual void StartInteraction(Hand hand)
-	{
-		hand.PickUp();
-	}
-
-	public void EndInteraction(Hand hand)
-	{
-		hand.Drop();
-	}
-
-	public void AttachNewSocket(Socket newSocket)
-	{
-		if (newSocket.StoredObject)
-		{
-			return;
-		}
-
-		ReleaseOldSocket();
-		activeSocket = newSocket;
-
-		activeSocket.Attach(this);
-		isAvailable = false;
-	}
-
-	public void ReleaseOldSocket()
-	{
-		if (!activeSocket)
-		{
-			return;
-		}
-
-		activeSocket.Detach();
-		activeSocket = null;
-		isAvailable = true;
-	}
 }
