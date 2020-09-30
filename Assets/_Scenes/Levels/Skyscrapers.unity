@@ -3635,30 +3635,6 @@ MonoBehaviour:
   m_GrabAction:
     actionPath: /actions/default/in/GrabPinch
     needsReinit: 0
---- !u!114 &1205297592
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1205297582}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87521df58a2b06e4fbcd39649174b6a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1205297593
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1205297583}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87521df58a2b06e4fbcd39649174b6a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1226368045
 GameObject:
   m_ObjectHideFlags: 0
@@ -3732,7 +3708,6 @@ GameObject:
   - component: {fileID: 1256661837}
   - component: {fileID: 1256661836}
   - component: {fileID: 1256661835}
-  - component: {fileID: 1256661834}
   - component: {fileID: 1256661833}
   - component: {fileID: 1256661832}
   m_Layer: 0
@@ -3769,18 +3744,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Hand: {fileID: 0}
---- !u!114 &1256661834
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1256661831}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87521df58a2b06e4fbcd39649174b6a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!54 &1256661835
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5569,7 +5532,6 @@ GameObject:
   - component: {fileID: 1587767425}
   - component: {fileID: 1587767424}
   - component: {fileID: 1587767423}
-  - component: {fileID: 1587767422}
   - component: {fileID: 1587767421}
   - component: {fileID: 1587767420}
   m_Layer: 0
@@ -5620,18 +5582,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Hand: {fileID: 0}
---- !u!114 &1587767422
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1587767418}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87521df58a2b06e4fbcd39649174b6a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!54 &1587767423
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6122,7 +6072,6 @@ GameObject:
   - component: {fileID: 1717201342}
   - component: {fileID: 1717201341}
   - component: {fileID: 1717201340}
-  - component: {fileID: 1717201339}
   - component: {fileID: 1717201338}
   - component: {fileID: 1717201337}
   m_Layer: 0
@@ -6173,18 +6122,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Hand: {fileID: 0}
---- !u!114 &1717201339
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1717201335}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87521df58a2b06e4fbcd39649174b6a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!54 &1717201340
 Rigidbody:
   m_ObjectHideFlags: 0

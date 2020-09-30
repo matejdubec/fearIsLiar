@@ -6,7 +6,6 @@ using UnityEngine;
 public class Interactable : MonoBehaviour
 {
 	public Hand m_Hand = null;
-	private Socket activeSocket = null;
 
 	private bool isAvailable = true;
 	public bool IsAvailable { get { return isAvailable; } private set { } }
