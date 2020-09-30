@@ -23,7 +23,7 @@ public class Score : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        scoreText.text = "Spheres collected: " + score.ToString() + "/" + collectibles.Length.ToString();
+        //scoreText.text = "Spheres collected: " + score.ToString() + "/" + collectibles.Length.ToString();
     }
 
     public void AddScore()

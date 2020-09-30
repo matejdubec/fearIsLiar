@@ -6,7 +6,7 @@ using Valve.VR;
 public class Belt : MonoBehaviour
 {
 	[Range(0.5f, 0.75f)]
-	public float height = 0.5f;
+	public float height = 0.75f;
 
 	private Transform head = null;
 
