@@ -19,6 +19,8 @@ public class Hand : MonoBehaviour
     public Interactable CurrentInteractable { get { return m_CurrentInteractable; } set { m_CurrentInteractable = value; } }
     private List<Interactable> m_ContactInteractables = new List<Interactable>();
 
+    private Slot slot;
+
     void Awake()
     {
         m_Pose = GetComponent<SteamVR_Behaviour_Pose>();
@@ -31,12 +33,26 @@ public class Hand : MonoBehaviour
     {
         if (m_GrabAction.GetStateDown(m_Pose.inputSource))
         {
-            PickUp();
+            if (slot)
+            {
+                slot.ReleaseObject(this);
+            }
+            else
+            {
+                PickUp();
+            }  
         }
 
         if (m_GrabAction.GetStateUp(m_Pose.inputSource))
         {
-            Drop();
+            if (slot)
+            {
+                slot.AttachObject(this);
+            }
+            else
+            {
+                Drop();
+            }
         }
     }
 
@@ -48,7 +64,8 @@ public class Hand : MonoBehaviour
         }
 
         m_ContactInteractables.Add(other.gameObject.GetComponent<Interactable>());
-        
+
+        slot = other.gameObject.GetComponent<Slot>();        
     }
 
     private void OnTriggerExit(Collider other)
@@ -60,6 +77,10 @@ public class Hand : MonoBehaviour
 
         m_ContactInteractables.Remove(other.gameObject.GetComponent<Interactable>());
 
+        if (slot)
+        {
+            slot = null;
+        }
     }
 
     public void PickUp()

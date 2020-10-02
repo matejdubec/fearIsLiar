@@ -14,24 +14,44 @@ public class Slot : Interactable
 		joint = GetComponent<FixedJoint>();
 	}
 
-	private void OnCollisionStay(Collision collision)
+    /*
+	private void OnTriggerStay(Collider other)
 	{
-		Hand hand = collision.gameObject.GetComponent<Hand>();
+		Hand hand = other.gameObject.GetComponent<Hand>();        
 
 		if (hand)
 		{
-			if (hand.CurrentInteractable && hand.GrabAction.GetStateUp(hand.Pose.inputSource) )
-			{
+            if (hand.CurrentInteractable) //&& hand.GrabAction.GetStateUp(hand.Pose.inputSource)
+            {
 				AttachObject(hand);
 			}
-			else if (!hand.CurrentInteractable && hand.GrabAction.GetStateDown(hand.Pose.inputSource))
-			{
+			else if (!hand.CurrentInteractable) //&& hand.GrabAction.GetStateDown(hand.Pose.inputSource)
+            {
 				ReleaseObject(hand);
 			}
 		}
 	}
 
-	private void ReleaseObject(Hand hand)
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Hand hand = other.gameObject.GetComponent<Hand>();
+
+        if (hand)
+        {
+            if (hand.CurrentInteractable)
+            {
+                AttachObject(hand);
+            }
+            else if (!hand.CurrentInteractable) 
+            {
+                ReleaseObject(hand);
+            }
+        }
+    }
+        */
+
+    public void ReleaseObject(Hand hand)
 	{
 		if (hand)
 		{
@@ -41,7 +61,8 @@ public class Slot : Interactable
 					storedObject.transform.localScale.x / minimazeFactor.x,
 					storedObject.transform.localScale.y / minimazeFactor.y,
 					storedObject.transform.localScale.z / minimazeFactor.z);
-				hand.PickUp(storedObject);
+                storedObject.GetComponent<Collider>().enabled = true;
+                hand.PickUp(storedObject);
 				joint.connectedBody = null;
 				storedObject = null;
 			}
@@ -49,7 +70,7 @@ public class Slot : Interactable
 		}
 	}
 
-	private void AttachObject(Hand hand)
+	public void AttachObject(Hand hand)
 	{
 		if (hand)
 		{
@@ -61,9 +82,13 @@ public class Slot : Interactable
 				storedObject.transform.position = this.transform.position;
 				storedObject.transform.rotation = Quaternion.identity;
 				storedObject.transform.localScale = Vector3.Scale(storedObject.transform.localScale, minimazeFactor);
+                storedObject.GetComponent<Collider>().enabled = false;
 
 				Rigidbody targetBody = storedObject.gameObject.GetComponent<Rigidbody>();
 				joint.connectedBody = targetBody;
+
+                storedObject.m_Hand = null;
+                
 			}
 		}
 	}
