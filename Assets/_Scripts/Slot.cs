@@ -14,43 +14,6 @@ public class Slot : Interactable
 		joint = GetComponent<FixedJoint>();
 	}
 
-    /*
-	private void OnTriggerStay(Collider other)
-	{
-		Hand hand = other.gameObject.GetComponent<Hand>();        
-
-		if (hand)
-		{
-            if (hand.CurrentInteractable) //&& hand.GrabAction.GetStateUp(hand.Pose.inputSource)
-            {
-				AttachObject(hand);
-			}
-			else if (!hand.CurrentInteractable) //&& hand.GrabAction.GetStateDown(hand.Pose.inputSource)
-            {
-				ReleaseObject(hand);
-			}
-		}
-	}
-
-
-    private void OnTriggerEnter(Collider other)
-    {
-        Hand hand = other.gameObject.GetComponent<Hand>();
-
-        if (hand)
-        {
-            if (hand.CurrentInteractable)
-            {
-                AttachObject(hand);
-            }
-            else if (!hand.CurrentInteractable) 
-            {
-                ReleaseObject(hand);
-            }
-        }
-    }
-        */
-
     public void ReleaseObject(Hand hand)
 	{
 		if (hand)
