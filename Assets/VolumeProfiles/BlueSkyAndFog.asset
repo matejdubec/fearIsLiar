@@ -23,8 +23,8 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 0
   exposure:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 3
   multiplier:
     m_OverrideState: 0
     m_Value: 1
@@ -114,10 +114,10 @@ MonoBehaviour:
   m_Name: BlueSkyAndFog
   m_EditorClassIdentifier: 
   components:
-  - {fileID: 5337843245803646818}
   - {fileID: -4329349634676833620}
   - {fileID: 8315869853050114752}
---- !u!114 &5337843245803646818
+  - {fileID: 3844573453850827673}
+--- !u!114 &3844573453850827673
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -126,87 +126,69 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 953beb541740ddc499d005ee80c9ff29, type: 3}
-  m_Name: Fog
+  m_Script: {fileID: 11500000, guid: 2d08ce26990eb1a4a9177b860541e702, type: 3}
+  m_Name: Exposure
   m_EditorClassIdentifier: 
   active: 1
   m_AdvancedMode: 0
-  enabled:
+  mode:
     m_OverrideState: 1
+    m_Value: 0
+  meteringMode:
+    m_OverrideState: 0
+    m_Value: 2
+  luminanceSource:
+    m_OverrideState: 0
     m_Value: 1
-  colorMode:
+  fixedExposure:
+    m_OverrideState: 1
+    m_Value: 3
+  compensation:
     m_OverrideState: 0
     m_Value: 0
-  color:
-    m_OverrideState: 1
-    m_Value: {r: 1, g: 1, b: 1, a: 1}
-    hdr: 1
-    showAlpha: 0
-    showEyeDropper: 1
-  tint:
+  limitMin:
     m_OverrideState: 0
-    m_Value: {r: 1, g: 1, b: 1, a: 1}
-    hdr: 1
-    showAlpha: 0
-    showEyeDropper: 1
-  maxFogDistance:
-    m_OverrideState: 0
-    m_Value: 50
-    min: 0
-  mipFogMaxMip:
-    m_OverrideState: 0
-    m_Value: 0.5
-    min: 0
-    max: 1
-  mipFogNear:
-    m_OverrideState: 0
-    m_Value: 0
-    min: 0
-  mipFogFar:
-    m_OverrideState: 0
-    m_Value: 1000
-    min: 0
-  baseHeight:
-    m_OverrideState: 1
-    m_Value: -50
-  maximumHeight:
-    m_OverrideState: 1
     m_Value: -10
-  albedo:
+  limitMax:
     m_OverrideState: 0
-    m_Value: {r: 1, g: 1, b: 1, a: 1}
-    hdr: 0
-    showAlpha: 1
-    showEyeDropper: 1
-  meanFreePath:
-    m_OverrideState: 1
+    m_Value: 20
+  curveMap:
+    m_OverrideState: 0
+    m_Value:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: -10
+        value: -10
+        inSlope: 0
+        outSlope: 1
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 20
+        value: 20
+        inSlope: 1
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  adaptationMode:
+    m_OverrideState: 0
     m_Value: 1
-    min: 1
-  enableVolumetricFog:
-    m_OverrideState: 1
-    m_Value: 1
-  anisotropy:
-    m_OverrideState: 1
-    m_Value: 0.65
-    min: -1
-    max: 1
-  globalLightProbeDimmer:
+  adaptationSpeedDarkToLight:
+    m_OverrideState: 0
+    m_Value: 3
+    min: 0.001
+  adaptationSpeedLightToDark:
     m_OverrideState: 0
     m_Value: 1
-    min: 0
-    max: 1
-  depthExtent:
-    m_OverrideState: 0
-    m_Value: 64
-    min: 0.1
-  sliceDistributionUniformity:
-    m_OverrideState: 0
-    m_Value: 0.75
-    min: 0
-    max: 1
-  filter:
-    m_OverrideState: 0
-    m_Value: 0
+    min: 0.001
 --- !u!114 &8315869853050114752
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -225,8 +207,8 @@ MonoBehaviour:
     m_OverrideState: 1
     m_Value: 1
   skyAmbientMode:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 1
   fogType:
     m_OverrideState: 0
     m_Value: 0
