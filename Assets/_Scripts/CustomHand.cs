@@ -3,16 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using Valve.VR;
 
-public class Hand : MonoBehaviour
+public class CustomHand : MonoBehaviour
 {
     [SerializeField]
     private SteamVR_Action_Boolean m_GrabAction = null;
-    public SteamVR_Action_Boolean GrabAction { get { return m_GrabAction; } private set { } }
-    //private Socket m_socket = null;
-    //public Socket Socket { get { return m_socket; }  private set { } }
 
     private SteamVR_Behaviour_Pose m_Pose = null;
-    public SteamVR_Behaviour_Pose Pose { get { return m_Pose; } private set { } }
     private FixedJoint m_Joint = null;
 
     private Interactable m_CurrentInteractable = null;
@@ -25,7 +21,6 @@ public class Hand : MonoBehaviour
     {
         m_Pose = GetComponent<SteamVR_Behaviour_Pose>();
         m_Joint = GetComponent<FixedJoint>();
-        //m_socket = GetComponent<Socket>();
     }
 
     // Update is called once per frame
@@ -119,7 +114,6 @@ public class Hand : MonoBehaviour
 
             m_CurrentInteractable.m_Hand = this;
         }
-
     }
 
     public void Drop()
@@ -137,7 +131,6 @@ public class Hand : MonoBehaviour
             m_CurrentInteractable = null;
 
         }
-
     }
 
     private Interactable GetNearestInteractable()

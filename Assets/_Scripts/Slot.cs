@@ -14,7 +14,7 @@ public class Slot : Interactable
 		joint = GetComponent<FixedJoint>();
 	}
 
-    public void ReleaseObject(Hand hand)
+    public void ReleaseObject(CustomHand hand)
 	{
 		if (hand)
 		{
@@ -33,7 +33,7 @@ public class Slot : Interactable
 		}
 	}
 
-	public void AttachObject(Hand hand)
+	public void AttachObject(CustomHand hand)
 	{
 		if (hand)
 		{
