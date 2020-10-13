@@ -10,6 +10,9 @@ public class VRController : MonoBehaviour
     public float m_Sensitivity = 0.1f;
     public float m_MaxSpeed = 1.0f;
 
+    [SerializeField]
+    private int heightForRespawn = -50;
+
     public SteamVR_Action_Boolean m_MovePress = null;
     public SteamVR_Action_Vector2 m_MoveValue = null;
 
@@ -19,9 +22,12 @@ public class VRController : MonoBehaviour
     private Transform m_CameraRig = null;
     private Transform m_Head = null;
 
+    private Vector3 originPosition;
+
 	private void Awake()
 	{
         m_CharacterController = GetComponent<CharacterController>();
+        originPosition = this.transform.position;
 	}
 
 	// Start is called before the first frame update
@@ -36,6 +42,11 @@ public class VRController : MonoBehaviour
     {
         HandleHeight();
         CalculateMovement();
+
+        if(this.transform.position.y <= heightForRespawn)
+        {
+            this.transform.position = originPosition;
+        }
     }
 
     private void HandleHeight()
