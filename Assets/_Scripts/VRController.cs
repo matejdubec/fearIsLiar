@@ -12,6 +12,8 @@ public class VRController : MonoBehaviour
 
     [SerializeField]
     private int heightForRespawn = -50;
+    [SerializeField]
+    private Animator animator;
 
     public SteamVR_Action_Boolean m_MovePress = null;
     public SteamVR_Action_Vector2 m_MoveValue = null;
@@ -24,14 +26,14 @@ public class VRController : MonoBehaviour
 
     private Vector3 originPosition;
 
-	private void Awake()
-	{
+    private void Awake()
+    {
         m_CharacterController = GetComponent<CharacterController>();
         originPosition = this.transform.position;
-	}
+    }
 
-	// Start is called before the first frame update
-	void Start()
+    // Start is called before the first frame update
+    void Start()
     {
         m_CameraRig = SteamVR_Render.Top().origin;
         m_Head = SteamVR_Render.Top().head;
@@ -43,7 +45,7 @@ public class VRController : MonoBehaviour
         HandleHeight();
         CalculateMovement();
 
-        if(this.transform.position.y <= heightForRespawn)
+        if (this.transform.position.y <= heightForRespawn)
         {
             this.transform.position = originPosition;
         }
@@ -72,7 +74,7 @@ public class VRController : MonoBehaviour
     }
 
     private void CalculateMovement()
-	{
+    {
         //movement orientation
         Vector3 orientationEuler = new Vector3(0, m_Head.eulerAngles.y, 0);
         Quaternion orientation = Quaternion.Euler(orientationEuler);
@@ -80,7 +82,10 @@ public class VRController : MonoBehaviour
 
         //if not moving
         if (m_MovePress.GetStateUp(SteamVR_Input_Sources.LeftHand))
+        {
             m_Speed = 0;
+            animator.SetBool("isWalking", false);
+        }          
 
         // if button pressed
         if(m_MovePress.state)
@@ -91,6 +96,8 @@ public class VRController : MonoBehaviour
 
             //orientation
             movement += orientation * (m_Speed * Vector3.forward);
+
+            animator.SetBool("isWalking", true);
 		}
 
         //gravity
