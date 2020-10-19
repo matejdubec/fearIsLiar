@@ -81,7 +81,7 @@ public class VRController : MonoBehaviour
         Vector3 movement = Vector3.zero;
 
         //if not moving
-        if (m_MovePress.GetStateUp(SteamVR_Input_Sources.LeftHand))
+        if (m_MovePress.GetStateUp(SteamVR_Input_Sources.RightHand))
         {
             m_Speed = 0;
             animator.SetBool("isWalking", false);
