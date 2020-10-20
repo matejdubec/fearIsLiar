@@ -29,6 +29,9 @@ public class VRRig : MonoBehaviour
     private VRMap righthand;
 
     [SerializeField]
+    private Transform rightHandBone, leftHandBone;
+
+    [SerializeField]
     private Transform headConstraint;
     private Vector3 headBodyOffset;
     [SerializeField]
@@ -48,6 +51,12 @@ public class VRRig : MonoBehaviour
 
         head.Map();
         righthand.Map();
-        lefthand.Map();
+        lefthand.Map();      
+    }
+
+    private void LateUpdate()
+    {
+        rightHandBone.position = righthand.vrTarget.position;
+        leftHandBone.position = lefthand.vrTarget.position;
     }
 }
