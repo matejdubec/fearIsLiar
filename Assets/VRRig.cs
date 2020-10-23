@@ -23,13 +23,12 @@ public class VRRig : MonoBehaviour
 {
     [SerializeField]
     private VRMap head;
+    /*
     [SerializeField]
     private VRMap lefthand;
     [SerializeField]
     private VRMap righthand;
-
-    [SerializeField]
-    private Transform rightHandBone, leftHandBone;
+    */
 
     [SerializeField]
     private Transform headConstraint;
@@ -50,13 +49,7 @@ public class VRRig : MonoBehaviour
         transform.forward = Vector3.ProjectOnPlane(headConstraint.up, Vector3.up).normalized;
 
         head.Map();
-        righthand.Map();
-        lefthand.Map();      
-    }
-
-    private void LateUpdate()
-    {
-        rightHandBone.position = righthand.vrTarget.position;
-        leftHandBone.position = lefthand.vrTarget.position;
+        //righthand.Map();
+       // lefthand.Map();      
     }
 }
