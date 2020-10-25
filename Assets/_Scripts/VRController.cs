@@ -14,9 +14,11 @@ public class VRController : MonoBehaviour
     private int heightForRespawn = -50;
     [SerializeField]
     private Animator animator;
+    [SerializeField] private Canvas hintCanvas;
 
     public SteamVR_Action_Boolean m_MovePress = null;
     public SteamVR_Action_Vector2 m_MoveValue = null;
+    public SteamVR_Action_Boolean m_HintPress = null;
 
     private float m_Speed = 0.0f;
 
@@ -44,6 +46,12 @@ public class VRController : MonoBehaviour
     {
         HandleHeight();
         CalculateMovement();
+
+		if (m_HintPress.GetStateDown(SteamVR_Input_Sources.LeftHand))
+		{
+            bool isVisible = hintCanvas.gameObject.activeSelf;
+            hintCanvas.gameObject.SetActive(!isVisible);
+		}
 
         if (this.transform.position.y <= heightForRespawn)
         {
