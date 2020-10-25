@@ -35,7 +35,10 @@ public class CGameMaster : MonoBehaviour
 
     public void ReturnToMenu() {
 
-        loadinator.levelName = mainMenuName;
-        loadinator.Trigger();
+        if(score == collectibles.Length)
+		{
+            loadinator.levelName = mainMenuName;
+            loadinator.Trigger();
+        }
     }
 }
