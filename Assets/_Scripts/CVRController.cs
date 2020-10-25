@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Valve.VR;
 
-public class VRController : MonoBehaviour
+public class CVRController : MonoBehaviour
 {
     private float m_Gravity = 9.81f;
     private float m_FallingVelocity = 0.0f;
