@@ -5,10 +5,10 @@ using Valve.VR;
 
 public class CVRController : MonoBehaviour
 {
-    private float m_Gravity = 9.81f;
-    private float m_FallingVelocity = 0.0f;
-    public float m_Sensitivity = 0.1f;
-    public float m_MaxSpeed = 1.0f;
+    private float gravity = 9.81f;
+    private float fallingVelocity = 0.0f;
+    public float accelaration = 0.1f;
+    public float maxSpeed = 1.0f;
 
     [SerializeField]
     private int heightForRespawn = -50;
@@ -16,29 +16,28 @@ public class CVRController : MonoBehaviour
     private Animator animator;
     [SerializeField] private Canvas hintCanvas;
 
-    public SteamVR_Action_Boolean m_MovePress = null;
-    public SteamVR_Action_Vector2 m_MoveValue = null;
-    public SteamVR_Action_Boolean m_HintPress = null;
+    public SteamVR_Action_Boolean movePress = null;
+    public SteamVR_Action_Boolean hintPress = null;
 
-    private float m_Speed = 0.0f;
+    private float currentSpeed = 0.0f;
 
-    private CharacterController m_CharacterController = null;
-    private Transform m_CameraRig = null;
-    private Transform m_Head = null;
+    private CharacterController characterController = null;
+    private Transform cameraRig = null;
+    private Transform head = null;
 
     private Vector3 originPosition;
 
     private void Awake()
     {
-        m_CharacterController = GetComponent<CharacterController>();
+        characterController = GetComponent<CharacterController>();
         originPosition = this.transform.position;
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        m_CameraRig = SteamVR_Render.Top().origin;
-        m_Head = SteamVR_Render.Top().head;
+        cameraRig = SteamVR_Render.Top().origin;
+        head = SteamVR_Render.Top().head;
     }
 
     // Update is called once per frame
@@ -47,7 +46,7 @@ public class CVRController : MonoBehaviour
         HandleHeight();
         CalculateMovement();
 
-		if (m_HintPress.GetStateDown(SteamVR_Input_Sources.LeftHand))
+		if (hintPress.GetStateDown(SteamVR_Input_Sources.LeftHand))
 		{
             bool isVisible = hintCanvas.gameObject.activeSelf;
             hintCanvas.gameObject.SetActive(!isVisible);
@@ -62,61 +61,62 @@ public class CVRController : MonoBehaviour
     private void HandleHeight()
     {
         //get the head in local space
-        float headHeight = Mathf.Clamp(m_Head.localPosition.y, 1, 2);
-        m_CharacterController.height = headHeight;
+        float headHeight = Mathf.Clamp(head.localPosition.y, 1, 2);
+        characterController.height = headHeight;
 
         //cut in half
         Vector3 newCenter = Vector3.zero;
-        newCenter.y = m_CharacterController.height / 2;
-        newCenter.y += m_CharacterController.skinWidth;
+        newCenter.y = characterController.height / 2;
+        newCenter.y += characterController.skinWidth;
 
         //move capsule in local space
-        newCenter.x = m_Head.localPosition.x;
-        newCenter.z = m_Head.localPosition.z;
+        newCenter.x = head.localPosition.x;
+        newCenter.z = head.localPosition.z;
 
         //rotate
         newCenter = Quaternion.Euler(0, -transform.eulerAngles.y, 0) * newCenter;
+        
 
         //apply
-        m_CharacterController.center = newCenter;
+        characterController.center = newCenter;
     }
 
     private void CalculateMovement()
     {
         //movement orientation
-        Vector3 orientationEuler = new Vector3(0, m_Head.eulerAngles.y, 0);
+        Vector3 orientationEuler = new Vector3(0, head.eulerAngles.y, 0);
         Quaternion orientation = Quaternion.Euler(orientationEuler);
         Vector3 movement = Vector3.zero;
 
         //if not moving
-        if (m_MovePress.GetStateUp(SteamVR_Input_Sources.RightHand))
+        if (movePress.GetStateUp(SteamVR_Input_Sources.RightHand))
         {
-            m_Speed = 0;
+            currentSpeed = 0;
             animator.SetBool("isWalking", false);
         }          
 
         // if button pressed
-        if(m_MovePress.state)
+        if(movePress.state)
 		{
             //Add clamp
-            m_Speed += m_MoveValue.axis.y * m_Sensitivity;
-            m_Speed = Mathf.Clamp(m_Speed, -m_MaxSpeed, m_MaxSpeed);
+            currentSpeed += accelaration;
+            currentSpeed = Mathf.Clamp(currentSpeed, -maxSpeed, maxSpeed);
 
             //orientation
-            movement += orientation * (m_Speed * Vector3.forward);
+            movement += orientation * (currentSpeed * Vector3.forward);
 
             animator.SetBool("isWalking", true);
 		}
 
         //gravity
-        if (m_CharacterController.isGrounded)
-            m_FallingVelocity = 0.0f;  
+        if (characterController.isGrounded)
+            fallingVelocity = 0.0f;  
         else
-            m_FallingVelocity += m_Gravity * Time.deltaTime;
+            fallingVelocity += gravity * Time.deltaTime;
 
-        movement.y -= m_FallingVelocity;
+        movement.y -= fallingVelocity;
 
         //apply
-        m_CharacterController.Move(movement * Time.deltaTime);
+        characterController.Move(movement * Time.deltaTime);
 	}
 }

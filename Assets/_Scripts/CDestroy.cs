@@ -7,6 +7,6 @@ public class CDestroy : MonoBehaviour
 {
 	public void destroyObject()
 	{
-        Destroy(this);
+        this.gameObject.SetActive(false);
 	}
 }
