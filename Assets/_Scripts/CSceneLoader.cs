@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 using Valve.VR;
 
 [RequireComponent(typeof(SteamVR_LoadLevel))]
-public class SceneLoader : MonoBehaviour
+public class CSceneLoader : MonoBehaviour
 {
     private SteamVR_LoadLevel loadinator = null;
 
