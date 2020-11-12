@@ -36,6 +36,7 @@ public class CVRController : MonoBehaviour
     {
         characterController = GetComponent<CharacterController>();
         originPosition = this.transform.position;
+
     }
 
     // Start is called before the first frame update
@@ -142,5 +143,10 @@ public class CVRController : MonoBehaviour
 		{
             transform.Rotate(Vector3.up, snapAngle);
         }
+	}
+
+	private void OnDestroy()
+	{
+		//TODO mozno urobi input cez eventy ako v CHandAnimator
 	}
 }
