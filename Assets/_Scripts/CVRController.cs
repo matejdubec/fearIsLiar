@@ -18,6 +18,11 @@ public class CVRController : MonoBehaviour
 
     public SteamVR_Action_Boolean movePress = null;
     public SteamVR_Action_Boolean hintPress = null;
+    public SteamVR_Action_Boolean leftTrackpadButtonPress = null;
+    public SteamVR_Action_Boolean rightTrackpadButtonPress = null;
+
+
+    [SerializeField] private float snapAngle = 45f;
 
     private float currentSpeed = 0.0f;
 
@@ -45,8 +50,10 @@ public class CVRController : MonoBehaviour
     {
         HandleHeight();
         CalculateMovement();
+        SnapTurn();
 
-		if (hintPress.GetStateDown(SteamVR_Input_Sources.LeftHand))
+
+        if (hintPress.GetStateDown(SteamVR_Input_Sources.LeftHand))
 		{
             bool isVisible = hintCanvas.gameObject.activeSelf;
             hintCanvas.gameObject.SetActive(!isVisible);
@@ -54,7 +61,11 @@ public class CVRController : MonoBehaviour
 
         if (this.transform.position.y <= heightForRespawn)
         {
+            SteamVR_Fade.Start(Color.clear, 0f);
+            SteamVR_Fade.Start(Color.black, 1f);
             this.transform.position = originPosition;
+            SteamVR_Fade.Start(Color.black, 0f);
+            SteamVR_Fade.Start(Color.clear, 1f);
         }
     }
 
@@ -118,5 +129,18 @@ public class CVRController : MonoBehaviour
 
         //apply
         characterController.Move(movement * Time.deltaTime);
+	}
+
+    private void SnapTurn()
+	{
+		if (leftTrackpadButtonPress.GetStateDown(SteamVR_Input_Sources.LeftHand))
+		{
+            transform.Rotate(Vector3.up, -snapAngle);
+
+        }
+        else if (rightTrackpadButtonPress.GetStateDown(SteamVR_Input_Sources.LeftHand))
+		{
+            transform.Rotate(Vector3.up, snapAngle);
+        }
 	}
 }

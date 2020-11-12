@@ -6,27 +6,26 @@ using Valve.VR;
 public class CustomHand : MonoBehaviour
 {
     [SerializeField]
-    private SteamVR_Action_Boolean m_GrabAction = null;
+    private SteamVR_Action_Boolean grabAction = null;
 
-    private SteamVR_Behaviour_Pose m_Pose = null;
-    private FixedJoint m_Joint = null;
+    private SteamVR_Behaviour_Pose pose = null;
+    private FixedJoint joint = null;
 
-    private Interactable m_CurrentInteractable = null;
-    public Interactable CurrentInteractable { get { return m_CurrentInteractable; } set { m_CurrentInteractable = value; } }
-    private List<Interactable> m_ContactInteractables = new List<Interactable>();
+	public Interactable CurrentInteractable { get; set; } = null;
+	private List<Interactable> contactInteractables = new List<Interactable>();
 
     private Slot slot;
 
     void Awake()
     {
-        m_Pose = GetComponent<SteamVR_Behaviour_Pose>();
-        m_Joint = GetComponent<FixedJoint>();
+        pose = GetComponent<SteamVR_Behaviour_Pose>();
+        joint = GetComponent<FixedJoint>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (m_GrabAction.GetStateDown(m_Pose.inputSource))
+        if (grabAction.GetStateDown(pose.inputSource))
         {
             if (slot)
             {
@@ -38,7 +37,7 @@ public class CustomHand : MonoBehaviour
             }  
         }
 
-        if (m_GrabAction.GetStateUp(m_Pose.inputSource))
+        if (grabAction.GetStateUp(pose.inputSource))
         {
             if (slot)
             {
@@ -58,7 +57,7 @@ public class CustomHand : MonoBehaviour
             return;
         }
 
-        m_ContactInteractables.Add(other.gameObject.GetComponent<Interactable>());
+        contactInteractables.Add(other.gameObject.GetComponent<Interactable>());
 
         slot = other.gameObject.GetComponent<Slot>();        
     }
@@ -70,7 +69,7 @@ public class CustomHand : MonoBehaviour
             return;
         }
 
-        m_ContactInteractables.Remove(other.gameObject.GetComponent<Interactable>());
+        contactInteractables.Remove(other.gameObject.GetComponent<Interactable>());
 
         if (slot)
         {
@@ -80,55 +79,55 @@ public class CustomHand : MonoBehaviour
 
     public void PickUp()
     {
-        m_CurrentInteractable = GetNearestInteractable();
+        CurrentInteractable = GetNearestInteractable();
 
-        if (!m_CurrentInteractable)
+        if (!CurrentInteractable)
         {
             return;
         }
 
-        m_CurrentInteractable.transform.position = this.transform.position;
+        CurrentInteractable.transform.position = this.transform.position;
 
-        Rigidbody targetBody = m_CurrentInteractable.GetComponent<Rigidbody>();
-        m_Joint.connectedBody = targetBody;
+        Rigidbody targetBody = CurrentInteractable.GetComponent<Rigidbody>();
+        joint.connectedBody = targetBody;
 
-        m_CurrentInteractable.m_Hand = this;
+        CurrentInteractable.m_Hand = this;
     }
 
     public void PickUp(Interactable interactable)
     {
-        m_CurrentInteractable = interactable;
+        CurrentInteractable = interactable;
 
-        if (m_CurrentInteractable)
+        if (CurrentInteractable)
         {
             //check if it is already held by any hand
-            if (m_CurrentInteractable.m_Hand)
+            if (CurrentInteractable.m_Hand)
             {
-                m_CurrentInteractable.m_Hand.Drop();
+                CurrentInteractable.m_Hand.Drop();
             }
 
-            m_CurrentInteractable.transform.position = this.transform.position;
+            CurrentInteractable.transform.position = this.transform.position;
 
-            Rigidbody targetBody = m_CurrentInteractable.GetComponent<Rigidbody>();
-            m_Joint.connectedBody = targetBody;
+            Rigidbody targetBody = CurrentInteractable.GetComponent<Rigidbody>();
+            joint.connectedBody = targetBody;
 
-            m_CurrentInteractable.m_Hand = this;
+            CurrentInteractable.m_Hand = this;
         }
     }
 
     public void Drop()
     {
-        if (m_CurrentInteractable)
+        if (CurrentInteractable)
         {
             //applu velocity
-            Rigidbody targetBody = m_CurrentInteractable.GetComponent<Rigidbody>();
-            targetBody.velocity = m_Pose.GetVelocity();
-            targetBody.angularVelocity = m_Pose.GetAngularVelocity();
+            Rigidbody targetBody = CurrentInteractable.GetComponent<Rigidbody>();
+            targetBody.velocity = pose.GetVelocity();
+            targetBody.angularVelocity = pose.GetAngularVelocity();
 
             //detach
-            m_Joint.connectedBody = null;
-            m_CurrentInteractable.m_Hand = null;
-            m_CurrentInteractable = null;
+            joint.connectedBody = null;
+            CurrentInteractable.m_Hand = null;
+            CurrentInteractable = null;
 
         }
     }
@@ -139,7 +138,7 @@ public class CustomHand : MonoBehaviour
         float minDistance = float.MaxValue;
         float distance = 0.0f;
 
-        foreach(Interactable interactable in m_ContactInteractables)
+        foreach(Interactable interactable in contactInteractables)
         {
             distance = (interactable.transform.position - this.transform.position).sqrMagnitude;
 
