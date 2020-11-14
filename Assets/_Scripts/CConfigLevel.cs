@@ -17,7 +17,7 @@ public enum EPhobiaId
 public class CConfigLevel : ScriptableObject
 {
 	public ELevelId Id;
-	public string Description = "No description";
+	public string Description = "DefaultText.NoText";
 	public EPhobiaId PhobiaId;
 	public float TimeOfCompletion = 0.0f;
 	//public Sprite Icon;

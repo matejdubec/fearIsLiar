@@ -13,8 +13,6 @@ MonoBehaviour:
   m_Name: cfg_ClosingIn
   m_EditorClassIdentifier: 
   Id: 2
-  LevelName: Closing In
-  Description: Not working yet. Dont play
+  Description: Level.ClosingIn.Description
   PhobiaId: 4
   TimeOfCompletion: 0
-  Icon: {fileID: 21300000, guid: 14ff67c2645e145b5a970a74b25241c3, type: 3}

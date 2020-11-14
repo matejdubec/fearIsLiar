@@ -13,8 +13,6 @@ MonoBehaviour:
   m_Name: cfg_Skyscrapers
   m_EditorClassIdentifier: 
   Id: 1
-  LevelName: Skyscrapers
-  Description: 
+  Description: Level.Skyscrapers.Description
   PhobiaId: 1
   TimeOfCompletion: 0
-  Icon: {fileID: 21300000, guid: 14ff67c2645e145b5a970a74b25241c3, type: 3}

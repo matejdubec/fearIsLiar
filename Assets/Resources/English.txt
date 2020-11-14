@@ -1,0 +1,17 @@
+Phobia.Acrophobia.Fact.1:This is a fact about Acrophobia!
+Phobia.Acrophobia.Fact.2:This is a fact about Acrophobia!
+Phobia.Acrophobia.Fact.3:This is a fact about Acrophobia!
+Phobia.Acrophobia:Acrophobia
+Phobia.Achluophobia:Achluophobia
+Phobia.Arachnophobia:Arachnophobia
+Phobia.Claustrophobia:Claustrophobia
+Level.ClosingIn.Description:Level is not finished yet.
+Level.Skyscrapers.Description:Walk on the plank between skycrapers and collect all orbs without shitting yourself.
+Level.Skyscrapers:Skyscrapers
+Level.ClosingIn:ClosingIn
+DefaultText.CompletedIn:Completed in
+DefaultText.NoText:NoTextFound
+Level.MainMenu.Fact.Header:Fact
+Level.MainMenu.Fact.Description:Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce magna libero, venenatis ac dapibus et, rhoncus eget nulla
+Level.MainMenu.About.Header:About
+Level.MainMenu.About.Description:Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce magna libero, venenatis ac dapibus et, rhoncus eget nulla

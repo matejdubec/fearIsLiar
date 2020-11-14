@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class CLevelScrollList : MonoBehaviour
 {
     [SerializeField] private Button buttonTemplate;
-    private List<Button> shownButtons;
+    private List<Button> shownButtons = new List<Button>();
 
 
 
@@ -21,7 +21,7 @@ public class CLevelScrollList : MonoBehaviour
         foreach (CConfigLevel cLevel in levelList)
 		{
             Button newButton = Button.Instantiate(buttonTemplate);
-            newButton.transform.SetParent(transform);
+            newButton.transform.SetParent(transform, false);
             CMainMenuLevelButton levelButton = newButton.GetComponent<CMainMenuLevelButton>();
             levelButton.Setup(cLevel, loader);
             shownButtons.Add(newButton);

@@ -13,17 +13,22 @@ public class CMainMenuLevelButton : MonoBehaviour
     [SerializeField] private Text CompletionTimeText;
     //[SerializeField] private Image previewSprite;
 
-    private string completionString = "Completed in: ";
-
-    public void Setup(CConfigLevel cLevel, CSceneLoader loader)
+    private string completionString = null;
+	private void Awake()
 	{
-        levelNameText.text = cLevel.Id.ToString();
-        descriptionText.text = cLevel.Description;
-        PhobiaText.text = cLevel.PhobiaId.ToString();
-        CompletionTimeText.text = cLevel.TimeOfCompletion > 0 ? completionString + cLevel.TimeOfCompletion.ToString() : completionString + "N/A";
+        completionString = CLanguageManager.Instance.GetText("DefaultText.CompletedIn");
+    }
+
+	public void Setup(CConfigLevel cLevel, CSceneLoader loader)
+	{
+        levelNameText.text = CLanguageManager.Instance.GetText($"Level.{cLevel.Id}");
+        descriptionText.text = CLanguageManager.Instance.GetText(cLevel.Description);
+        PhobiaText.text = CLanguageManager.Instance.GetText($"Phobia.{cLevel.PhobiaId}");
+        CompletionTimeText.text = cLevel.TimeOfCompletion > 0 ? $"{completionString}: {cLevel.TimeOfCompletion}" : $"{completionString}: N/A";
         //previewSprite.sprite = cLevel.Icon;
 
         Button button = this.GetComponent<Button>();
-        button.onClick.AddListener(() => loader.LoadScene(cLevel.Id.ToString()));
+        string captured = cLevel.Id.ToString();
+        button.onClick.AddListener(() => loader.LoadScene(captured));
     }
 }
