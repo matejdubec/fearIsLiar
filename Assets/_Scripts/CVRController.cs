@@ -11,13 +11,13 @@ public class CVRController : MonoBehaviour
     public float maxSpeed = 1.0f;
 
     [SerializeField]
-    private int heightForRespawn = -50;
-    [SerializeField]
     private Animator animator;
     [SerializeField] private Canvas hintCanvas;
 
+    [SerializeField] private Canvas returnToMenuCanvas;
+
     public SteamVR_Action_Boolean movePress = null;
-    public SteamVR_Action_Boolean hintPress = null;
+    public SteamVR_Action_Boolean GrabGripPress = null;
     public SteamVR_Action_Boolean leftTrackpadButtonPress = null;
     public SteamVR_Action_Boolean rightTrackpadButtonPress = null;
 
@@ -28,19 +28,15 @@ public class CVRController : MonoBehaviour
 
     private CharacterController characterController = null;
     private Transform cameraRig = null;
-    private Transform head = null;
-
-    private Vector3 originPosition;
+    private Transform head = null;   
 
     private void Awake()
     {
         characterController = GetComponent<CharacterController>();
-        originPosition = this.transform.position;
-
     }
 
-    // Start is called before the first frame update
-    void Start()
+	// Start is called before the first frame update
+	void Start()
     {
         cameraRig = SteamVR_Render.Top().origin;
         head = SteamVR_Render.Top().head;
@@ -52,22 +48,7 @@ public class CVRController : MonoBehaviour
         HandleHeight();
         CalculateMovement();
         SnapTurn();
-
-
-        if (hintPress.GetStateDown(SteamVR_Input_Sources.LeftHand))
-		{
-            bool isVisible = hintCanvas.gameObject.activeSelf;
-            hintCanvas.gameObject.SetActive(!isVisible);
-		}
-
-        if (this.transform.position.y <= heightForRespawn)
-        {
-            SteamVR_Fade.Start(Color.clear, 0f);
-            SteamVR_Fade.Start(Color.black, 1f);
-            this.transform.position = originPosition;
-            SteamVR_Fade.Start(Color.black, 0f);
-            SteamVR_Fade.Start(Color.clear, 1f);
-        }
+        HandleGrabGrip();
     }
 
     private void HandleHeight()
@@ -145,8 +126,28 @@ public class CVRController : MonoBehaviour
         }
 	}
 
+    private void HandleGrabGrip()
+	{
+        if (GrabGripPress.GetStateDown(SteamVR_Input_Sources.LeftHand))
+        {
+            bool isVisible = hintCanvas.gameObject.activeSelf;
+            hintCanvas.gameObject.SetActive(!isVisible);
+        }
+
+        if (GrabGripPress.GetStateDown(SteamVR_Input_Sources.RightHand))
+        {
+            bool isVisible = returnToMenuCanvas.gameObject.activeSelf;
+            returnToMenuCanvas.gameObject.SetActive(!isVisible);
+        }
+    }
+
 	private void OnDestroy()
 	{
 		//TODO mozno urobi input cez eventy ako v CHandAnimator
 	}
+
+    public void SetPosition(Vector3 newPosition)
+	{
+        this.transform.position = newPosition;
+    }
 }

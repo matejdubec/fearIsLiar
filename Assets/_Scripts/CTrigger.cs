@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CTrigger : MonoBehaviour
 {
-	[SerializeField] private CGameMaster master;
+	[SerializeField] private CSkyscrapersData master;
 
 	private void OnTriggerEnter(Collider other)
 	{

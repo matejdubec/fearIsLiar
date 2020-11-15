@@ -7,6 +7,7 @@ Phobia.Arachnophobia:Arachnophobia
 Phobia.Claustrophobia:Claustrophobia
 Level.ClosingIn.Description:Level is not finished yet.
 Level.Skyscrapers.Description:Walk on the plank between skycrapers and collect all orbs without shitting yourself.
+Level.Skyscrapers.Description.InGame:Welcome! You are on the roof of the Skyscrapper. To finish this level collect green orbs.
 Level.Skyscrapers:Skyscrapers
 Level.ClosingIn:ClosingIn
 DefaultText.CompletedIn:Completed in
