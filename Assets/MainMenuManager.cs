@@ -3,12 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class MainMenuManager : MonoBehaviour
 {
 	[SerializeField] private List<CConfigLevel> configLevels;
 	[SerializeField] private CLevelScrollList scrollList;
 	[SerializeField] private CSceneLoader loader;
+
+	[SerializeField] private AudioMixer audioMixer;
 
 	private void Start()
 	{
@@ -23,5 +26,15 @@ public class MainMenuManager : MonoBehaviour
 
 		scrollList.ClearButtons();
 		scrollList.AddButtons(filteredLevels, loader);
+	}
+
+	public void SetVolume(float volume)
+	{
+		audioMixer.SetFloat("Volume", volume);
+	}
+
+	public void SetQuality(int qualityIndex)
+	{
+		QualitySettings.SetQualityLevel(qualityIndex);
 	}
 }

@@ -16,3 +16,11 @@ Level.MainMenu.Fact.Header:Fact
 Level.MainMenu.Fact.Description:Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce magna libero, venenatis ac dapibus et, rhoncus eget nulla
 Level.MainMenu.About.Header:About
 Level.MainMenu.About.Description:Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce magna libero, venenatis ac dapibus et, rhoncus eget nulla
+Level.MainMenu.Settings.Graphics:Graphics
+Level.MainMenu.Settings.Graphics.Low:Low
+Level.MainMenu.Settings.Graphics.Medium:Medium
+Level.MainMenu.Settings.Graphics.High:High
+Level.MainMenu.Settings.Language:Language
+Level.MainMenu.Settings.Language.English:English
+Level.MainMenu.Settings.Language.Slovak:Slovak
+Level.MainMenu.Settings.Volume:Volume
