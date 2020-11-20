@@ -495,7 +495,7 @@ GameObject:
   - component: {fileID: 4697890826589727328}
   - component: {fileID: 2149410858519502226}
   m_Layer: 0
-  m_Name: CustomHandModel
+  m_Name: CustomRightHandModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -548,6 +548,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b69261f6814a2c4fa275159462d6c2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  grabAction:
+    actionPath: /actions/default/in/Squeeze
+    needsReinit: 0
 --- !u!54 &4697890826589727328
 Rigidbody:
   m_ObjectHideFlags: 0

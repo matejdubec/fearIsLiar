@@ -26,10 +26,14 @@ public class CLevelScrollList : MonoBehaviour
             levelButton.Setup(cLevel, loader);
             shownButtons.Add(newButton);
 		}
-	}
+    }
 
     public void ClearButtons()
 	{
+        foreach(Button button in shownButtons)
+        {
+            Destroy(button.gameObject);
+        }
         shownButtons.Clear();
     }
 }

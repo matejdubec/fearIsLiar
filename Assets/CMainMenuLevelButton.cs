@@ -29,6 +29,6 @@ public class CMainMenuLevelButton : MonoBehaviour
 
         Button button = this.GetComponent<Button>();
         string captured = cLevel.Id.ToString();
-        button.onClick.AddListener(() => loader.LoadScene(captured));
+        button.onClick.AddListener(() => { loader.LoadScene(captured); });
     }
 }
