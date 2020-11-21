@@ -5,35 +5,56 @@ using UnityEngine.UI;
 
 public class CLevelScrollList : MonoBehaviour
 {
-    [SerializeField] private Button buttonTemplate;
-    private List<Button> shownButtons = new List<Button>();
+    public List<GameObject> pooledObjects;
+    public GameObject objectToPool;
+    public int amountToPool;
 
 
-
-    // Start is called before the first frame update
-    void Start()
+	// Start is called before the first frame update
+	void Start()
     {
-        
+        pooledObjects = new List<GameObject>();
+        GameObject tmp;
+        for(int i = 0; i < amountToPool; i++)
+		{
+            tmp = Instantiate(objectToPool);
+            tmp.transform.SetParent(transform, false);
+            tmp.SetActive(false);
+            pooledObjects.Add(tmp);
+		}
     }
 
     public void AddButtons(List<CConfigLevel> levelList, CSceneLoader loader)
 	{
         foreach (CConfigLevel cLevel in levelList)
 		{
-            Button newButton = Button.Instantiate(buttonTemplate);
-            newButton.transform.SetParent(transform, false);
-            CMainMenuLevelButton levelButton = newButton.GetComponent<CMainMenuLevelButton>();
-            levelButton.Setup(cLevel, loader);
-            shownButtons.Add(newButton);
+            GameObject button = this.GetPooledObject();
+			if (button)
+			{
+                CMainMenuLevelButton lButton = button.GetComponent<CMainMenuLevelButton>();
+                lButton.Setup(cLevel, loader);
+                button.SetActive(true);
+            }
 		}
     }
 
     public void ClearButtons()
 	{
-        foreach(Button button in shownButtons)
-        {
-            Destroy(button.gameObject);
-        }
-        shownButtons.Clear();
+        for(int i = 0; i < amountToPool; i++)
+		{
+            pooledObjects[i].SetActive(false);
+		}
     }
+
+    private GameObject GetPooledObject()
+	{
+        for(int i = 0; i < amountToPool; i++)
+		{
+			if (!pooledObjects[i].activeInHierarchy)
+			{
+                return pooledObjects[i];
+			}
+		}
+        return null;
+	}
 }
