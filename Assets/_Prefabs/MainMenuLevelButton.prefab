@@ -253,6 +253,7 @@ MonoBehaviour:
   descriptionText: {fileID: 4018220684879012416}
   PhobiaText: {fileID: 4018220683435712182}
   CompletionTimeText: {fileID: 4018220685065574972}
+  previewSprite: {fileID: 4018220685067938595}
 --- !u!1 &4018220684211873078
 GameObject:
   m_ObjectHideFlags: 0

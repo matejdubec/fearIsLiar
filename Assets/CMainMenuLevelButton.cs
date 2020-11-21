@@ -11,7 +11,7 @@ public class CMainMenuLevelButton : MonoBehaviour
     [SerializeField] private Text descriptionText;
     [SerializeField] private Text PhobiaText;
     [SerializeField] private Text CompletionTimeText;
-    //[SerializeField] private Image previewSprite;
+    [SerializeField] private Image previewSprite;
 
     private string completionString = null;
 	private void Awake()
@@ -25,7 +25,7 @@ public class CMainMenuLevelButton : MonoBehaviour
         descriptionText.text = CLanguageManager.Instance.GetText(cLevel.Description);
         PhobiaText.text = CLanguageManager.Instance.GetText($"Phobia.{cLevel.PhobiaId}");
         CompletionTimeText.text = cLevel.TimeOfCompletion > 0 ? $"{completionString}: {cLevel.TimeOfCompletion}" : $"{completionString}: N/A";
-        //previewSprite.sprite = cLevel.Icon;
+        previewSprite.sprite = cLevel.Icon;
 
         Button button = this.GetComponent<Button>();
         string captured = cLevel.Id.ToString();

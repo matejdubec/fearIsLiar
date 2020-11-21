@@ -20,5 +20,5 @@ public class CConfigLevel : ScriptableObject
 	public string Description = "DefaultText.NoText";
 	public EPhobiaId PhobiaId;
 	public float TimeOfCompletion = 0.0f;
-	//public Sprite Icon;
+	public Sprite Icon;
 }

@@ -16,3 +16,4 @@ MonoBehaviour:
   Description: Level.Skyscrapers.Description
   PhobiaId: 1
   TimeOfCompletion: 0
+  Icon: {fileID: 21300000, guid: a23ce28262d634c46a4d8f759980a4dc, type: 3}
