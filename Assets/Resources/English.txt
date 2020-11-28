@@ -1,10 +1,11 @@
-Phobia.Acrophobia.Fact.1:This is a fact about Acrophobia!
-Phobia.Acrophobia.Fact.2:This is a fact about Acrophobia!
-Phobia.Acrophobia.Fact.3:This is a fact about Acrophobia!
+Phobia.Acrophobia.Fact.1:Acrophobia describes an intense fear of heights that can cause significant anxiety and panic. 
 Phobia.Acrophobia:Acrophobia
 Phobia.Achluophobia:Achluophobia
+Phobia.Achluophobia.Fact.1:A fear of the dark does not always concern darkness itself. It can also be a fear of possible or imagined dangers concealed by darkness.
 Phobia.Arachnophobia:Arachnophobia
+Phobia.Arachnophobia.Fact.1:Arachnophobia is an intense and irrational fear of spiders and other arachnids.
 Phobia.Claustrophobia:Claustrophobia
+Phobia.Claustrophobia.Fact.1:Claustrophobia is a situational phobia triggered by an irrational and intense fear of tight or crowded spaces.
 Level.ClosingIn.Description:Level is not finished yet.
 Level.Skyscrapers.Description:Walk on the plank between skycrapers and collect all orbs without shitting yourself.
 Level.Skyscrapers.Description.InGame:Welcome! You are on the roof of the Skyscrapper. To finish this level collect green orbs.

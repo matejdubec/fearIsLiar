@@ -15,4 +15,10 @@ public class CLocalizationIndentificator : MonoBehaviour
         text = GetComponent<Text>();
         text.text = CLanguageManager.Instance.GetText(identificator);
     }
+
+    public void SetText(string newText)
+	{
+        identificator = newText;
+        text.text = CLanguageManager.Instance.GetText(identificator);
+    }
 }
