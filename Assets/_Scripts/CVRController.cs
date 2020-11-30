@@ -20,7 +20,7 @@ public class CVRController : MonoBehaviour
     public SteamVR_Action_Boolean GrabGripPress = null;
     public SteamVR_Action_Boolean leftTrackpadButtonPress = null;
     public SteamVR_Action_Boolean rightTrackpadButtonPress = null;
-
+    public SteamVR_Action_Vector2 touchPad = null;
 
     [SerializeField] private float snapAngle = 45f;
 
@@ -115,12 +115,12 @@ public class CVRController : MonoBehaviour
 
     private void SnapTurn()
 	{
-		if (leftTrackpadButtonPress.GetStateDown(SteamVR_Input_Sources.LeftHand))
+		if (leftTrackpadButtonPress.GetStateDown(SteamVR_Input_Sources.LeftHand) &&  touchPad.GetAxis(SteamVR_Input_Sources.LeftHand).x < -0.9f)
 		{
             transform.Rotate(Vector3.up, -snapAngle);
 
         }
-        else if (rightTrackpadButtonPress.GetStateDown(SteamVR_Input_Sources.LeftHand))
+        else if (rightTrackpadButtonPress.GetStateDown(SteamVR_Input_Sources.LeftHand) && touchPad.GetAxis(SteamVR_Input_Sources.LeftHand).x > 0.9f)
 		{
             transform.Rotate(Vector3.up, snapAngle);
         }
