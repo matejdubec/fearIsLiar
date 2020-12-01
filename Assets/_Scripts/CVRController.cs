@@ -118,7 +118,6 @@ public class CVRController : MonoBehaviour
 		if (leftTrackpadButtonPress.GetStateDown(SteamVR_Input_Sources.LeftHand) &&  touchPad.GetAxis(SteamVR_Input_Sources.LeftHand).x < -0.9f)
 		{
             transform.Rotate(Vector3.up, -snapAngle);
-
         }
         else if (rightTrackpadButtonPress.GetStateDown(SteamVR_Input_Sources.LeftHand) && touchPad.GetAxis(SteamVR_Input_Sources.LeftHand).x > 0.9f)
 		{

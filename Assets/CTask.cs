@@ -1,18 +1,52 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum ETaskType
+{
+    Waypoint,
+    SimpleTask,
+}
+
+
 public class CTask : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private ETaskType taskType;
+    [SerializeField] private GameObject waypointPrefab;
+
+    private bool isFinished = false;
+
+    public EventHandler TaskDone;
+
+    public void Init()
     {
-        
+        this.gameObject.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Activate()
     {
-        
+        this.gameObject.SetActive(true);
+
+        if (taskType == ETaskType.Waypoint)
+        {
+            //TODO prerobit na pool
+            Instantiate(waypointPrefab, this.transform.position, Quaternion.identity, this.transform);
+        }
+    }
+
+    public void Deactivate()
+    {
+        this.gameObject.SetActive(false);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        TaskCompleted();
+    }
+
+    public void TaskCompleted()
+    {
+        TaskDone.Invoke(this, null);
     }
 }

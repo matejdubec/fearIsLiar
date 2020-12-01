@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -6,10 +7,11 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Rigidbody))]
 public class Interactable : MonoBehaviour
 {
-	public CustomHand m_Hand = null;
+    public CustomHand ActiveHand { get; private set; } = null;
 
-	private bool isAvailable = true;
-	public bool IsAvailable { get { return isAvailable; }  set { isAvailable = value; } }
+    public EventHandler IsHeld;
+
+    public bool IsAvailable { get; set; } = true;
 
     public UnityEvent onHandHover;
 
@@ -17,5 +19,14 @@ public class Interactable : MonoBehaviour
     {   
         if(other.gameObject.CompareTag("Player"))
             onHandHover.Invoke();
+    }
+
+    public void SetHand(CustomHand hand)
+    {
+        ActiveHand = hand;
+        if (ActiveHand)
+        {
+            IsHeld.Invoke(this, null);
+        }
     }
 }

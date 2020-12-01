@@ -91,7 +91,7 @@ public class CustomHand : MonoBehaviour
         Rigidbody targetBody = CurrentInteractable.GetComponent<Rigidbody>();
         joint.connectedBody = targetBody;
 
-        CurrentInteractable.m_Hand = this;
+        CurrentInteractable.SetHand(this);
     }
 
     public void PickUp(Interactable interactable)
@@ -101,9 +101,9 @@ public class CustomHand : MonoBehaviour
         if (CurrentInteractable)
         {
             //check if it is already held by any hand
-            if (CurrentInteractable.m_Hand)
+            if (CurrentInteractable.ActiveHand)
             {
-                CurrentInteractable.m_Hand.Drop();
+                CurrentInteractable.ActiveHand.Drop();
             }
 
             CurrentInteractable.transform.position = this.transform.position;
@@ -111,7 +111,7 @@ public class CustomHand : MonoBehaviour
             Rigidbody targetBody = CurrentInteractable.GetComponent<Rigidbody>();
             joint.connectedBody = targetBody;
 
-            CurrentInteractable.m_Hand = this;
+            CurrentInteractable.SetHand(this);
         }
     }
 
@@ -126,7 +126,7 @@ public class CustomHand : MonoBehaviour
 
             //detach
             joint.connectedBody = null;
-            CurrentInteractable.m_Hand = null;
+            CurrentInteractable.SetHand(null);
             CurrentInteractable = null;
 
         }

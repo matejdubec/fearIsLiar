@@ -50,7 +50,7 @@ public class Slot : Interactable
 				Rigidbody targetBody = storedObject.gameObject.GetComponent<Rigidbody>();
 				joint.connectedBody = targetBody;
 
-                storedObject.m_Hand = null;
+                storedObject.SetHand(null);
                 
 			}
 		}
