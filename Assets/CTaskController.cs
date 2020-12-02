@@ -2,7 +2,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
+
+//https://answers.unity.com/questions/1490192/how-can-i-highlight-the-vive-controller-buttons.html
 public class CTaskController : MonoBehaviour
 {
 
@@ -10,9 +13,17 @@ public class CTaskController : MonoBehaviour
     private CTask currentTask = null;
     private bool missionCompleted = false;
 
+    [SerializeField] private List<GameObject> objectsToHide;
+    public Text InformationText { get; private set; }
+
     // Start is called before the first frame update
     void Start()
     {
+        foreach(GameObject obj in objectsToHide)
+        {
+            obj.SetActive(false);
+        }
+
         tasklist = new Queue<CTask>();
         foreach(Transform child in this.transform)
         {
@@ -51,6 +62,11 @@ public class CTaskController : MonoBehaviour
 
     private void MissionCompleted()
     {
-        Debug.LogError("Mission completed");
+        foreach(GameObject obj in objectsToHide)
+        {
+            obj.SetActive(true);
+        }
+
+        CGameMaster.Instance.BackToMenuCanvasController.SetMainText("Level.MainMenu.Tutorial.Completed");
     }
 }

@@ -13,6 +13,8 @@ Level.Skyscrapers:Skyscrapers
 Level.ClosingIn:ClosingIn
 DefaultText.CompletedIn:Completed in
 DefaultText.NoText:NoTextFound
+DefaultText.BackToMenu:Back to menu
+DefaultText.Close:Close
 Level.MainMenu.Fact.Header:Fact
 Level.MainMenu.Fact.Description:Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce magna libero, venenatis ac dapibus et, rhoncus eget nulla
 Level.MainMenu.About.Header:About
@@ -25,3 +27,7 @@ Level.MainMenu.Settings.Language:Language
 Level.MainMenu.Settings.Language.English:English
 Level.MainMenu.Settings.Language.Slovak:Slovak
 Level.MainMenu.Settings.Volume:Volume
+Level.MainMenu.Tutorial.PressTrackPadToMove:Press right trackpad to get to the designated area
+Level.MainMenu.Tutorial.PressTriggerToPickUpBox:Pick up the green box using a trigger button
+Level.MainMenu.Tutorial.PlaceGreenBoxOnBlueBox:Place the green box on the blue one
+Level.MainMenu.Tutorial.Completed:Tutorial completed!!
