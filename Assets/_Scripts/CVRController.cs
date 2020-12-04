@@ -14,7 +14,7 @@ public class CVRController : MonoBehaviour
     private Animator animator;
     [SerializeField] private Canvas hintCanvas;
 
-    [SerializeField] private Canvas returnToMenuCanvas;
+    [SerializeField] private CBackToMenuCanvasController returnToMenuCanvas;
 
     public SteamVR_Action_Boolean movePress = null;
     public SteamVR_Action_Boolean GrabGripPress = null;
@@ -139,7 +139,7 @@ public class CVRController : MonoBehaviour
         if (GrabGripPress.GetStateDown(SteamVR_Input_Sources.RightHand))
         {
             bool isVisible = returnToMenuCanvas.gameObject.activeSelf;
-            returnToMenuCanvas.gameObject.SetActive(!isVisible);
+            returnToMenuCanvas.Activate(!isVisible);
         }
     }
 

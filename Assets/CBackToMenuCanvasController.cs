@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Valve.VR;
 
 public class CBackToMenuCanvasController : MonoBehaviour
 {
@@ -9,11 +10,17 @@ public class CBackToMenuCanvasController : MonoBehaviour
     [SerializeField] private CLocalizationIndentificator mainText;
     [SerializeField] private Button button;
     [SerializeField] private CLocalizationIndentificator buttonText;
+    private float spawnDistance = 5f;
 
     public delegate void ButtonAction();
 
     public void Activate(bool state)
     {
+        if (state)
+        {
+            UpdatePosition();
+        }
+
         this.gameObject.SetActive(state);
     }
 
@@ -32,5 +39,21 @@ public class CBackToMenuCanvasController : MonoBehaviour
     {
         button.onClick.RemoveAllListeners();
         button.onClick.AddListener(() => { buttonAction(); });
+    }
+
+
+    private void UpdatePosition()
+    {
+        var head = SteamVR_Render.Top().camera.transform;
+
+        RaycastHit hit;
+        Ray ray = new Ray(head.position, head.forward);
+        Physics.Raycast(ray, out hit, spawnDistance);
+
+        float closestCollision = hit.distance == 0 ? spawnDistance : hit.distance - 1;
+
+        transform.position = head.position + (head.forward * closestCollision);
+        transform.LookAt(head.transform);
+        transform.Rotate(0, 180, 0);
     }
 }

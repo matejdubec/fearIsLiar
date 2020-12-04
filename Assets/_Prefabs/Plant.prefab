@@ -90,6 +90,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1192614597726469514}
+  - component: {fileID: 6739096672079808648}
   m_Layer: 0
   m_Name: Plant
   m_TagString: Untagged
@@ -114,6 +115,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &6739096672079808648
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2001520202115589936}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.41957808, y: 0.4231324, z: 0.70192575}
+  m_Center: {x: -0.010962248, y: 1.3742995e-15, z: 0.34670767}
 --- !u!1 &3078180365597617244
 GameObject:
   m_ObjectHideFlags: 0

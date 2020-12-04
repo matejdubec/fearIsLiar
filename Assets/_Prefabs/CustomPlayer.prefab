@@ -512,12 +512,12 @@ RectTransform:
   - {fileID: 5344626643740993950}
   - {fileID: 1771248894779207725}
   - {fileID: 1744256615}
-  m_Father: {fileID: 6527970045153426808}
-  m_RootOrder: 0
+  m_Father: {fileID: 6527466105696793079}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 1}
   m_SizeDelta: {x: 50, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &1533518599
@@ -1514,8 +1514,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1533518596}
+  m_Children: []
   m_Father: {fileID: 6527466104652583266}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2215,6 +2214,7 @@ Transform:
   - {fileID: 6527466104652583266}
   - {fileID: 1982084879}
   - {fileID: 964962112}
+  - {fileID: 1533518596}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2252,7 +2252,7 @@ MonoBehaviour:
   maxSpeed: 1
   animator: {fileID: 957532474}
   hintCanvas: {fileID: 6664874294889863638}
-  returnToMenuCanvas: {fileID: 1533518599}
+  returnToMenuCanvas: {fileID: 3066203444564237850}
   movePress:
     actionPath: /actions/default/in/Teleport
     needsReinit: 0

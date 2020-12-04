@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2836486433103626767}
   - component: {fileID: 1221287989411597738}
   - component: {fileID: 3969384024195250528}
+  - component: {fileID: 1698383918180724470}
   m_Layer: 0
   m_Name: Side_Table_04
   m_TagString: Untagged
@@ -82,3 +83,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1698383918180724470
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3176983655812372661}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.36577627, y: 0.5461918, z: 0.3657763}
+  m_Center: {x: 0.00000013411045, y: 0.0068122298, z: -0.05614338}
