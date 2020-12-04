@@ -67,8 +67,9 @@ public class CVRController : MonoBehaviour
         newCenter.z = head.localPosition.z;
 
         //rotate
-        newCenter = Quaternion.Euler(0, -transform.eulerAngles.y, 0) * newCenter;
-        
+        //ked to je zakomentovane tak mi funguje snap turn
+        //po snap turn character controller ostane na kamere
+        //newCenter = Quaternion.Euler(0, -transform.eulerAngles.y, 0) * newCenter;
 
         //apply
         characterController.center = newCenter;
@@ -111,19 +112,21 @@ public class CVRController : MonoBehaviour
 
         //apply
         characterController.Move(movement * Time.deltaTime);
-	}
+    }
 
     private void SnapTurn()
 	{
 		if (leftTrackpadButtonPress.GetStateDown(SteamVR_Input_Sources.LeftHand) &&  touchPad.GetAxis(SteamVR_Input_Sources.LeftHand).x < -0.9f)
 		{
-            transform.Rotate(Vector3.up, -snapAngle);
+            transform.RotateAround(new Vector3(head.transform.position.x, 0, SteamVR_Render.Top().head.transform.position.z), Vector3.up, -snapAngle);
+            //characterController.center.Set(head.localPosition.x, 0, head.localPosition.z);
         }
         else if (rightTrackpadButtonPress.GetStateDown(SteamVR_Input_Sources.LeftHand) && touchPad.GetAxis(SteamVR_Input_Sources.LeftHand).x > 0.9f)
 		{
-            transform.Rotate(Vector3.up, snapAngle);
+            transform.RotateAround(new Vector3(head.transform.position.x, 0, SteamVR_Render.Top().head.transform.position.z), Vector3.up, snapAngle);
+            //characterController.center.Set(head.localPosition.x, 0, head.localPosition.z);
         }
-	}
+    }
 
     private void HandleGrabGrip()
 	{
