@@ -6,12 +6,13 @@ using UnityEngine.UI;
 
 
 //https://answers.unity.com/questions/1490192/how-can-i-highlight-the-vive-controller-buttons.html
-public class CTaskController : MonoBehaviour
+public class CMissionManager : MonoBehaviour
 {
-
-    private Queue<CTask> tasklist;
-    private CTask currentTask = null;
+    private Queue<CWaypoint> waypointQueue;
+    private CWaypoint currentWaypoint = null;
     private bool missionCompleted = false;
+
+    [SerializeField] private CMarker marker;
 
     [SerializeField] private List<GameObject> objectsToHide;
     public Text InformationText { get; private set; }
@@ -24,41 +25,38 @@ public class CTaskController : MonoBehaviour
             obj.SetActive(false);
         }
 
-        tasklist = new Queue<CTask>();
+        waypointQueue = new Queue<CWaypoint>();
         foreach(Transform child in this.transform)
         {
-            CTask task = child.GetComponent<CTask>();
+            CWaypoint waypoint = child.GetComponent<CWaypoint>();
 
-            if (task)
+            if (waypoint)
             {
-                task.Init();
-                tasklist.Enqueue(task);
+                waypoint.Init(this);
+                waypointQueue.Enqueue(waypoint);
             }
         }
-        NextTask();
+
+        marker.Init();
+
+        NextWaypoint();
     }
 
-    private void NextTask()
+    private void NextWaypoint()
     {
-        if (tasklist.Count > 0)
+        if (waypointQueue.Count > 0)
         {
-            currentTask = tasklist.Dequeue();
-            currentTask.Activate();
-            currentTask.TaskDone += OnNextTask;
+            currentWaypoint = waypointQueue.Dequeue();
+            currentWaypoint.Activate();
+
+            marker.SetPosition(currentWaypoint.transform.position);
+            marker.HintText.SetText(currentWaypoint.LocalizationIndentificator);
         }
         else
         {
             MissionCompleted();
         }
     }
-
-    private void OnNextTask(object sender, EventArgs e)
-    {
-        currentTask.TaskDone -= OnNextTask;
-        currentTask.Deactivate();
-        NextTask();
-    }
-
 
     private void MissionCompleted()
     {
@@ -67,6 +65,6 @@ public class CTaskController : MonoBehaviour
             obj.SetActive(true);
         }
 
-        CGameMaster.Instance.BackToMenuCanvasController.SetMainText("Level.MainMenu.Tutorial.Completed");
+        //CGameMaster.Instance.BackToMenuCanvasController.SetMainText("Level.MainMenu.Tutorial.Completed");
     }
 }

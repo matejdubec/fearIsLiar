@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4993040573814300786
+--- !u!1 &8346568372699370197
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,49 +8,66 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4993040573814300788}
-  - component: {fileID: 4993040573814300787}
-  - component: {fileID: 4993040573814300789}
+  - component: {fileID: 2310894006878258473}
+  - component: {fileID: 569726037020029107}
+  - component: {fileID: -199629619353287442}
+  - component: {fileID: 2940325013888119287}
   m_Layer: 0
-  m_Name: SceneLoader
+  m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4993040573814300788
+--- !u!4 &2310894006878258473
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4993040573814300786}
+  m_GameObject: {fileID: 8346568372699370197}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.18772021, y: 1.5153433, z: 3.5384593}
+  m_LocalPosition: {x: 0, y: 0, z: 2.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4993040573814300787
+--- !u!114 &569726037020029107
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4993040573814300786}
+  m_GameObject: {fileID: 8346568372699370197}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59af2849db445ff4689744f89dc24e61, type: 3}
+  m_Script: {fileID: 11500000, guid: 20de754a4b3d1504d858e20f96d2f3d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4993040573814300789
+  languageManager: {fileID: -199629619353287442}
+  loadinator: {fileID: 2940325013888119287}
+  player: {fileID: 6527466105696793077, guid: cffe7af19faefbd4c928311fab526b2e, type: 3}
+  waypointManager: {fileID: 0}
+--- !u!114 &-199629619353287442
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4993040573814300786}
+  m_GameObject: {fileID: 8346568372699370197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b85857948225cb4da3b3268f1af440c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2940325013888119287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8346568372699370197}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a5a6a70209b6e6345bfe18b02314a54e, type: 3}
@@ -60,7 +77,7 @@ MonoBehaviour:
   internalProcessPath: 
   internalProcessArgs: 
   loadAdditive: 0
-  loadAsync: 0
+  loadAsync: 1
   loadingScreen: {fileID: 0}
   progressBarEmpty: {fileID: 0}
   progressBarFull: {fileID: 0}
@@ -79,7 +96,7 @@ MonoBehaviour:
   showGrid: 0
   fadeOutTime: 0.5
   fadeInTime: 0.5
-  postLoadSettleTime: 10
+  postLoadSettleTime: 0
   loadingScreenFadeInTime: 1
   loadingScreenFadeOutTime: 0.25
   autoTriggerOnEnable: 0

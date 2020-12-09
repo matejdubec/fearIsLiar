@@ -478,6 +478,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   identificator: DefaultText.BackToMenu
+  text2: {fileID: 0}
 --- !u!1 &1533518595
 GameObject:
   m_ObjectHideFlags: 0
@@ -497,7 +498,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1533518596
 RectTransform:
   m_ObjectHideFlags: 0
@@ -505,7 +506,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1533518595}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0, y: -0.086380474, z: -0, w: 0.99626225}
   m_LocalPosition: {x: 0, y: 0, z: 2.09}
   m_LocalScale: {x: 0.045850944, y: 0.045850944, z: 0.045850944}
   m_Children:
@@ -514,7 +515,7 @@ RectTransform:
   - {fileID: 1744256615}
   m_Father: {fileID: 6527466105696793079}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -9.911, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 1}
@@ -1253,6 +1254,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   identificator: DefaultText.NoText
+  text2: {fileID: 0}
 --- !u!1 &2727161194297166365
 GameObject:
   m_ObjectHideFlags: 0
@@ -1841,7 +1843,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6527466104652652956
 Transform:
   m_ObjectHideFlags: 0
@@ -1888,6 +1890,7 @@ GameObject:
   - component: {fileID: 1205297586}
   - component: {fileID: 1205297584}
   - component: {fileID: 1205297587}
+  - component: {fileID: 1681780094}
   m_Layer: 0
   m_Name: Controller (right)
   m_TagString: Untagged
@@ -2003,6 +2006,27 @@ MonoBehaviour:
   grabAction:
     actionPath: /actions/default/in/GrabPinch
     needsReinit: 0
+--- !u!114 &1681780094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6527466104652846058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea1001a6626353541ab4d4b39f4c3569, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controllerMaterial: {fileID: 2100000, guid: 11b050e661ec0cf48a289a7266451e91, type: 2}
+  urpControllerMaterial: {fileID: 0}
+  flashColor: {r: 1, g: 0.557, b: 0, a: 1}
+  textHintPrefab: {fileID: 0}
+  hapticFlash:
+    actionPath: /actions/default/out/Haptic
+    needsReinit: 0
+  autoSetWithControllerRangeOfMotion: 1
+  debugHints: 0
 --- !u!1 &6527466104652877054
 GameObject:
   m_ObjectHideFlags: 0
@@ -2019,7 +2043,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6527466104652656640
 Transform:
   m_ObjectHideFlags: 0
@@ -2266,7 +2290,7 @@ MonoBehaviour:
     actionPath: /actions/default/in/SnapTurnRight
     needsReinit: 0
   touchPad:
-    actionPath: 
+    actionPath: /actions/default/in/Trackpad
     needsReinit: 0
   snapAngle: 45
 --- !u!81 &776884929
@@ -2298,6 +2322,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CustomRightHandModel
+      objectReference: {fileID: 0}
+    - target: {fileID: 4501586195834368155, guid: a7b66e4d1fbd330498605371db5debd4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4501586195834596603, guid: a7b66e4d1fbd330498605371db5debd4,
         type: 3}
@@ -2433,6 +2462,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CustomLeftHandModel
+      objectReference: {fileID: 0}
+    - target: {fileID: 3306987633066652736, guid: 67ab2cac992c1e346a7cacb411476203,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3596812671813978974, guid: 67ab2cac992c1e346a7cacb411476203,
         type: 3}

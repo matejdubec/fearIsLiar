@@ -24,7 +24,7 @@ public class CLevelScrollList : MonoBehaviour
 		}
     }
 
-    public void AddButtons(List<CConfigLevel> levelList, CSceneLoader loader)
+    public void AddButtons(List<CConfigLevel> levelList)
 	{
         foreach (CConfigLevel cLevel in levelList)
 		{
@@ -32,7 +32,7 @@ public class CLevelScrollList : MonoBehaviour
 			if (button)
 			{
                 CMainMenuLevelButton lButton = button.GetComponent<CMainMenuLevelButton>();
-                lButton.Setup(cLevel, loader);
+                lButton.Init(cLevel);
                 button.SetActive(true);
             }
 		}

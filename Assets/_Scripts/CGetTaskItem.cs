@@ -7,7 +7,7 @@ using UnityEngine;
 public class CGetTaskItem : MonoBehaviour
 {
     private Interactable interactable = null;
-    [SerializeField] private CTask task;
+    [SerializeField] private CWaypoint task;
     [SerializeField] private GameObject objectToCollideWith;
 
     // Start is called before the first frame update

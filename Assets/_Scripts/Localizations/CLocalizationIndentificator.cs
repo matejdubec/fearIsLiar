@@ -9,16 +9,19 @@ public class CLocalizationIndentificator : MonoBehaviour
     private Text text;
     [SerializeField] private string identificator = "DefaultText.NoText";
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         text = GetComponent<Text>();
-        text.text = CLanguageManager.Instance.GetText(identificator);
+    }
+
+    private void Start()
+    {
+        text.text = CGameManager.Instance.LanguageManager.GetText(identificator);
     }
 
     public void SetText(string newText)
 	{
         identificator = newText;
-        text.text = CLanguageManager.Instance.GetText(identificator);
+        text.text =  CGameManager.Instance.LanguageManager.GetText(identificator);
     }
 }

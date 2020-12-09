@@ -9,13 +9,11 @@ public class MainMenuManager : MonoBehaviour
 {
 	[SerializeField] private List<CConfigLevel> configLevels;
 	[SerializeField] private CLevelScrollList scrollList;
-	[SerializeField] private CSceneLoader loader;
-
 	[SerializeField] private AudioMixer audioMixer;
 
 	private void Start()
 	{
-		scrollList.AddButtons(configLevels, loader);
+        scrollList.AddButtons(configLevels);
 	}
 
 	public void FilterPhobias(string phobiaString)
@@ -25,7 +23,7 @@ public class MainMenuManager : MonoBehaviour
 		List<CConfigLevel> filteredLevels = (from level in configLevels where level.PhobiaId == ePhobiaId select level).ToList();
 
 		scrollList.ClearButtons();
-		scrollList.AddButtons(filteredLevels, loader);
+		scrollList.AddButtons(filteredLevels);
 	}
 
 	public void SetVolume(float volume)

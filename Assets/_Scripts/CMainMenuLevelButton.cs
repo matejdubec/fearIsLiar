@@ -14,21 +14,19 @@ public class CMainMenuLevelButton : MonoBehaviour
     [SerializeField] private Image previewSprite;
 
     private string completionString = null;
-	private void Awake()
-	{
-        completionString = CLanguageManager.Instance.GetText("DefaultText.CompletedIn");
-    }
 
-	public void Setup(CConfigLevel cLevel, CSceneLoader loader)
-	{
-        levelNameText.text = CLanguageManager.Instance.GetText($"Level.{cLevel.Id}");
-        descriptionText.text = CLanguageManager.Instance.GetText(cLevel.Description);
-        PhobiaText.text = CLanguageManager.Instance.GetText($"Phobia.{cLevel.PhobiaId}");
+    public void Init(CConfigLevel cLevel)
+    {
+        completionString =  CGameManager.Instance.LanguageManager.GetText("DefaultText.CompletedIn");
+
+        levelNameText.text = CGameManager.Instance.LanguageManager.GetText($"Level.{cLevel.Id}");
+        descriptionText.text = CGameManager.Instance.LanguageManager.GetText(cLevel.Description);
+        PhobiaText.text = CGameManager.Instance.LanguageManager.GetText($"Phobia.{cLevel.PhobiaId}");
         CompletionTimeText.text = cLevel.TimeOfCompletion > 0 ? $"{completionString}: {cLevel.TimeOfCompletion}" : $"{completionString}: N/A";
         previewSprite.sprite = cLevel.Icon;
 
         Button button = this.GetComponent<Button>();
         string captured = cLevel.Id.ToString();
-        button.onClick.AddListener(() => { loader.LoadScene(captured); });
+        button.onClick.AddListener(() => { CGameManager.Instance.LoadLevel(captured); });
     }
 }

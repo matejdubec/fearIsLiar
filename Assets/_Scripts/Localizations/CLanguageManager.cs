@@ -8,22 +8,10 @@ public class CLanguageManager : MonoBehaviour
 	private readonly Dictionary<string, string> lang = new Dictionary<string, string>();
 	private SystemLanguage systemLanguage;
 
-	public static CLanguageManager Instance { get; private set; }
-
-	private void Awake()
-	{
-		if (!Instance)
-		{
-			Instance = this;
-		}
-		else if(Instance != this)
-		{
-			Destroy(gameObject);
-		}
-
-		DontDestroyOnLoad(gameObject);
-		LoadLanguage();
-	}
+    public void Init()
+    {
+        LoadLanguage();
+    }
 
 	private void LoadLanguage()
 	{
