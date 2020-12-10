@@ -19,14 +19,14 @@ public class CMainMenuLevelButton : MonoBehaviour
     {
         completionString =  CGameManager.Instance.LanguageManager.GetText("DefaultText.CompletedIn");
 
-        levelNameText.text = CGameManager.Instance.LanguageManager.GetText($"Level.{cLevel.Id}");
+        levelNameText.text = CGameManager.Instance.LanguageManager.GetText($"Level.{cLevel.SceneId}");
         descriptionText.text = CGameManager.Instance.LanguageManager.GetText(cLevel.Description);
         PhobiaText.text = CGameManager.Instance.LanguageManager.GetText($"Phobia.{cLevel.PhobiaId}");
         CompletionTimeText.text = cLevel.TimeOfCompletion > 0 ? $"{completionString}: {cLevel.TimeOfCompletion}" : $"{completionString}: N/A";
         previewSprite.sprite = cLevel.Icon;
 
         Button button = this.GetComponent<Button>();
-        string captured = cLevel.Id.ToString();
+        string captured = cLevel.SceneId.ToString();
         button.onClick.AddListener(() => { CGameManager.Instance.LoadLevel(captured); });
     }
 }

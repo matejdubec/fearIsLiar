@@ -11,16 +11,17 @@ public class MainMenuManager : MonoBehaviour
 	[SerializeField] private AudioMixer audioMixer;
 
 	[SerializeField] private List<CMissionManager> missions;
-	private CMissionManager activeMission;
 
-	public void Init(EMissionId missionId)
+	[SerializeField] private Transform spawnPosition;
+
+	public void Init()
 	{
 		scrollList.Init();
-		//scrollList.AddButtons(configLevels);
+		scrollList.AddButtons();
 
-		if (EMissionId.Menu_Tutorial == missionId)
+		if (EMissionId.Menu_Tutorial == CGameManager.Instance.MissionController.ActiveMission.MissionId)
 		{
-			activeMission = missions.Find(x => x.MissionId == EMissionId.Menu_Tutorial);
+			var activeMission = missions.Find(x => x.MissionId == EMissionId.Menu_Tutorial);
 			activeMission.Init();
 			activeMission.StartMission();
 		}
@@ -30,10 +31,10 @@ public class MainMenuManager : MonoBehaviour
 	{
 		EPhobiaId ePhobiaId = (EPhobiaId)Enum.Parse(typeof(EPhobiaId), phobiaString);
 
-		//List<CConfigLevel> filteredLevels = (from level in configLevels where level.PhobiaId == ePhobiaId select level).ToList();
+		List<CConfigLevel> filteredLevels = (from level in CGameManager.Instance.MissionController.MissionsList where level.PhobiaId == ePhobiaId select level).ToList();
 
 		scrollList.ClearButtons();
-		//scrollList.AddButtons(filteredLevels);
+		scrollList.AddButtons(filteredLevels);
 	}
 
 	public void SetVolume(float volume)

@@ -22,9 +22,9 @@ public class CLevelScrollList : MonoBehaviour
         }
     }
 
-    public void AddButtons(List<CConfigLevel> levelList)
+    public void AddButtons()
 	{
-        foreach (CConfigLevel cLevel in levelList)
+        foreach (CConfigLevel cLevel in CGameManager.Instance.MissionController.MissionsList)
 		{
             GameObject button = this.GetPooledObject();
 			if (button)
@@ -35,6 +35,20 @@ public class CLevelScrollList : MonoBehaviour
             }
 		}
     }
+
+    public void AddButtons(List<CConfigLevel> levels)
+    {
+        foreach (CConfigLevel cLevel in levels)
+        {
+            GameObject button = this.GetPooledObject();
+            if (button)
+            {
+                CMainMenuLevelButton lButton = button.GetComponent<CMainMenuLevelButton>();
+                lButton.Init(cLevel);
+                button.SetActive(true);
+            }
+        }
+    } 
 
     public void ClearButtons()
 	{

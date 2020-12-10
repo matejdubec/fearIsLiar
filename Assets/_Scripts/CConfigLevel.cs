@@ -16,7 +16,8 @@ public enum EPhobiaId
 [CreateAssetMenu(menuName = "Configs/Level")]
 public class CConfigLevel : ScriptableObject
 {
-	public ELevelId Id;
+	public EMissionId MissionId;
+	public ELevelId SceneId;
 	public string Description = "DefaultText.NoText";
 	public EPhobiaId PhobiaId;
 	public float TimeOfCompletion = 0.0f;

@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   languageManager: {fileID: -199629619353287442}
+  missionController: {fileID: 1916477009507520709}
   loadinator: {fileID: 2940325013888119287}
   player: {fileID: 6527466105696793077, guid: cffe7af19faefbd4c928311fab526b2e, type: 3}
   configLevels: []
@@ -113,4 +114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba9492e7c391ee64fbe6e40a1b16b6c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  missionsList: []
+  missionsList:
+  - {fileID: 11400000, guid: 8b010251aa10e744b8d2291f27e4ba97, type: 2}
+  - {fileID: 11400000, guid: faddc06f50931f2428f6edf581e04dec, type: 2}
+  - {fileID: 11400000, guid: 4bfe540bae22b9c4dbf5092d1310e4d3, type: 2}

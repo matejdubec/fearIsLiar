@@ -10,7 +10,7 @@ public class CGameManager : CSingleton<CGameManager>
     [SerializeField] private CLanguageManager languageManager;
     public CLanguageManager LanguageManager { get { return languageManager; } }
     [SerializeField] private CMissionController missionController;
-
+    public CMissionController MissionController { get { return missionController; } }
     [SerializeField] private SteamVR_LoadLevel loadinator;
     [SerializeField] private CVRController player;
     [SerializeField] private List<CConfigLevel> configLevels;
@@ -20,6 +20,11 @@ public class CGameManager : CSingleton<CGameManager>
     {
         base.Init();
         playerData = CSaveSystem.LoadPlayerData();
+
+        if(!playerData.isTutorialDone)
+		{
+            missionController.ActiveMission.MissionId = EMissionId.Menu_Tutorial;
+		}
 
         languageManager.Init();
     }
