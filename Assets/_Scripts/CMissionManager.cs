@@ -1,32 +1,26 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 
 //https://answers.unity.com/questions/1490192/how-can-i-highlight-the-vive-controller-buttons.html
 public class CMissionManager : MonoBehaviour
 {
-    private Queue<CWaypoint> waypointQueue;
-    private CWaypoint currentWaypoint = null;
-    private bool missionCompleted = false;
-
+    [SerializeField] private EMissionId missionId;
+    public EMissionId MissionId { get { return missionId; } }
     [SerializeField] private CMarker marker;
 
-    [SerializeField] private List<GameObject> objectsToHide;
-    public Text InformationText { get; private set; }
+    [SerializeField] private List<GameObject> objectsToDeactivateOnMissionStart;
+    [SerializeField] private List<GameObject> objectsToActivateOnMissionEnd;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        foreach(GameObject obj in objectsToHide)
-        {
-            obj.SetActive(false);
-        }
+    private Queue<CWaypoint> waypointQueue;
+    private CWaypoint currentWaypoint = null;
+
+    public void Init()
+	{
+        DeactivateOnMissionStart();
 
         waypointQueue = new Queue<CWaypoint>();
-        foreach(Transform child in this.transform)
+        foreach (Transform child in this.transform)
         {
             CWaypoint waypoint = child.GetComponent<CWaypoint>();
 
@@ -38,7 +32,10 @@ public class CMissionManager : MonoBehaviour
         }
 
         marker.Init();
+    }
 
+	public void StartMission()
+    {
         NextWaypoint();
     }
 
@@ -60,11 +57,22 @@ public class CMissionManager : MonoBehaviour
 
     private void MissionCompleted()
     {
-        foreach(GameObject obj in objectsToHide)
+        ActivateOnMissionComplete();
+    }
+
+    private void DeactivateOnMissionStart()
+	{
+        foreach (GameObject obj in objectsToDeactivateOnMissionStart)
+        {
+            obj.SetActive(false);
+        }
+    }
+
+    private void ActivateOnMissionComplete()
+	{
+        foreach (GameObject obj in objectsToActivateOnMissionEnd)
         {
             obj.SetActive(true);
         }
-
-        //CGameMaster.Instance.BackToMenuCanvasController.SetMainText("Level.MainMenu.Tutorial.Completed");
     }
 }

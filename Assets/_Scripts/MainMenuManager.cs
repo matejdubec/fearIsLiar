@@ -7,23 +7,33 @@ using UnityEngine.Audio;
 
 public class MainMenuManager : MonoBehaviour
 {
-	[SerializeField] private List<CConfigLevel> configLevels;
 	[SerializeField] private CLevelScrollList scrollList;
 	[SerializeField] private AudioMixer audioMixer;
 
-	private void Start()
+	[SerializeField] private List<CMissionManager> missions;
+	private CMissionManager activeMission;
+
+	public void Init(EMissionId missionId)
 	{
-        scrollList.AddButtons(configLevels);
+		scrollList.Init();
+		//scrollList.AddButtons(configLevels);
+
+		if (EMissionId.Menu_Tutorial == missionId)
+		{
+			activeMission = missions.Find(x => x.MissionId == EMissionId.Menu_Tutorial);
+			activeMission.Init();
+			activeMission.StartMission();
+		}
 	}
 
 	public void FilterPhobias(string phobiaString)
 	{
 		EPhobiaId ePhobiaId = (EPhobiaId)Enum.Parse(typeof(EPhobiaId), phobiaString);
 
-		List<CConfigLevel> filteredLevels = (from level in configLevels where level.PhobiaId == ePhobiaId select level).ToList();
+		//List<CConfigLevel> filteredLevels = (from level in configLevels where level.PhobiaId == ePhobiaId select level).ToList();
 
 		scrollList.ClearButtons();
-		scrollList.AddButtons(filteredLevels);
+		//scrollList.AddButtons(filteredLevels);
 	}
 
 	public void SetVolume(float volume)

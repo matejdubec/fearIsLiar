@@ -6,8 +6,6 @@ using Valve.VR;
 
 public class CBackToMenuCanvasController : MonoBehaviour
 {
-    [SerializeField] private Image backgroundImage;
-    [SerializeField] private CLocalizationIndentificator mainText;
     [SerializeField] private Button button;
     [SerializeField] private CLocalizationIndentificator buttonText;
     private float spawnDistance = 5f;
@@ -22,12 +20,6 @@ public class CBackToMenuCanvasController : MonoBehaviour
         }
 
         this.gameObject.SetActive(state);
-    }
-
-
-    public void SetMainText(string identificator)
-    {
-        mainText.SetText(identificator);
     }
 
     public void SetButtonText(string identificator)

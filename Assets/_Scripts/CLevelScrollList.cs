@@ -9,19 +9,17 @@ public class CLevelScrollList : MonoBehaviour
     public GameObject objectToPool;
     public int amountToPool;
 
-
-	// Start is called before the first frame update
-	void Start()
-    {
+    public void Init()
+	{
         pooledObjects = new List<GameObject>();
         GameObject tmp;
-        for(int i = 0; i < amountToPool; i++)
-		{
+        for (int i = 0; i < amountToPool; i++)
+        {
             tmp = Instantiate(objectToPool);
             tmp.transform.SetParent(transform, false);
             tmp.SetActive(false);
             pooledObjects.Add(tmp);
-		}
+        }
     }
 
     public void AddButtons(List<CConfigLevel> levelList)
