@@ -28,7 +28,7 @@ public class CVRController : MonoBehaviour
 
     private CharacterController characterController = null;
     private Transform cameraRig = null;
-    private Transform head = null;   
+    private Transform head = null;
 
     private void Awake()
     {

@@ -14,10 +14,14 @@ public class CMissionManager : MonoBehaviour
 
     private Queue<CWaypoint> waypointQueue;
     private CWaypoint currentWaypoint = null;
+    public CWaypoint CurrentWaypoint { get { return currentWaypoint; } }
 
     public void Init()
 	{
         DeactivateOnMissionStart();
+
+        var temp = Instantiate(marker.gameObject, this.transform);
+        marker = temp.GetComponent<CMarker>();
 
         waypointQueue = new Queue<CWaypoint>();
         foreach (Transform child in this.transform)
@@ -29,9 +33,7 @@ public class CMissionManager : MonoBehaviour
                 waypoint.Init(this);
                 waypointQueue.Enqueue(waypoint);
             }
-        }
-
-        marker.Init();
+        }        
     }
 
 	public void StartMission()
@@ -46,8 +48,8 @@ public class CMissionManager : MonoBehaviour
             currentWaypoint = waypointQueue.Dequeue();
             currentWaypoint.Activate();
 
-            marker.SetPosition(currentWaypoint.transform.position);
-            marker.HintText.SetText(currentWaypoint.LocalizationIndentificator);
+            marker.GetComponent<CMarker>().SetPosition(currentWaypoint.transform.position);
+            marker.GetComponent<CMarker>().HintText.SetText(currentWaypoint.LocalizationIndentificator);
         }
         else
         {
@@ -55,9 +57,17 @@ public class CMissionManager : MonoBehaviour
         }
     }
 
+    public void OnNextTask()
+    {
+        currentWaypoint.Deactivate();
+        NextWaypoint();
+    }
+
     private void MissionCompleted()
     {
         ActivateOnMissionComplete();
+
+        Destroy(marker.gameObject);
     }
 
     private void DeactivateOnMissionStart()

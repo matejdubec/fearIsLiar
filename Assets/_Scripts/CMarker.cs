@@ -9,11 +9,6 @@ public class CMarker : MonoBehaviour
     [SerializeField] private CLocalizationIndentificator hintText;
     public CLocalizationIndentificator HintText { get { return hintText; } }
 
-    public void Init()
-    {
-        Instantiate(gameObject);
-    }
-
     public void SetPosition(Vector3 position)
     {
         transform.position = position;
@@ -22,6 +17,8 @@ public class CMarker : MonoBehaviour
         if (head)
         {
             transform.LookAt(head.transform);
+            transform.Rotate(Vector3.forward, 0.0);
+            transform.Rotate(new Vector3(1,0,0), 0.0);
         }
     }
 }

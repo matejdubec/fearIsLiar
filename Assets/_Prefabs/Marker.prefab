@@ -79,7 +79,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Press right trackpad to get to the designated area\r"
+  m_Text: "Pick up the green box using a trigger button\r"
 --- !u!114 &6938132550112840882
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -92,8 +92,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2dfc6897d93ecb4ebf41f99e9bd25ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  identificator: Level.MainMenu.Tutorial.PressTrackPadToMove
-  text2: {fileID: 3033703327640139506}
+  identificator: Level.MainMenu.Tutorial.PressTriggerToPickUpBox
 --- !u!1 &81121525011084621
 GameObject:
   m_ObjectHideFlags: 0
@@ -118,8 +117,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 81121525011084621}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 2.5}
+  m_LocalRotation: {x: -0.009034088, y: 0.9998383, z: -0.011388868, w: -0.010587365}
+  m_LocalPosition: {x: 0, y: 0.506, z: 4.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7911440748734457238}

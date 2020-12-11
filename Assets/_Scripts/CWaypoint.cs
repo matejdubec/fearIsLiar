@@ -41,6 +41,6 @@ public class CWaypoint : MonoBehaviour
 
     public void TaskCompleted()
     {
-
+        missionManager.OnNextTask();
     }
 }

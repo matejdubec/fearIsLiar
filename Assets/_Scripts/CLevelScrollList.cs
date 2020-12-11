@@ -20,11 +20,13 @@ public class CLevelScrollList : MonoBehaviour
             tmp.SetActive(false);
             pooledObjects.Add(tmp);
         }
+
+        AddButtons();
     }
 
-    public void AddButtons()
+    private void AddButtons()
 	{
-        foreach (CConfigLevel cLevel in CGameManager.Instance.MissionController.MissionsList)
+        foreach (CConfigLevel cLevel in CGameManager.Instance.MissionController.MissionsDictionary.Values)
 		{
             GameObject button = this.GetPooledObject();
 			if (button)

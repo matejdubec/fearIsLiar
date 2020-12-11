@@ -22,6 +22,7 @@ public class CLocalizationIndentificator : MonoBehaviour
     public void SetText(string newText)
 	{
         identificator = newText;
+        text = GetComponent<Text>();
         text.text =  CGameManager.Instance.LanguageManager.GetText(identificator);
     }
 }

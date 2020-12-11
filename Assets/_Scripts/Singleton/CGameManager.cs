@@ -13,20 +13,30 @@ public class CGameManager : CSingleton<CGameManager>
     public CMissionController MissionController { get { return missionController; } }
     [SerializeField] private SteamVR_LoadLevel loadinator;
     [SerializeField] private CVRController player;
-    [SerializeField] private List<CConfigLevel> configLevels;
     private CPlayerData playerData;
 
     protected override void Init()
     {
         base.Init();
+        
+        languageManager.Init();
+        missionController.Init();
+
+        var menu = FindObjectOfType<MainMenuManager>();
+ 
+
         playerData = CSaveSystem.LoadPlayerData();
 
-        if(!playerData.isTutorialDone)
+        if (!playerData.isTutorialDone)
 		{
-            missionController.ActiveMission.MissionId = EMissionId.Menu_Tutorial;
+            missionController.ActiveMission = missionController.MissionsDictionary[EMissionId.Menu_Tutorial];
 		}
+        else
+        {
+            missionController.ActiveMission = null;
+        }
 
-        languageManager.Init();
+        menu.Init();
     }
 
     public void LoadLevel(string levelName)
