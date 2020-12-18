@@ -21,7 +21,7 @@ public class MainMenuManager : MonoBehaviour
 		scrollList.Init();
 
         activeMission = missionWaypointsManager.GetMissionManager(CGameManager.Instance.MissionController.ActiveMission.MissionId);
-        activeMission.Init();
+        activeMission.Init(this);
         missionObjectManager.Init(CGameManager.Instance.MissionController.ActiveMission.MissionId, activeMission);
         activeMission.StartMission();
 	}
@@ -45,4 +45,12 @@ public class MainMenuManager : MonoBehaviour
 	{
 		QualitySettings.SetQualityLevel(qualityIndex);
 	}
+
+    public void MissionCompleted()
+    {
+        if(activeMission.deactiveMissionObjectOnComplete)
+        {
+            missionObjectManager.DeactivateActiveMissionOnjects();
+        }
+    }
 }

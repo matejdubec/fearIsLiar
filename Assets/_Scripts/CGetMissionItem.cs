@@ -21,22 +21,11 @@ public class CGetMissionItem : MonoBehaviour
         interactable.IsHeld += IsHeld;
     }
 
-    private void IsHeld(object sender, EventArgs e)
+    private void IsHeld()
     {
         if(missionManager.CurrentWaypoint == waypoint)
         {
             waypoint.TaskCompleted();
         }
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        /*
-        if (collision.gameObject == objectToCollideWith)
-        {
-            if (task.gameObject.activeSelf)
-                task.TaskCompleted();
-        }
-        */
     }
 }

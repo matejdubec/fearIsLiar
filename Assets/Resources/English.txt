@@ -15,6 +15,7 @@ DefaultText.CompletedIn:Completed in
 DefaultText.NoText:NoTextFound
 DefaultText.BackToMenu:Back to menu
 DefaultText.Close:Close
+Level.MainMenu:MainMenu
 Level.MainMenu.Fact.Header:Fact
 Level.MainMenu.Fact.Description:Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce magna libero, venenatis ac dapibus et, rhoncus eget nulla
 Level.MainMenu.About.Header:About

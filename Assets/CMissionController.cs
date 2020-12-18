@@ -16,4 +16,9 @@ public class CMissionController : MonoBehaviour
     {
         missionsDictionary = missionsList.ToDictionary(x => x.MissionId, x => x);
     }
+
+    public void MissionCompleted()
+    {
+        activeMission = null;
+    }
 }

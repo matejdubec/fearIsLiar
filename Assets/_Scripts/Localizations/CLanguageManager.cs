@@ -33,10 +33,11 @@ public class CLanguageManager : MonoBehaviour
 
 	public string GetText(string key)
 	{
+        
 		if (!lang.ContainsKey(key))
 		{
-			return "Key doesn't exist";
-		}
+            return "Key doesn't exist";
+        }
 
 		return lang[key];
 	}

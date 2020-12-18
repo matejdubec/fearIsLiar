@@ -28,12 +28,15 @@ public class CLevelScrollList : MonoBehaviour
 	{
         foreach (CConfigLevel cLevel in CGameManager.Instance.MissionController.MissionsDictionary.Values)
 		{
-            GameObject button = this.GetPooledObject();
-			if (button)
-			{
-                CMainMenuLevelButton lButton = button.GetComponent<CMainMenuLevelButton>();
-                lButton.Init(cLevel);
-                button.SetActive(true);
+            if(cLevel.SceneId != ELevelId.MainMenu)
+            {
+                GameObject button = this.GetPooledObject();
+                if (button)
+                {
+                    CMainMenuLevelButton lButton = button.GetComponent<CMainMenuLevelButton>();
+                    lButton.Init(cLevel);
+                    button.SetActive(true);
+                }
             }
 		}
     }

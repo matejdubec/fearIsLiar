@@ -9,6 +9,9 @@ public class CMissionManager : MonoBehaviour
     public EMissionId MissionId { get { return missionId; } }
     [SerializeField] private CMarker marker;
 
+    public bool deactiveMissionObjectOnComplete = false;
+    private MainMenuManager menuManager;
+
     [SerializeField] private List<GameObject> objectsToDeactivateOnMissionStart;
     [SerializeField] private List<GameObject> objectsToActivateOnMissionEnd;
 
@@ -16,8 +19,9 @@ public class CMissionManager : MonoBehaviour
     private CWaypoint currentWaypoint = null;
     public CWaypoint CurrentWaypoint { get { return currentWaypoint; } }
 
-    public void Init()
+    public void Init(MainMenuManager mManager)
 	{
+        menuManager = mManager;
         DeactivateOnMissionStart();
 
         var temp = Instantiate(marker.gameObject, this.transform);
@@ -66,8 +70,10 @@ public class CMissionManager : MonoBehaviour
     private void MissionCompleted()
     {
         ActivateOnMissionComplete();
-
         Destroy(marker.gameObject);
+        menuManager.MissionCompleted();
+
+        CGameManager.Instance.MissionController.MissionCompleted();
     }
 
     private void DeactivateOnMissionStart()

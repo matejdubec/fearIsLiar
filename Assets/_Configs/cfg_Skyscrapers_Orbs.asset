@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: cfg_Skyscrapers_Orbs
   m_EditorClassIdentifier: 
   MissionId: 2
-  SceneId: 0
+  SceneId: 1
   Description: Level.Skyscrapers.Description
   PhobiaId: 1
   TimeOfCompletion: 0

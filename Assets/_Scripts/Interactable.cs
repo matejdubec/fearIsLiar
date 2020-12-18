@@ -9,7 +9,7 @@ public class Interactable : MonoBehaviour
 {
     public CustomHand ActiveHand { get; private set; } = null;
 
-    public EventHandler IsHeld;
+    public Action IsHeld;
 
     public bool IsAvailable { get; set; } = true;
 
@@ -26,7 +26,7 @@ public class Interactable : MonoBehaviour
         ActiveHand = hand;
         if (ActiveHand)
         {
-            IsHeld.Invoke(this, null);
+            IsHeld();
         }
     }
 }

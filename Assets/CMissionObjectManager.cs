@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CMissionObjectManager : MonoBehaviour
 {
+    private CMissionObjectTag activeMissionObjects;
+
     public void Init(EMissionId activeMissionId, CMissionManager manager)
     {
         foreach (Transform child in this.transform)
@@ -16,6 +18,7 @@ public class CMissionObjectManager : MonoBehaviour
             }
             else
             {
+                activeMissionObjects = missionObjectTag;
                 foreach(Transform ch in child)
                 {
                     CGetMissionItem item = ch.GetComponent<CGetMissionItem>();
@@ -23,8 +26,22 @@ public class CMissionObjectManager : MonoBehaviour
                     {
                         item.MissionManager = manager;
                     }
+                    else
+                    {
+                        CCollideMissionObject collideItem = ch.GetComponent<CCollideMissionObject>();
+                        if (collideItem)
+                        {
+                            collideItem.MissionManager = manager;
+                        }
+                    }
+
                 }
             }
         }
+    }
+
+    public void DeactivateActiveMissionOnjects()
+    {
+        activeMissionObjects.gameObject.SetActive(false);
     }
 }
