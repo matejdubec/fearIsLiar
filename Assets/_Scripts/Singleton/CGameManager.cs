@@ -12,6 +12,7 @@ public class CGameManager : CSingleton<CGameManager>
     [SerializeField] private CMissionController missionController;
     public CMissionController MissionController { get { return missionController; } }
     [SerializeField] private SteamVR_LoadLevel loadinator;
+    private CLevelManager levelManager;
     [SerializeField] private CVRController player;
     private CPlayerData playerData;
 
@@ -22,7 +23,7 @@ public class CGameManager : CSingleton<CGameManager>
         languageManager.Init();
         missionController.Init();
 
-        var menu = FindObjectOfType<MainMenuManager>();
+        levelManager = FindObjectOfType<CLevelManager>();
  
 
         playerData = CSaveSystem.LoadPlayerData();
@@ -36,7 +37,10 @@ public class CGameManager : CSingleton<CGameManager>
             missionController.ActiveMission = null;
         }
 
-        menu.Init();
+        Instantiate(player.gameObject, this.transform);
+
+        levelManager.Init();
+        levelManager.SpawnPlayer(player.transform);
     }
 
     public void LoadLevel(string levelName)

@@ -5,24 +5,14 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Audio;
 
-public class MainMenuManager : MonoBehaviour
+public class MainMenuManager : CLevelManager
 {
 	[SerializeField] private CLevelScrollList scrollList;
-	[SerializeField] private AudioMixer audioMixer;
 
-    [SerializeField] private CMissionWaypointsManager missionWaypointsManager;
-    private CMissionManager activeMission;
-    [SerializeField] private CMissionObjectManager missionObjectManager;
-
-	[SerializeField] private Transform spawnPosition;
-
-    public void Init()
+    public override void Init()
 	{
-		scrollList.Init();
-
-        activeMission = missionWaypointsManager.GetMissionManager(CGameManager.Instance.MissionController.ActiveMission.MissionId);
-        activeMission.Init(this);
-        missionObjectManager.Init(CGameManager.Instance.MissionController.ActiveMission.MissionId, activeMission);
+        scrollList.Init();
+        base.Init();
         activeMission.StartMission();
 	}
 
@@ -45,12 +35,4 @@ public class MainMenuManager : MonoBehaviour
 	{
 		QualitySettings.SetQualityLevel(qualityIndex);
 	}
-
-    public void MissionCompleted()
-    {
-        if(activeMission.deactiveMissionObjectOnComplete)
-        {
-            missionObjectManager.DeactivateActiveMissionOnjects();
-        }
-    }
 }
