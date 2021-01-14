@@ -15,6 +15,8 @@ public class CVRController : MonoBehaviour
     [SerializeField] private Canvas hintCanvas;
 
     [SerializeField] private CBackToMenuCanvasController returnToMenuCanvas;
+    [SerializeField] private Pointer pointer;
+    public Pointer Pointer { get { return pointer; } }
 
     public SteamVR_Action_Boolean movePress = null;
     public SteamVR_Action_Boolean GrabGripPress = null;
@@ -33,6 +35,7 @@ public class CVRController : MonoBehaviour
     private void Awake()
     {
         characterController = GetComponent<CharacterController>();
+        
     }
 
 	// Start is called before the first frame update
@@ -40,6 +43,7 @@ public class CVRController : MonoBehaviour
     {
         cameraRig = SteamVR_Render.Top().origin;
         head = SteamVR_Render.Top().head;
+        pointer.Init();
     }
 
     // Update is called once per frame

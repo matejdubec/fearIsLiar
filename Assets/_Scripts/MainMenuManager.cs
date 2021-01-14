@@ -35,4 +35,6 @@ public class MainMenuManager : CLevelManager
 	{
 		QualitySettings.SetQualityLevel(qualityIndex);
 	}
+
+
 }

@@ -9,7 +9,7 @@ public class CMissionManager : MonoBehaviour
     public EMissionId MissionId { get { return missionId; } }
     [SerializeField] private CMarker marker;
 
-    public bool deactiveMissionObjectOnComplete = false;
+    public bool deactiveMissionObjectOnComplete = true;
     private CLevelManager levelManager;
 
     [SerializeField] private List<GameObject> objectsToDeactivateOnMissionStart;

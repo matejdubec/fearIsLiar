@@ -11,6 +11,7 @@ public class VRInputModule : BaseInputModule
 {
 	[SerializeField]
 	private Pointer pointer = null;
+    [SerializeField] private Canvas[] canvases;
 
     public SteamVR_Input_Sources m_TargetSource;
     public SteamVR_Action_Boolean m_ClickAction;
@@ -19,9 +20,16 @@ public class VRInputModule : BaseInputModule
 
 	protected override void Start()
 	{
-		Data = new PointerEventData(eventSystem);
-		Data.position = new Vector2(pointer.Camera.pixelWidth / 2, pointer.Camera.pixelHeight / 2);
+
 	}
+
+    public void SetPointer(Pointer _pointer)
+    {
+        pointer = _pointer;
+        Data = new PointerEventData(eventSystem);
+        Data.position = new Vector2(pointer.Camera.pixelWidth / 2, pointer.Camera.pixelHeight / 2);
+        SetEvenCameraForCanvases();
+    }
 
 	public override void Process()
 	{
@@ -71,4 +79,12 @@ public class VRInputModule : BaseInputModule
 		Data.pointerDrag = null;
 		Data.pointerCurrentRaycast.Clear();
 	}
+
+    private void SetEvenCameraForCanvases()
+    {
+        foreach (Canvas canvas in canvases)
+        {
+            canvas.worldCamera = pointer.Camera;
+        }
+    }
 }

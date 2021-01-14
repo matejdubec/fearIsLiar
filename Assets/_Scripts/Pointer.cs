@@ -11,21 +11,22 @@ public class Pointer : MonoBehaviour
 	[SerializeField]
 	private GameObject m_Dot = null;
 
-	public Camera Camera { get; private set; } = null;
+    [SerializeField] private Camera _camera;
+    public Camera Camera { get { return _camera; } }
 
 	private VRInputModule m_InputModule;
 	private LineRenderer m_LineRenderer = null;
 
-	private void Awake()
-	{
-		Camera = GetComponent<Camera>();
-		Camera.enabled = false;
-		m_LineRenderer = GetComponent<LineRenderer>();
-	}
+    public void Init()
+    {
+        Camera.enabled = false;
+        m_LineRenderer = GetComponent<LineRenderer>();
+    }
 
 	private void Start()
 	{
 		m_InputModule = EventSystem.current.gameObject.GetComponent<VRInputModule>();
+        m_InputModule.SetPointer(this);
 	}
 
 	// Update is called once per frame

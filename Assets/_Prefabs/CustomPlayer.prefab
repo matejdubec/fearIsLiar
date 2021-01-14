@@ -130,6 +130,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_DefaultLength: 5
   m_Dot: {fileID: 577796574}
+  _camera: {fileID: 610695250}
 --- !u!20 &610695250
 Camera:
   m_ObjectHideFlags: 0
@@ -1026,7 +1027,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1982084879
 Transform:
   m_ObjectHideFlags: 0
@@ -2101,6 +2102,7 @@ MonoBehaviour:
   animator: {fileID: 957532474}
   hintCanvas: {fileID: 6664874294889863638}
   returnToMenuCanvas: {fileID: 3066203444564237850}
+  pointer: {fileID: 610695251}
   movePress:
     actionPath: /actions/default/in/Teleport
     needsReinit: 0

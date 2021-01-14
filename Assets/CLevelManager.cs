@@ -6,6 +6,7 @@ using UnityEngine.Audio;
 public class CLevelManager : MonoBehaviour
 {
     [SerializeField] protected AudioMixer audioMixer;
+    [SerializeField] protected VRInputModule inputModule;
 
     [SerializeField] protected CMissionWaypointsManager missionWaypointsManager;
     protected CMissionManager activeMission;
@@ -17,7 +18,8 @@ public class CLevelManager : MonoBehaviour
     {
         activeMission = missionWaypointsManager.GetMissionManager(CGameManager.Instance.MissionController.ActiveMission.MissionId);
         activeMission.Init(this);
-        missionObjectManager.Init(CGameManager.Instance.MissionController.ActiveMission.MissionId, activeMission);      
+        missionObjectManager.Init(CGameManager.Instance.MissionController.ActiveMission.MissionId, activeMission);
+        //inputModule.SetPointer(CGameManager.Instance.Player.Pointer);
     }
 
     public virtual void MissionCompleted()
