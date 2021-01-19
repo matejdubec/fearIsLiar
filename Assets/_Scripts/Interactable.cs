@@ -9,8 +9,6 @@ public class Interactable : MonoBehaviour
 {
     public CustomHand ActiveHand { get; private set; } = null;
 
-    public Action IsHeld;
-
     public bool IsAvailable { get; set; } = true;
 
     public UnityEvent onHandHover;
@@ -21,12 +19,13 @@ public class Interactable : MonoBehaviour
             onHandHover.Invoke();
     }
 
-    public void SetHand(CustomHand hand)
+    public void AttachToHand(CustomHand hand)
     {
         ActiveHand = hand;
-        if (ActiveHand)
-        {
-            IsHeld();
-        }
+    }
+
+    public void DeattachFromHand()
+    {
+        ActiveHand = null;
     }
 }

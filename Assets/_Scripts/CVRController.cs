@@ -35,7 +35,6 @@ public class CVRController : MonoBehaviour
     private void Awake()
     {
         characterController = GetComponent<CharacterController>();
-        
     }
 
 	// Start is called before the first frame update

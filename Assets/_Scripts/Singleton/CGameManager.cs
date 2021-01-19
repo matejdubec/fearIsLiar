@@ -25,7 +25,6 @@ public class CGameManager : CSingleton<CGameManager>
         missionController.Init();
 
         levelManager = FindObjectOfType<CLevelManager>();
- 
 
         playerData = CSaveSystem.LoadPlayerData();
 

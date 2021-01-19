@@ -3,21 +3,19 @@ using UnityEngine;
 
 
 //https://answers.unity.com/questions/1490192/how-can-i-highlight-the-vive-controller-buttons.html
-public class CMissionManager : MonoBehaviour
+public class CMissionTaskManager : MonoBehaviour
 {
     [SerializeField] private EMissionId missionId;
     public EMissionId MissionId { get { return missionId; } }
     [SerializeField] private CMarker marker;
 
-    public bool deactiveMissionObjectOnComplete = true;
     private CLevelManager levelManager;
 
     [SerializeField] private List<GameObject> objectsToDeactivateOnMissionStart;
     [SerializeField] private List<GameObject> objectsToActivateOnMissionEnd;
 
-    private Queue<CWaypoint> waypointQueue;
-    private CWaypoint currentWaypoint = null;
-    public CWaypoint CurrentWaypoint { get { return currentWaypoint; } }
+    private Queue<CMissionTaskBase> taskQueue;
+    private CMissionTaskBase currentTask = null;
 
     public void Init(CLevelManager mManager)
 	{
@@ -27,33 +25,38 @@ public class CMissionManager : MonoBehaviour
         var temp = Instantiate(marker.gameObject, this.transform);
         marker = temp.GetComponent<CMarker>();
 
-        waypointQueue = new Queue<CWaypoint>();
+        taskQueue = new Queue<CMissionTaskBase>();
         foreach (Transform child in this.transform)
         {
-            CWaypoint waypoint = child.GetComponent<CWaypoint>();
+            CMissionTaskBase task = child.GetComponent<CMissionTaskBase>();
 
-            if (waypoint)
+            if (task)
             {
-                waypoint.Init(this);
-                waypointQueue.Enqueue(waypoint);
+                task.Init(this);
+                taskQueue.Enqueue(task);
             }
         }        
     }
 
 	public void StartMission()
     {
-        NextWaypoint();
+        NextTask();
     }
 
-    private void NextWaypoint()
+    private void NextTask()
     {
-        if (waypointQueue.Count > 0)
+        if (taskQueue.Count > 0)
         {
-            currentWaypoint = waypointQueue.Dequeue();
-            currentWaypoint.Activate();
+            currentTask = taskQueue.Dequeue();
+            currentTask.Activate();
 
-            marker.GetComponent<CMarker>().SetPosition(currentWaypoint.transform.position);
-            marker.GetComponent<CMarker>().HintText.SetText(currentWaypoint.LocalizationIndentificator);
+            Vector3 markerPos = new Vector3(
+                currentTask.transform.position.x, 
+                currentTask.transform.position.y + currentTask.MarkerOffsetY, 
+                currentTask.transform.position.z
+                );
+            marker.SetPosition(markerPos);
+            marker.HintText.SetText(currentTask.LocalizationIndentificator);
         }
         else
         {
@@ -61,10 +64,10 @@ public class CMissionManager : MonoBehaviour
         }
     }
 
-    public void OnNextTask()
+    public void TaskComplete()
     {
-        currentWaypoint.Deactivate();
-        NextWaypoint();
+        currentTask.Deactivate();
+        NextTask();
     }
 
     private void MissionCompleted()

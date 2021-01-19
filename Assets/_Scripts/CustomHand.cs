@@ -91,7 +91,7 @@ public class CustomHand : MonoBehaviour
         Rigidbody targetBody = CurrentInteractable.GetComponent<Rigidbody>();
         joint.connectedBody = targetBody;
 
-        CurrentInteractable.SetHand(this);
+        CurrentInteractable.AttachToHand(this);
     }
 
     public void PickUp(Interactable interactable)
@@ -111,7 +111,7 @@ public class CustomHand : MonoBehaviour
             Rigidbody targetBody = CurrentInteractable.GetComponent<Rigidbody>();
             joint.connectedBody = targetBody;
 
-            CurrentInteractable.SetHand(this);
+            CurrentInteractable.AttachToHand(this);
         }
     }
 
@@ -126,7 +126,7 @@ public class CustomHand : MonoBehaviour
 
             //detach
             joint.connectedBody = null;
-            CurrentInteractable.SetHand(null);
+            CurrentInteractable.DeattachFromHand();
             CurrentInteractable = null;
 
         }
