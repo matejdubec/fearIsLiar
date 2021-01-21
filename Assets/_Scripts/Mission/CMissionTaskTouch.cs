@@ -21,32 +21,27 @@ public class CMissionTaskTouch : CMissionTaskBase
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Hand"))
         {
-            if(isCurrent)
-            {             
+            if (isCurrent)
+            {
                 this.TaskCompleted();
             }
-        }          
+        }
     }
 
     protected override void TaskCompleted()
     {
-        base.TaskCompleted();
-
-        if(materialToChangeOnComplete)
+        if (materialToChangeOnComplete)
         {
             meshRenderer.material = materialToChangeOnComplete;
         }
 
-        if (animator & animatorString != "")
-        {
-            animator.Play(animatorString);
-        }
+        base.TaskCompleted();
+    }
 
-        if (audioSource)
-        {
-            audioSource.Play();
-        }
+    public override void Deactivate()
+    {
+        //base.Deactivate();
     }
 }

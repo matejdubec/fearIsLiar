@@ -2962,8 +2962,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   missionId: 1
   marker: {fileID: 9195334408131679379, guid: a247a002778871945bdb4e7dc5bd07ba, type: 3}
-  objectsToDeactivateOnMissionStart:
-  - {fileID: 1989611672}
+  objectsToDeactivateOnMissionStart: []
   objectsToActivateOnMissionEnd:
   - {fileID: 1989611672}
 --- !u!1 &975458551
@@ -5977,10 +5976,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 871ad95d763f22941abdc631bddcb1c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioMixer: {fileID: 24100000, guid: 083639f3cc1b4324a904c18b13e9e5bc, type: 2}
   inputModule: {fileID: 323955715}
   missions: {fileID: 137661914}
   spawnPosition: {fileID: 1847811459}
+  audioMixer: {fileID: 24100000, guid: 083639f3cc1b4324a904c18b13e9e5bc, type: 2}
   scrollList: {fileID: 342219277}
 --- !u!1 &1984145766
 GameObject:

@@ -33,7 +33,7 @@ public class CSkyscrapersData : MonoBehaviour
     void Start()
     {
         scoreText.text = $"{score}/{collectibles.Length}";
-        loadinator = GetComponent<SteamVR_LoadLevel>();
+        //loadinator = GetComponent<SteamVR_LoadLevel>();
         player.SetPosition(playerSpawnPosition);
     }
 

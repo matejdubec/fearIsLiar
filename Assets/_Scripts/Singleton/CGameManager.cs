@@ -34,8 +34,10 @@ public class CGameManager : CSingleton<CGameManager>
 		}
         else
         {
-            missionController.ActiveMission = null;
+            missionController.ActiveMission = missionController.MissionsDictionary[EMissionId.None];           
         }
+
+        //missionController.ActiveMission = missionController.MissionsDictionary[EMissionId.Skyscrapers_Orbs];
 
         Instantiate(player.gameObject, this.transform);
 
@@ -43,9 +45,20 @@ public class CGameManager : CSingleton<CGameManager>
         levelManager.SpawnPlayer(player.transform);        
     }
 
-    public void LoadLevel(string levelName)
+    public void LoadLevel(CConfigLevel levelToLoad)
     {
-        loadinator.levelName = levelName;
+       this.missionController.ActiveMission = missionController.MissionsDictionary[levelToLoad.MissionId];
+
+        loadinator.levelName = levelToLoad.SceneId.ToString();
         loadinator.Trigger();
+
+        //PrepareScene();
+    }
+
+    private void PrepareScene()
+    {
+        levelManager = FindObjectOfType<CLevelManager>();
+        levelManager.Init();
+        levelManager.SpawnPlayer(player.transform);
     }
 }

@@ -35,6 +35,15 @@ public class CMissionTaskManager : MonoBehaviour
                 task.Init(this);
                 taskQueue.Enqueue(task);
             }
+            else
+            {
+                CMissionTaskBase childTask = child.GetComponentInChildren<CMissionTaskBase>();
+                if (childTask)
+                {
+                    childTask.Init(this);
+                    taskQueue.Enqueue(childTask);
+                }
+            }
         }        
     }
 

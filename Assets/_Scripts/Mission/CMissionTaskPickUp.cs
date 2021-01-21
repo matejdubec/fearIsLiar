@@ -23,4 +23,9 @@ public class CMissionTaskPickUp : CMissionTaskBase
             }
         }
     }
+
+    public override void Deactivate()
+    {
+        //base.Deactivate();
+    }
 }

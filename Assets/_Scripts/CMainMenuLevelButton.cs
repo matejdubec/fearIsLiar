@@ -26,7 +26,7 @@ public class CMainMenuLevelButton : MonoBehaviour
         previewSprite.sprite = cLevel.Icon;
 
         Button button = this.GetComponent<Button>();
-        string captured = cLevel.SceneId.ToString();
+        CConfigLevel captured = cLevel;
         button.onClick.AddListener(() => { CGameManager.Instance.LoadLevel(captured); });
     }
 }

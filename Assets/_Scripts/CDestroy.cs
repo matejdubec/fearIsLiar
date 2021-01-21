@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using Valve.VR.InteractionSystem;
+﻿using UnityEngine;
 
 public class CDestroy : MonoBehaviour
 {

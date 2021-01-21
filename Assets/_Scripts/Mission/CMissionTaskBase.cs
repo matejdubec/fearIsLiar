@@ -10,9 +10,9 @@ public abstract class CMissionTaskBase : MonoBehaviour
     [SerializeField] private float markerOffsetY = 0.0f;
     public float MarkerOffsetY { get { return markerOffsetY; } }
 
-    [SerializeField] protected Animator animator = null;
-    [SerializeField] protected string animatorString = "";
-    [SerializeField] protected AudioSource audioSource = null;
+    [SerializeField] private Animator animator = null;
+    [SerializeField] private string animatorString = "";
+    [SerializeField] private AudioSource audioSource = null;
 
     protected bool isCurrent = false;
 
@@ -21,6 +21,17 @@ public abstract class CMissionTaskBase : MonoBehaviour
     protected virtual void TaskCompleted()
     {
         isCurrent = false;
+
+        if (animator & animatorString != "")
+        {
+            animator.Play(animatorString);
+        }
+
+        if (audioSource)
+        {
+            audioSource.Play();
+        }
+
         missionManager.TaskComplete();
     }
 
@@ -37,6 +48,6 @@ public abstract class CMissionTaskBase : MonoBehaviour
 
     public virtual void Deactivate()
     {
-        //this.gameObject.SetActive(false);
+        this.gameObject.SetActive(false);
     }
 }

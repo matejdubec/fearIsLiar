@@ -7,7 +7,8 @@ using UnityEngine.Audio;
 
 public class MainMenuManager : CLevelManager
 {
-	[SerializeField] private CLevelScrollList scrollList;
+    [SerializeField] private AudioMixer audioMixer;
+    [SerializeField] private CLevelScrollList scrollList;
 
     public override void Init()
 	{
@@ -35,6 +36,4 @@ public class MainMenuManager : CLevelManager
 	{
 		QualitySettings.SetQualityLevel(qualityIndex);
 	}
-
-
 }

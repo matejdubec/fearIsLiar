@@ -5,7 +5,7 @@ using UnityEngine.Audio;
 
 public abstract class CLevelManager : MonoBehaviour
 {
-    [SerializeField] protected AudioMixer audioMixer;
+    
     [SerializeField] protected VRInputModule inputModule;
     [SerializeField] protected Transform missions;
     [SerializeField] protected Transform spawnPosition;
