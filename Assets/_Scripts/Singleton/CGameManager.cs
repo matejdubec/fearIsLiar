@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Valve.VR;
 
 [CSingleton("Singletons/GameManager", true)]
@@ -52,11 +53,16 @@ public class CGameManager : CSingleton<CGameManager>
         loadinator.levelName = levelToLoad.SceneId.ToString();
         loadinator.Trigger();
 
-        //PrepareScene();
+         StartCoroutine("PrepareScene", levelToLoad);
     }
 
-    private void PrepareScene()
+    private IEnumerator PrepareScene(CConfigLevel levelToLoad)
     {
+        while(SceneManager.GetActiveScene().name != levelToLoad.SceneId.ToString())
+        {
+            yield return null;
+        }
+
         levelManager = FindObjectOfType<CLevelManager>();
         levelManager.Init();
         levelManager.SpawnPlayer(player.transform);
