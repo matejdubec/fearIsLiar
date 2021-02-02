@@ -19,6 +19,6 @@ public class CMissionController : MonoBehaviour
 
     public void MissionCompleted()
     {
-        activeMission = null;
+        activeMission = missionsDictionary[EMissionId.NoMission];
     }
 }

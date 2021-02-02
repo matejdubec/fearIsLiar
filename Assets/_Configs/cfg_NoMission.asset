@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7966a7e491ceb0843b80dd1aa2eedfd1, type: 3}
-  m_Name: cfg_Menu_Tutorial
+  m_Name: cfg_NoMission
   m_EditorClassIdentifier: 
-  MissionId: 1
-  SceneId: 1
-  Description: DefaultText.NoText
+  MissionId: 4
+  SceneId: 4
+  Description: 
   PhobiaId: 5
   TimeOfCompletion: 0
-  Icon: {fileID: 0}
+  Icon: {fileID: 21300000, guid: 74337711d03a44752abe4e157f3f58ed, type: 3}

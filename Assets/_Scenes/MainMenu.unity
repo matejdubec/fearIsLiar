@@ -2962,7 +2962,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   missionId: 1
   marker: {fileID: 9195334408131679379, guid: a247a002778871945bdb4e7dc5bd07ba, type: 3}
-  objectsToDeactivateOnMissionStart: []
+  objectsToDeactivateOnMissionStart:
+  - {fileID: 1989611672}
   objectsToActivateOnMissionEnd:
   - {fileID: 1989611672}
 --- !u!1 &975458551

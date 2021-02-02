@@ -82,10 +82,11 @@ public class CMissionTaskManager : MonoBehaviour
     private void MissionCompleted()
     {
         ActivateOnMissionComplete();
-        Destroy(marker.gameObject);
+        marker.gameObject.SetActive(false);
         levelManager.MissionCompleted();
 
         CGameManager.Instance.MissionController.MissionCompleted();
+        this.gameObject.SetActive(false);
     }
 
     private void DeactivateOnMissionStart()

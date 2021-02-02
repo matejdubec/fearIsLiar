@@ -10,7 +10,10 @@ public class CSkyscrapersManager : CLevelManager
     public override void Init()
     {
         base.Init();
-        activeMission.StartMission();
+        if(activeMission)
+        {
+            activeMission.StartMission();
+        }
     }
 
     private void Update()

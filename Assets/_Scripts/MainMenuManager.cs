@@ -14,8 +14,12 @@ public class MainMenuManager : CLevelManager
 	{
         scrollList.Init();
         base.Init();
-        activeMission.StartMission();
-	}
+
+        if (activeMission)
+        {
+            activeMission.StartMission();
+        }
+    }
 
 	public void FilterPhobias(string phobiaString)
 	{

@@ -5,4 +5,5 @@ public enum EMissionId
 	Menu_Tutorial,
 	Skyscrapers_Orbs,
 	ClosingIn_Room,
+    NoMission,
 }

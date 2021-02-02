@@ -15,7 +15,10 @@ public abstract class CLevelManager : MonoBehaviour
     public virtual void Init()
     {
         this.SetMissionTaskManager();
-        activeMission.Init(this);
+        if(activeMission)
+        {
+            activeMission.Init(this);
+        }
         //inputModule.SetPointer(CGameManager.Instance.Player.Pointer);
     }
 
@@ -31,6 +34,13 @@ public abstract class CLevelManager : MonoBehaviour
     private void SetMissionTaskManager()
     {
         var activeMissionId = CGameManager.Instance.MissionController.ActiveMission.MissionId;
+
+        if(activeMissionId == EMissionId.NoMission)
+        {
+            missions.gameObject.SetActive(false);
+            return;
+        }
+
         foreach (Transform child in missions)
         {
             CMissionTaskManager possibleMissionManager = child.GetComponent<CMissionTaskManager>();

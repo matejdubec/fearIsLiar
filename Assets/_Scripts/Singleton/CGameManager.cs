@@ -12,7 +12,8 @@ public class CGameManager : CSingleton<CGameManager>
     public CLanguageManager LanguageManager { get { return languageManager; } }
     [SerializeField] private CMissionController missionController;
     public CMissionController MissionController { get { return missionController; } }
-    [SerializeField] private SteamVR_LoadLevel loadinator;
+    [SerializeField] private SteamVR_LoadLevel loadinatorPrefab;
+    private SteamVR_LoadLevel loadinator;
     private CLevelManager levelManager;
     [SerializeField] private CVRController player;
     public CVRController Player { get { return player; } }
@@ -35,10 +36,10 @@ public class CGameManager : CSingleton<CGameManager>
 		}
         else
         {
-            missionController.ActiveMission = missionController.MissionsDictionary[EMissionId.None];           
+            missionController.ActiveMission = missionController.MissionsDictionary[EMissionId.NoMission];           
         }
 
-        //missionController.ActiveMission = missionController.MissionsDictionary[EMissionId.Skyscrapers_Orbs];
+        loadinator = Instantiate(loadinatorPrefab, this.transform);
 
         Instantiate(player.gameObject, this.transform);
 
@@ -50,7 +51,15 @@ public class CGameManager : CSingleton<CGameManager>
     {
        this.missionController.ActiveMission = missionController.MissionsDictionary[levelToLoad.MissionId];
 
-        loadinator.levelName = levelToLoad.SceneId.ToString();
+        if(levelToLoad.MissionId == EMissionId.NoMission)
+        {
+            loadinator.levelName = ESceneId.MainMenu.ToString();
+        }
+        else
+        {
+            loadinator.levelName = levelToLoad.SceneId.ToString();
+        }
+
         loadinator.Trigger();
 
          StartCoroutine("PrepareScene", levelToLoad);
@@ -66,5 +75,13 @@ public class CGameManager : CSingleton<CGameManager>
         levelManager = FindObjectOfType<CLevelManager>();
         levelManager.Init();
         levelManager.SpawnPlayer(player.transform);
+
+        loadinator = Instantiate(loadinatorPrefab, this.transform);
+    }
+
+    public void ReturnToMenu()
+    {
+        //TODO podmienka ci som v main menua lebo nie ak nie som tak return
+        LoadLevel(CGameManager.Instance.MissionController.MissionsDictionary[EMissionId.NoMission]);
     }
 }

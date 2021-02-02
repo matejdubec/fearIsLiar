@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: cfg_ClosingIn_Room
   m_EditorClassIdentifier: 
   MissionId: 3
-  SceneId: 2
+  SceneId: 3
   Description: Level.ClosingIn.Description
   PhobiaId: 4
   TimeOfCompletion: 0
