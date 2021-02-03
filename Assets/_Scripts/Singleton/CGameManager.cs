@@ -39,12 +39,14 @@ public class CGameManager : CSingleton<CGameManager>
             missionController.ActiveMission = missionController.MissionsDictionary[EMissionId.NoMission];           
         }
 
-        loadinator = Instantiate(loadinatorPrefab, this.transform);
+        GameObject initiator = Instantiate(loadinatorPrefab.gameObject, this.transform);
+        loadinator = initiator.GetComponent<SteamVR_LoadLevel>();
 
-        Instantiate(player.gameObject, this.transform);
+        initiator = Instantiate(player.gameObject, this.transform);
+        player = initiator.GetComponent<CVRController>();
 
         levelManager.Init();
-        levelManager.SpawnPlayer(player.transform);        
+        levelManager.SpawnPlayer(player);        
     }
 
     public void LoadLevel(CConfigLevel levelToLoad)
@@ -74,14 +76,19 @@ public class CGameManager : CSingleton<CGameManager>
 
         levelManager = FindObjectOfType<CLevelManager>();
         levelManager.Init();
-        levelManager.SpawnPlayer(player.transform);
+        levelManager.SpawnPlayer(player);
+        this.Player.Refresh();
+        this.Player.Pointer.Refresh();
 
-        loadinator = Instantiate(loadinatorPrefab, this.transform);
+        GameObject initiator = Instantiate(loadinatorPrefab.gameObject, this.transform);
+        loadinator = initiator.GetComponent<SteamVR_LoadLevel>();
     }
 
     public void ReturnToMenu()
     {
-        //TODO podmienka ci som v main menua lebo nie ak nie som tak return
-        LoadLevel(CGameManager.Instance.MissionController.MissionsDictionary[EMissionId.NoMission]);
+        if(SceneManager.GetActiveScene().name != ESceneId.MainMenu.ToString())
+        {
+            LoadLevel(CGameManager.Instance.MissionController.MissionsDictionary[EMissionId.NoMission]);
+        }
     }
 }

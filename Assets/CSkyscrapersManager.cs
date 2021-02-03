@@ -22,7 +22,7 @@ public class CSkyscrapersManager : CLevelManager
         {
             SteamVR_Fade.Start(Color.clear, 0f);
             SteamVR_Fade.Start(Color.black, 1f);
-            SpawnPlayer(CGameManager.Instance.Player.transform);
+            SpawnPlayer(CGameManager.Instance.Player);
             SteamVR_Fade.Start(Color.black, 0f);
             SteamVR_Fade.Start(Color.clear, 1f);
         }

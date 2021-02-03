@@ -40,9 +40,14 @@ public class CVRController : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
     {
+        Refresh();
+        pointer.Init();
+    }
+
+    public void Refresh()
+    {
         cameraRig = SteamVR_Render.Top().origin;
         head = SteamVR_Render.Top().head;
-        pointer.Init();
     }
 
     // Update is called once per frame

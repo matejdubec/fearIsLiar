@@ -5,8 +5,6 @@ using UnityEngine.Audio;
 
 public abstract class CLevelManager : MonoBehaviour
 {
-    
-    [SerializeField] protected VRInputModule inputModule;
     [SerializeField] protected Transform missions;
     [SerializeField] protected Transform spawnPosition;
 
@@ -19,16 +17,17 @@ public abstract class CLevelManager : MonoBehaviour
         {
             activeMission.Init(this);
         }
-        //inputModule.SetPointer(CGameManager.Instance.Player.Pointer);
     }
 
     public virtual void MissionCompleted()
     {
+        CGameManager.Instance.MissionController.MissionCompleted();
+        CGameManager.Instance.ReturnToMenu();
     }
 
-    public void SpawnPlayer(Transform player)
+    public void SpawnPlayer(CVRController player)
     {
-        player.position = spawnPosition.position;
+        player.SetPosition(spawnPosition.localToWorldMatrix.GetPosition());
     }
 
     private void SetMissionTaskManager()

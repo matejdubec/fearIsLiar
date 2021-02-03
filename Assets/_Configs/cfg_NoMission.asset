@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: cfg_NoMission
   m_EditorClassIdentifier: 
   MissionId: 4
-  SceneId: 4
+  SceneId: 1
   Description: 
   PhobiaId: 5
   TimeOfCompletion: 0

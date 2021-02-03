@@ -25,8 +25,7 @@ public class Pointer : MonoBehaviour
 
 	private void Start()
 	{
-		m_InputModule = EventSystem.current.gameObject.GetComponent<VRInputModule>();
-        m_InputModule.SetPointer(this);
+        this.Refresh();
 	}
 
 	// Update is called once per frame
@@ -68,4 +67,10 @@ public class Pointer : MonoBehaviour
 
 		return hit;
 	}
+
+    public void Refresh()
+    {
+        m_InputModule = EventSystem.current.gameObject.GetComponent<VRInputModule>();
+        m_InputModule.SetPointer(this);
+    }
 }

@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8346568372699370197}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2.5}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -47,7 +47,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   languageManager: {fileID: -199629619353287442}
   missionController: {fileID: 1916477009507520709}
-  loadinator: {fileID: 0}
+  loadinatorPrefab: {fileID: 1017842553284259799, guid: c2223ef38371cac4198b5fe7c5047c1f,
+    type: 3}
   player: {fileID: 6527466105696793077, guid: cffe7af19faefbd4c928311fab526b2e, type: 3}
 --- !u!114 &-199629619353287442
 MonoBehaviour:

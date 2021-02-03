@@ -85,7 +85,6 @@ public class CMissionTaskManager : MonoBehaviour
         marker.gameObject.SetActive(false);
         levelManager.MissionCompleted();
 
-        CGameManager.Instance.MissionController.MissionCompleted();
         this.gameObject.SetActive(false);
     }
 
