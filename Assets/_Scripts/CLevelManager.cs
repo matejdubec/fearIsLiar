@@ -10,6 +10,14 @@ public abstract class CLevelManager : MonoBehaviour
 
     protected CMissionTaskManager activeMission;
 
+    //sluzi na debug inych scen
+    protected void Awake()
+    {
+#if UNITY_EDITOR
+        CGameManager.CreateInstance();
+#endif
+    }
+
     public virtual void Init()
     {
         this.SetMissionTaskManager();
