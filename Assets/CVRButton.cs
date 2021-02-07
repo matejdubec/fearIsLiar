@@ -2,24 +2,22 @@
 
 public class CVRButton : MonoBehaviour
 {
-    private float pressLength = 0.05f;
+    private float pressLength = 0.5f;
     private bool pressed;
 
     private Vector3 origin;
-    Rigidbody rb;
 
     private void Start()
     {
-        origin = transform.position;
-        rb = GetComponent<Rigidbody>();
+        origin = transform.localPosition;
     }
 
     private void Update()
     {
-        float distance = Mathf.Abs(transform.position.y - origin.y);
+        float distance = Mathf.Abs(transform.localPosition.y - origin.y);
         if(distance >= pressLength)
         {
-            transform.position = new Vector3(transform.position.x, origin.y - pressLength, transform.position.z);
+            transform.localPosition = new Vector3(origin.x, origin.y - pressLength, origin.z);
             if(!pressed)
             {
                 pressed = true;
@@ -28,11 +26,12 @@ public class CVRButton : MonoBehaviour
         else
         {
             pressed = false;
+            transform.localPosition = new Vector3(origin.x, transform.localPosition.y, origin.z);
         }
 
-        if(transform.position.y > origin.y)
+        if (transform.localPosition.y > origin.y)
         {
-            transform.position = new Vector3(transform.position.x, origin.y, transform.position.z);
+            transform.localPosition = new Vector3(origin.x, origin.y, origin.z);
         }
     }
 }
