@@ -5,62 +5,38 @@ using Valve.VR;
 
 public class CMissionTaskButton : CMissionTaskBase
 {
-    [SerializeField] private int PressesToComplete = 5;
-    private int pressCount = 0;
-
-    private float pressLength = 0.5f;
-    private bool pressed;
-    private Vector3 origin;
-    private Rigidbody rb;
+    [SerializeField] List<CVRButton> buttons;
+    private int buttonsCompletedCounter = 0;
 
     public override void Init(CMissionTaskManager _missionManager)
     {
         base.Init(_missionManager);
-        origin = transform.localPosition;
-        rb = GetComponent<Rigidbody>();
-        rb.constraints = RigidbodyConstraints.FreezeAll;
-    }
 
-    private void Update()
-    {
-        if (isCurrent)
+        foreach (CVRButton button in buttons)
         {
-            if(rb.constraints == RigidbodyConstraints.FreezeAll)
-            {
-                rb.constraints = RigidbodyConstraints.FreezeRotation;
-            }
-
-            this.CountPresses();
-
-            if (pressCount >= PressesToComplete)
-            {
-                rb.constraints = RigidbodyConstraints.FreezeAll;
-                this.TaskCompleted();
-            }
+            button.Init(this);
         }
     }
 
-    private void CountPresses()
+    public override void Activate()
     {
-        float distance = Mathf.Abs(transform.localPosition.y - origin.y);
-        if (distance >= pressLength)
-        {
-            transform.localPosition = new Vector3(origin.x, origin.y - pressLength, origin.z);
-            if (!pressed)
-            {
-                pressed = true;
-                pressCount++;
-            }
-        }
-        else
-        {
-            pressed = false;
-            transform.localPosition = new Vector3(origin.x, transform.localPosition.y, origin.z);
-        }
+        base.Activate();
 
-        if (transform.localPosition.y > origin.y)
+        foreach( CVRButton button in buttons)
         {
-            transform.localPosition = new Vector3(origin.x, origin.y, origin.z);
+            button.Activate();
+        }
+    }
+
+    public void ButtonCompleted(CVRButton _button)
+    {
+        CVRButton button = buttons.Find(x => x == _button);
+        button.Deactivate();
+        buttonsCompletedCounter++;
+
+        if(buttonsCompletedCounter == buttons.Count)
+        {
+            this.TaskCompleted();
         }
     }
 }
