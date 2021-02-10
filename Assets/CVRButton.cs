@@ -11,15 +11,20 @@ public class CVRButton : MonoBehaviour
     private Vector3 origin;
     private Rigidbody rb;
     private CMissionTaskButton buttonTask;
-
     private bool isActive = false;
 
-    public void Init(CMissionTaskButton _buttonTask)
+    private Material material;
+    private float baseEmmitTimer = 0.25f;
+    private float currentEmmitTimer;
+
+     public void Init(CMissionTaskButton _buttonTask)
     {
         buttonTask = _buttonTask;
+        material = GetComponent<MeshRenderer>().material;
         origin = transform.localPosition;
         rb = GetComponent<Rigidbody>();
         rb.constraints = RigidbodyConstraints.FreezeAll;
+        currentEmmitTimer = baseEmmitTimer;
     }
 
     public void Activate()
@@ -41,12 +46,14 @@ public class CVRButton : MonoBehaviour
                 rb.constraints = RigidbodyConstraints.FreezeRotation;
             }
 
+            this.Emit();
             this.CountPresses();
 
             if (pressCount >= PressesToComplete)
             {
                 rb.constraints = RigidbodyConstraints.FreezeAll;
-                buttonTask.ButtonCompleted(this);
+                material.SetFloat("_EmissiveExposureWeight", 1);
+                buttonTask.ButtonCompleted(this);               
             }
         }
     }
@@ -72,6 +79,25 @@ public class CVRButton : MonoBehaviour
         if (transform.localPosition.y > origin.y)
         {
             transform.localPosition = new Vector3(origin.x, origin.y, origin.z);
+        }
+    }
+
+    private void Emit()
+	{
+        currentEmmitTimer -= Time.deltaTime;
+
+        if (currentEmmitTimer < 0)
+        {
+            if (material.GetFloat("_EmissiveExposureWeight") == 0)
+            {
+                material.SetFloat("_EmissiveExposureWeight", 1);
+            }
+            else
+            {
+                material.SetFloat("_EmissiveExposureWeight", 0);
+            }
+
+            currentEmmitTimer = baseEmmitTimer;
         }
     }
 }
