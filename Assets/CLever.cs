@@ -8,13 +8,19 @@ public class CLever : MonoBehaviour
     private float forwardBackwardTilt = 0;
     Vector3 topOriginPosition;
 
+    private Material material;
+    private float baseEmmitTimer = 0.25f;
+    private float currentEmmitTimer;
+
     private void Start()
     {
         topOriginPosition = top.transform.localPosition;
+        material = top.GetComponent<MeshRenderer>().material;
     }
 
     private void Update()
     {
+        this.Emit();
         top.transform.localPosition = topOriginPosition;
         forwardBackwardTilt = top.transform.rotation.eulerAngles.z;
 
@@ -47,6 +53,25 @@ public class CLever : MonoBehaviour
             {
                 transform.rotation = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y, 290);
             }
+        }
+    }
+
+    private void Emit()
+    {
+        currentEmmitTimer -= Time.deltaTime;
+
+        if (currentEmmitTimer < 0)
+        {
+            if (material.GetFloat("_EmissiveExposureWeight") == 0)
+            {
+                material.SetFloat("_EmissiveExposureWeight", 1);
+            }
+            else
+            {
+                material.SetFloat("_EmissiveExposureWeight", 0);
+            }
+
+            currentEmmitTimer = baseEmmitTimer;
         }
     }
 }

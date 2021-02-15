@@ -10,8 +10,6 @@ public enum EVrButtonColorId
 public class CVRButton : MonoBehaviour
 {
     [SerializeField] private EVrButtonColorId buttonId;
-    [SerializeField] private int PressesToComplete = 5;
-    private int pressCount = 0;
 
     private float pressLength = 0.5f;
     private bool pressed;
@@ -55,44 +53,7 @@ public class CVRButton : MonoBehaviour
             }
 
             this.Emit();
-
-            Press();
-
-            /*
-            //this.CountPresses();
-            
-
-            if (pressCount >= PressesToComplete)
-            {
-                rb.constraints = RigidbodyConstraints.FreezeAll;
-                material.SetFloat("_EmissiveExposureWeight", 1);
-                buttonTask.ButtonCompleted(this);               
-            }
-            */
-        }
-    }
-
-    private void CountPresses()
-    {
-        float distance = Mathf.Abs(transform.localPosition.y - origin.y);
-        if (distance >= pressLength)
-        {
-            transform.localPosition = new Vector3(origin.x, origin.y - pressLength, origin.z);
-            if (!pressed)
-            {
-                pressed = true;
-                pressCount++;
-            }
-        }
-        else
-        {
-            pressed = false;
-            transform.localPosition = new Vector3(origin.x, transform.localPosition.y, origin.z);
-        }
-
-        if (transform.localPosition.y > origin.y)
-        {
-            transform.localPosition = new Vector3(origin.x, origin.y, origin.z);
+            this.IsPressed();
         }
     }
 
@@ -121,7 +82,7 @@ public class CVRButton : MonoBehaviour
         material.SetFloat("_EmissiveExposureWeight", 1);
     }
 
-    public void Press()
+    public void IsPressed()
     {
         float distance = Mathf.Abs(transform.localPosition.y - origin.y);
         if (distance >= pressLength)
