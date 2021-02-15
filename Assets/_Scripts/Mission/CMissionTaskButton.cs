@@ -8,6 +8,9 @@ public class CMissionTaskButton : CMissionTaskBase
     [SerializeField] List<CVRButton> buttons;
     private int buttonsCompletedCounter = 0;
 
+    [SerializeField] private List<EVrButtonColorId> safeCode;
+    private int safeCodeIndex = 0;
+
     public override void Init(CMissionTaskManager _missionManager)
     {
         base.Init(_missionManager);
@@ -37,6 +40,26 @@ public class CMissionTaskButton : CMissionTaskBase
         if(buttonsCompletedCounter == buttons.Count)
         {
             this.TaskCompleted();
+        }
+    }
+
+    public void ButtonPressed(EVrButtonColorId buttonColorId)
+    {
+        if (buttonColorId == safeCode[safeCodeIndex])
+        {
+            safeCodeIndex++;
+            if(safeCode.Count <= safeCodeIndex)
+            {
+                this.TaskCompleted();
+                foreach (CVRButton button in buttons)
+                {
+                    button.Disable();
+                }
+            }
+        }
+        else
+        {
+            safeCodeIndex = 0;
         }
     }
 }

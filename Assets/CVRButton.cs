@@ -1,7 +1,15 @@
 ﻿using UnityEngine;
 
+public enum EVrButtonColorId
+{
+    Red,
+    Green,
+    Blue,
+}
+
 public class CVRButton : MonoBehaviour
 {
+    [SerializeField] private EVrButtonColorId buttonId;
     [SerializeField] private int PressesToComplete = 5;
     private int pressCount = 0;
 
@@ -47,7 +55,12 @@ public class CVRButton : MonoBehaviour
             }
 
             this.Emit();
-            this.CountPresses();
+
+            Press();
+
+            /*
+            //this.CountPresses();
+            
 
             if (pressCount >= PressesToComplete)
             {
@@ -55,6 +68,7 @@ public class CVRButton : MonoBehaviour
                 material.SetFloat("_EmissiveExposureWeight", 1);
                 buttonTask.ButtonCompleted(this);               
             }
+            */
         }
     }
 
@@ -98,6 +112,36 @@ public class CVRButton : MonoBehaviour
             }
 
             currentEmmitTimer = baseEmmitTimer;
+        }
+    }
+
+    public void Disable()
+    {
+        rb.constraints = RigidbodyConstraints.FreezeAll;
+        material.SetFloat("_EmissiveExposureWeight", 1);
+    }
+
+    public void Press()
+    {
+        float distance = Mathf.Abs(transform.localPosition.y - origin.y);
+        if (distance >= pressLength)
+        {
+            transform.localPosition = new Vector3(origin.x, origin.y - pressLength, origin.z);
+            if (!pressed)
+            {
+                pressed = true;
+                buttonTask.ButtonPressed(this.buttonId);
+            }
+        }
+        else
+        {
+            pressed = false;
+            transform.localPosition = new Vector3(origin.x, transform.localPosition.y, origin.z);
+        }
+
+        if (transform.localPosition.y > origin.y)
+        {
+            transform.localPosition = new Vector3(origin.x, origin.y, origin.z);
         }
     }
 }

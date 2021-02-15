@@ -36,8 +36,17 @@ public class CLever : MonoBehaviour
 
         if(top.ActiveHand && other.GetComponent<CustomHand>() == top.ActiveHand)
         {
-            transform.LookAt(other.transform.position, transform.up);
-            transform.eulerAngles = new Vector3(Mathf.Clamp(transform.rotation.eulerAngles.x, 160, 350), 0, 0);
+            Vector3 lookAtPosition = new Vector3(transform.position.x, other.transform.position.y, other.transform.position.z);      
+            transform.LookAt(lookAtPosition);
+            if(forwardBackwardTilt > 5 && forwardBackwardTilt < 74)
+            {
+                transform.rotation = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y, 74);
+            }
+
+            if (forwardBackwardTilt < 355 && forwardBackwardTilt > 290)
+            {
+                transform.rotation = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y, 290);
+            }
         }
     }
 }
