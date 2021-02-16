@@ -1,15 +1,9 @@
 ﻿using UnityEngine;
 
-public enum EVrButtonColorId
-{
-    Red,
-    Green,
-    Blue,
-}
-
 public class CVRButton : MonoBehaviour
 {
-    [SerializeField] private EVrButtonColorId buttonId;
+    [SerializeField] private EColor buttonColor;
+    public EColor ButtonColor { get { return buttonColor; } }
 
     private float pressLength = 0.5f;
     private bool pressed;
@@ -91,7 +85,7 @@ public class CVRButton : MonoBehaviour
             if (!pressed)
             {
                 pressed = true;
-                buttonTask.ButtonPressed(this.buttonId);
+                buttonTask.ButtonPressed(this);
             }
         }
         else

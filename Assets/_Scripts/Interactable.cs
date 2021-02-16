@@ -11,6 +11,7 @@ public class Interactable : MonoBehaviour
 
     public bool IsAvailable { get; set; } = true;
 
+    /*
     public UnityEvent onHandHover;
 
     private void OnTriggerEnter(Collider other)
@@ -18,6 +19,7 @@ public class Interactable : MonoBehaviour
         if(other.gameObject.CompareTag("Player"))
             onHandHover.Invoke();
     }
+    */
 
     public void AttachToHand(CustomHand hand)
     {

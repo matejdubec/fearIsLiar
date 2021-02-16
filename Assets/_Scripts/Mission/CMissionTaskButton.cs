@@ -6,9 +6,8 @@ using Valve.VR;
 public class CMissionTaskButton : CMissionTaskBase
 {
     [SerializeField] List<CVRButton> buttons;
-    private int buttonsCompletedCounter = 0;
 
-    [SerializeField] private List<EVrButtonColorId> safeCode;
+    [SerializeField] private List<EColor> safeCode;
     private int safeCodeIndex = 0;
 
     public override void Init(CMissionTaskManager _missionManager)
@@ -31,29 +30,17 @@ public class CMissionTaskButton : CMissionTaskBase
         }
     }
 
-    public void ButtonCompleted(CVRButton _button)
+    public void ButtonPressed(CVRButton button)
     {
-        CVRButton button = buttons.Find(x => x == _button);
-        button.Deactivate();
-        buttonsCompletedCounter++;
-
-        if(buttonsCompletedCounter == buttons.Count)
-        {
-            this.TaskCompleted();
-        }
-    }
-
-    public void ButtonPressed(EVrButtonColorId buttonColorId)
-    {
-        if (buttonColorId == safeCode[safeCodeIndex])
+        if (button.ButtonColor == safeCode[safeCodeIndex])
         {
             safeCodeIndex++;
             if(safeCode.Count <= safeCodeIndex)
             {
                 this.TaskCompleted();
-                foreach (CVRButton button in buttons)
+                foreach (CVRButton b in buttons)
                 {
-                    button.Disable();
+                    b.Disable();
                 }
             }
         }
