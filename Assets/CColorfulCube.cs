@@ -10,15 +10,25 @@ public enum EColor
     Purple,
 }
 
-public class CColorfulCube : MonoBehaviour
+public class CColorfulCube : CEmitable
 {
     [SerializeField] private EColor color;
     public EColor Color { get { return color; } }
     [SerializeField] private Material dissolve;
 
+    public void Init()
+    {
+        base.Init(GetComponent<MeshRenderer>().material);
+    }
+
     public void Deactivate()
     {
-        GetComponent<MeshRenderer>().material = dissolve;
+        material = dissolve;
         this.GetComponent<Collider>().enabled = false;
+    }
+
+    private void Update()
+    {
+        this.Emit();
     }
 }

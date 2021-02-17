@@ -11,14 +11,17 @@ public class CMissionController : MonoBehaviour
     private CConfigLevel activeMission;
     public CConfigLevel ActiveMission { get { return activeMission; } set { activeMission = value; } }
 
+    private bool missionCompletedSuccessfully = false;
+
 
     public void Init()
     {
         missionsDictionary = missionsList.ToDictionary(x => x.MissionId, x => x);
     }
 
-    public void MissionCompleted()
+    public void MissionCompleted(bool _missionCompletedSuccessfully)
     {
+        missionCompletedSuccessfully = _missionCompletedSuccessfully;
         activeMission = missionsDictionary[EMissionId.NoMission];
     }
 }

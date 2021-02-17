@@ -2,76 +2,92 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CLever : MonoBehaviour
+public enum ELeverState
+{
+    Up,
+    Down,
+    Between,
+}
+
+
+public class CLever : CEmitable
 {
     [SerializeField] private Interactable top;
-    private float forwardBackwardTilt = 0;
+    [SerializeField] private Transform controlledTransform;
+    [SerializeField] private ELeverState leverDesiredState;
+    private ELeverState leverCurrentState;
+    private bool isActive = false;
+    private CMissionTaskLevers taskLevers;
+
     Vector3 topOriginPosition;
 
-    private Material material;
-    private float baseEmmitTimer = 0.25f;
-    private float currentEmmitTimer;
-
-    private void Start()
+    public void Init(CMissionTaskLevers _missionTaskLevers)
     {
-        topOriginPosition = top.transform.localPosition;
-        material = top.GetComponent<MeshRenderer>().material;
+        base.Init(top.GetComponent<MeshRenderer>().material);
+        topOriginPosition = top.transform.localPosition;      
+        leverCurrentState = ELeverState.Between;
+        isActive = true;
+        taskLevers = _missionTaskLevers;
     }
 
     private void Update()
     {
-        this.Emit();
-        top.transform.localPosition = topOriginPosition;
-        forwardBackwardTilt = top.transform.rotation.eulerAngles.z;
-
-        if (forwardBackwardTilt < 355 && forwardBackwardTilt > 290)
+        if(isActive)
         {
-            forwardBackwardTilt = Mathf.Abs(forwardBackwardTilt - 360);
-        }
-        else if (forwardBackwardTilt > 5 && forwardBackwardTilt < 74)
-        {
+            this.Emit();
+            top.transform.localPosition = topOriginPosition;
         }
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if(!other.CompareTag("Hand"))
+        if (!other.CompareTag("Hand") || !isActive)
         {
             return;
         }
 
         if(top.ActiveHand && other.GetComponent<CustomHand>() == top.ActiveHand)
         {
-            Vector3 lookAtPosition = new Vector3(transform.position.x, other.transform.position.y, other.transform.position.z);      
-            transform.LookAt(lookAtPosition);
-            if(forwardBackwardTilt > 5 && forwardBackwardTilt < 74)
-            {
-                transform.rotation = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y, 74);
-            }
+            Vector3 lookAtPosition = new Vector3(controlledTransform.position.x, other.transform.position.y, other.transform.position.z);
+            controlledTransform.LookAt(lookAtPosition);
+            
+            float current = controlledTransform.localEulerAngles.x;
+            controlledTransform.localEulerAngles = new Vector3(current, 0f, 0f);
 
-            if (forwardBackwardTilt < 355 && forwardBackwardTilt > 290)
+            if (current > 45f && current < 180f)
             {
-                transform.rotation = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y, 290);
+                controlledTransform.localEulerAngles = new Vector3(45f, controlledTransform.localEulerAngles.y, controlledTransform.localEulerAngles.z);
+                this.ChangeState(ELeverState.Down);
+            }
+            else if(current < 315 && current > 180f)
+            {
+                controlledTransform.localEulerAngles = new Vector3(315f, controlledTransform.localEulerAngles.y, controlledTransform.localEulerAngles.z);
+                this.ChangeState(ELeverState.Up);
+            }
+            else
+            {
+                this.ChangeState(ELeverState.Between);
             }
         }
     }
 
-    private void Emit()
+    private void ChangeState(ELeverState _state)
     {
-        currentEmmitTimer -= Time.deltaTime;
-
-        if (currentEmmitTimer < 0)
+        if(_state != leverCurrentState)
         {
-            if (material.GetFloat("_EmissiveExposureWeight") == 0)
-            {
-                material.SetFloat("_EmissiveExposureWeight", 1);
-            }
-            else
-            {
-                material.SetFloat("_EmissiveExposureWeight", 0);
-            }
-
-            currentEmmitTimer = baseEmmitTimer;
+            leverCurrentState = _state;
+            taskLevers.LeverStateChanged();
         }
+    }
+
+    public bool hasCorrectState()
+    {
+        return leverCurrentState == leverDesiredState;
+    }
+
+    public void Deactivate()
+    {
+        isActive = false;
+        material.SetFloat("_EmissiveExposureWeight", 1);
     }
 }

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class CVRButton : MonoBehaviour
+public class CVRButton : CEmitable
 {
     [SerializeField] private EColor buttonColor;
     public EColor ButtonColor { get { return buttonColor; } }
@@ -13,18 +13,13 @@ public class CVRButton : MonoBehaviour
     private CMissionTaskButton buttonTask;
     private bool isActive = false;
 
-    private Material material;
-    private float baseEmmitTimer = 0.25f;
-    private float currentEmmitTimer;
-
      public void Init(CMissionTaskButton _buttonTask)
     {
         buttonTask = _buttonTask;
-        material = GetComponent<MeshRenderer>().material;
+        base.Init(GetComponent<MeshRenderer>().material);
         origin = transform.localPosition;
         rb = GetComponent<Rigidbody>();
         rb.constraints = RigidbodyConstraints.FreezeAll;
-        currentEmmitTimer = baseEmmitTimer;
     }
 
     public void Activate()
@@ -48,25 +43,6 @@ public class CVRButton : MonoBehaviour
 
             this.Emit();
             this.IsPressed();
-        }
-    }
-
-    private void Emit()
-	{
-        currentEmmitTimer -= Time.deltaTime;
-
-        if (currentEmmitTimer < 0)
-        {
-            if (material.GetFloat("_EmissiveExposureWeight") == 0)
-            {
-                material.SetFloat("_EmissiveExposureWeight", 1);
-            }
-            else
-            {
-                material.SetFloat("_EmissiveExposureWeight", 0);
-            }
-
-            currentEmmitTimer = baseEmmitTimer;
         }
     }
 
