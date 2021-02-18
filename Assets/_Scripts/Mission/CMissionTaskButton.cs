@@ -37,11 +37,12 @@ public class CMissionTaskButton : CMissionTaskBase
             safeCodeIndex++;
             if(safeCode.Count <= safeCodeIndex)
             {
-                this.TaskCompleted();
                 foreach (CVRButton b in buttons)
                 {
-                    b.Disable();
+                    b.Deactivate();
                 }
+
+                this.TaskCompleted();
             }
         }
         else

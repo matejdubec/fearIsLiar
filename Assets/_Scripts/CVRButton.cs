@@ -12,14 +12,17 @@ public class CVRButton : CEmitable
     private Rigidbody rb;
     private CMissionTaskButton buttonTask;
     private bool isActive = false;
+    private float delay = 0.75f;
+    private float currentDelay = 0f;
 
-     public void Init(CMissionTaskButton _buttonTask)
+    public void Init(CMissionTaskButton _buttonTask)
     {
         buttonTask = _buttonTask;
         base.Init(GetComponent<MeshRenderer>().material);
         origin = transform.localPosition;
         rb = GetComponent<Rigidbody>();
         rb.constraints = RigidbodyConstraints.FreezeAll;
+        currentDelay = delay;
     }
 
     public void Activate()
@@ -30,6 +33,9 @@ public class CVRButton : CEmitable
     public void Deactivate()
     {
         isActive = false;
+        transform.localPosition = Vector3.Lerp(transform.localPosition, new Vector3(origin.x, origin.y - pressLength, origin.z), Time.deltaTime * 6f); 
+        rb.constraints = RigidbodyConstraints.FreezeAll;
+        this.Emit();
     }
 
     private void Update()
@@ -41,15 +47,9 @@ public class CVRButton : CEmitable
                 rb.constraints = RigidbodyConstraints.FreezeRotation;
             }
 
-            this.Emit();
+            this.StartBlinking();
             this.IsPressed();
         }
-    }
-
-    public void Disable()
-    {
-        rb.constraints = RigidbodyConstraints.FreezeAll;
-        material.SetFloat("_EmissiveExposureWeight", 1);
     }
 
     public void IsPressed()
@@ -58,9 +58,10 @@ public class CVRButton : CEmitable
         if (distance >= pressLength)
         {
             transform.localPosition = new Vector3(origin.x, origin.y - pressLength, origin.z);
-            if (!pressed)
+            if (!pressed && currentDelay <= 0f)
             {
                 pressed = true;
+                currentDelay = delay;
                 buttonTask.ButtonPressed(this);
             }
         }
@@ -74,5 +75,7 @@ public class CVRButton : CEmitable
         {
             transform.localPosition = new Vector3(origin.x, origin.y, origin.z);
         }
+
+        currentDelay -= Time.deltaTime;
     }
 }

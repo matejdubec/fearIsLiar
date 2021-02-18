@@ -32,3 +32,4 @@ Level.MainMenu.Tutorial.PressTrackPadToMove:Press right trackpad to get to the d
 Level.MainMenu.Tutorial.PressTriggerToPickUpBox:Pick up the green box using a trigger button
 Level.MainMenu.Tutorial.PlaceGreenBoxOnBlueBox:Place the green box on the blue one
 Level.MainMenu.Tutorial.Completed:Tutorial completed!!
+Level.ClosinIn.Description.InGame:You are trapped!! Walls are closing in. Escape before they'll crush you to death.

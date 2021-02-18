@@ -7,10 +7,14 @@ public class CClosingInManager : CLevelManager
 {
     [SerializeField] private List<CMovingWall> movingWalls;
     [SerializeField] private float wallsDelay = 5f;
+    private CAudioManager audioManager;
 
     public override void Init()
     {
         base.Init();
+
+        audioManager = GetComponent<CAudioManager>();
+        audioManager.Init();
 
         foreach (CMovingWall wall in movingWalls)
         {
@@ -32,6 +36,8 @@ public class CClosingInManager : CLevelManager
         {
             wall.StartMoving();
         }
+
+        audioManager.PlaySound("MovingWall");
     }
 
     public override void MissionCompleted(bool _missionCompletitionState)
@@ -40,6 +46,8 @@ public class CClosingInManager : CLevelManager
         {
             wall.StopMoving();
         }
+
+        audioManager.StopSound("MovingWall");
 
         base.MissionCompleted(_missionCompletitionState);
     }

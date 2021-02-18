@@ -14,7 +14,7 @@ public abstract class CEmitable : MonoBehaviour
         currentEmmitTimer = baseEmmitTimer;
     }
 
-    protected virtual void Emit()
+    protected virtual void StartBlinking()
     {
         currentEmmitTimer -= Time.deltaTime;
 
@@ -31,5 +31,10 @@ public abstract class CEmitable : MonoBehaviour
 
             currentEmmitTimer = baseEmmitTimer;
         }
+    }
+
+    protected virtual void Emit()
+    {
+        material.SetFloat("_EmissiveExposureWeight", 1);
     }
 }

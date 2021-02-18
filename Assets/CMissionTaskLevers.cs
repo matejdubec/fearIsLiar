@@ -5,7 +5,6 @@ using UnityEngine;
 public class CMissionTaskLevers : CMissionTaskBase
 {
     [SerializeField] private List<CLever> levers;
-    private int counter = 0;
 
     public override void Init(CMissionTaskManager _missionManager)
     {
@@ -23,25 +22,18 @@ public class CMissionTaskLevers : CMissionTaskBase
         {
             foreach (CLever lever in levers)
             {
-                if (lever.hasCorrectState())
+                if (!lever.hasCorrectState())
                 {
-                    counter++;
-                }
-                else
-                {
-                    counter = 0;
+                    return;
                 }
             }
 
-            if (counter == levers.Count)
+            foreach (CLever lever in levers)
             {
-                foreach (CLever lever in levers)
-                {
-                    lever.Deactivate();
-                }
-
-                this.TaskCompleted();
+                lever.Deactivate();
             }
+
+            this.TaskCompleted();
         }
     }
 }

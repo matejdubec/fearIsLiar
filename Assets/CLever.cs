@@ -18,6 +18,7 @@ public class CLever : CEmitable
     private ELeverState leverCurrentState;
     private bool isActive = false;
     private CMissionTaskLevers taskLevers;
+    private float targetAngle = 0f;
 
     Vector3 topOriginPosition;
 
@@ -34,7 +35,7 @@ public class CLever : CEmitable
     {
         if(isActive)
         {
-            this.Emit();
+            this.StartBlinking();
             top.transform.localPosition = topOriginPosition;
         }
     }
@@ -46,11 +47,22 @@ public class CLever : CEmitable
             return;
         }
 
-        if(top.ActiveHand && other.GetComponent<CustomHand>() == top.ActiveHand)
+        if (top.ActiveHand && other.GetComponent<CustomHand>() == top.ActiveHand)
         {
             Vector3 lookAtPosition = new Vector3(controlledTransform.position.x, other.transform.position.y, other.transform.position.z);
             controlledTransform.LookAt(lookAtPosition);
-            
+
+            //Vector3 dir1 = (top.transform.position - this.controlledTransform.position).normalized;
+            //Vector3 dir2 = (other.transform.position - this.controlledTransform.position);
+            //dir2.x = 0f;
+            //dir2.Normalize();
+            //float currentAngle = Vector3.Angle(dir1, dir2);
+            //transform.Rotate(transform.right, angle);
+            //controlledTransform.forward = Quaternion.Euler(targetAngle * Time.deltaTime * 3f, 0f, 0f) * controlledTransform.right;
+            //this.controlledTransform.forward = dir2;
+            //transform.forward
+            //transform.position = Quaternion.Euler(angle, 0.0f, 0.0f) * transform.position;
+
             float current = controlledTransform.localEulerAngles.x;
             controlledTransform.localEulerAngles = new Vector3(current, 0f, 0f);
 
@@ -59,7 +71,7 @@ public class CLever : CEmitable
                 controlledTransform.localEulerAngles = new Vector3(45f, controlledTransform.localEulerAngles.y, controlledTransform.localEulerAngles.z);
                 this.ChangeState(ELeverState.Down);
             }
-            else if(current < 315 && current > 180f)
+            else if (current < 315 && current > 180f)
             {
                 controlledTransform.localEulerAngles = new Vector3(315f, controlledTransform.localEulerAngles.y, controlledTransform.localEulerAngles.z);
                 this.ChangeState(ELeverState.Up);
@@ -88,6 +100,6 @@ public class CLever : CEmitable
     public void Deactivate()
     {
         isActive = false;
-        material.SetFloat("_EmissiveExposureWeight", 1);
+        this.Emit();
     }
 }
