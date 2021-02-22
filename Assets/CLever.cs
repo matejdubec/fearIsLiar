@@ -22,6 +22,13 @@ public class CLever : CEmitable
 
     Vector3 topOriginPosition;
 
+    private Vector3 leverBaseForward;
+
+    private void Awake()
+    {
+        this.leverBaseForward = (top.transform.position - controlledTransform.position).normalized;
+    }
+
     public void Init(CMissionTaskLevers _missionTaskLevers)
     {
         base.Init(top.GetComponent<MeshRenderer>().material);
@@ -49,37 +56,34 @@ public class CLever : CEmitable
 
         if (top.ActiveHand && other.GetComponent<CustomHand>() == top.ActiveHand)
         {
-            Vector3 lookAtPosition = new Vector3(controlledTransform.position.x, other.transform.position.y, other.transform.position.z);
-            controlledTransform.LookAt(lookAtPosition);
+            // Zaklad co sme robili
+            Vector3 leverDirection = (top.transform.position - controlledTransform.position).normalized;
+            Vector3 handDirection = other.transform.position - controlledTransform.position;
 
-            //Vector3 dir1 = (top.transform.position - this.controlledTransform.position).normalized;
-            //Vector3 dir2 = (other.transform.position - this.controlledTransform.position);
-            //dir2.x = 0f;
-            //dir2.Normalize();
-            //float currentAngle = Vector3.Angle(dir1, dir2);
-            //transform.Rotate(transform.right, angle);
-            //controlledTransform.forward = Quaternion.Euler(targetAngle * Time.deltaTime * 3f, 0f, 0f) * controlledTransform.right;
-            //this.controlledTransform.forward = dir2;
-            //transform.forward
-            //transform.position = Quaternion.Euler(angle, 0.0f, 0.0f) * transform.position;
+            // Projekcia vektoru na rovinu v ktorej sa rotuje
+            Vector3 transformedPlaneNormal = Vector3.Dot(controlledTransform.right, handDirection) * controlledTransform.right;
+            Vector3 transformedHandDirection = handDirection - transformedPlaneNormal;
 
-            float current = controlledTransform.localEulerAngles.x;
-            controlledTransform.localEulerAngles = new Vector3(current, 0f, 0f);
+            // Uhol so znamienkom
+            float deltaAngle = Vector3.SignedAngle(leverDirection, transformedHandDirection, controlledTransform.right);
 
-            if (current > 45f && current < 180f)
+            // Rotacia okolo definovanej osy
+            Vector3 transformedLeverDirection = Quaternion.AngleAxis(deltaAngle, controlledTransform.right) * controlledTransform.forward;
+
+            // Ak je mimo 45 stupnov, neaktualizujem
+            if (Vector3.SignedAngle(transformedLeverDirection, leverBaseForward, controlledTransform.right) > 45f)
             {
-                controlledTransform.localEulerAngles = new Vector3(45f, controlledTransform.localEulerAngles.y, controlledTransform.localEulerAngles.z);
-                this.ChangeState(ELeverState.Down);
-            }
-            else if (current < 315 && current > 180f)
-            {
-                controlledTransform.localEulerAngles = new Vector3(315f, controlledTransform.localEulerAngles.y, controlledTransform.localEulerAngles.z);
                 this.ChangeState(ELeverState.Up);
             }
-            else
+            else if (Vector3.SignedAngle(transformedLeverDirection, leverBaseForward, controlledTransform.right) < -45f)
             {
-                this.ChangeState(ELeverState.Between);
+                this.ChangeState(ELeverState.Down);
             }
+            else
+            {             
+                controlledTransform.forward = transformedLeverDirection;
+                this.ChangeState(ELeverState.Between);
+            }        
         }
     }
 

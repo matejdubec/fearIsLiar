@@ -2450,7 +2450,7 @@ PrefabInstance:
     - target: {fileID: 813293341018484666, guid: 74e1cb13bf9ded94c8b0bb5907c4c362,
         type: 3}
       propertyPath: leverDesiredState
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 813293341018484667, guid: 74e1cb13bf9ded94c8b0bb5907c4c362,
         type: 3}
@@ -3429,6 +3429,11 @@ PrefabInstance:
       propertyPath: controlledTransform
       value: 
       objectReference: {fileID: 1543088764}
+    - target: {fileID: 813293341018484666, guid: 74e1cb13bf9ded94c8b0bb5907c4c362,
+        type: 3}
+      propertyPath: leverDesiredState
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 813293341018484667, guid: 74e1cb13bf9ded94c8b0bb5907c4c362,
         type: 3}
       propertyPath: m_Name
@@ -4358,7 +4363,7 @@ PrefabInstance:
     - target: {fileID: 813293341018484666, guid: 74e1cb13bf9ded94c8b0bb5907c4c362,
         type: 3}
       propertyPath: leverDesiredState
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 813293341018484667, guid: 74e1cb13bf9ded94c8b0bb5907c4c362,
         type: 3}
@@ -4654,6 +4659,11 @@ PrefabInstance:
       propertyPath: controlledTransform
       value: 
       objectReference: {fileID: 1246321766}
+    - target: {fileID: 813293341018484666, guid: 74e1cb13bf9ded94c8b0bb5907c4c362,
+        type: 3}
+      propertyPath: leverDesiredState
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 813293341018484667, guid: 74e1cb13bf9ded94c8b0bb5907c4c362,
         type: 3}
       propertyPath: m_Name
