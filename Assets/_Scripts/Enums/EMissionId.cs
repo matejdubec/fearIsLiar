@@ -6,4 +6,5 @@ public enum EMissionId
 	Skyscrapers_Orbs,
 	ClosingIn_Room,
     NoMission,
+    Hospital_Keys,
 }
