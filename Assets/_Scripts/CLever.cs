@@ -18,7 +18,6 @@ public class CLever : CEmitable
     private ELeverState leverCurrentState;
     private bool isActive = false;
     private CMissionTaskLevers taskLevers;
-    private float targetAngle = 0f;
 
     Vector3 topOriginPosition;
 
