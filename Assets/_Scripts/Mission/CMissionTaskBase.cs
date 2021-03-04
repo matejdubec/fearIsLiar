@@ -9,6 +9,8 @@ public abstract class CMissionTaskBase : MonoBehaviour
 
     [SerializeField] private float markerOffsetY = 0.0f;
     public float MarkerOffsetY { get { return markerOffsetY; } }
+    [SerializeField] private bool showMarker = true;
+    public bool ShowMarker { get { return showMarker; } }
 
     [SerializeField] private Animator animator = null;
     [SerializeField] private string animatorString = "";

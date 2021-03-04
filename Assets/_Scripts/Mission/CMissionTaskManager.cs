@@ -63,12 +63,12 @@ public class CMissionTaskManager : MonoBehaviour
             currentTask.Activate();
 
             Vector3 markerPos = new Vector3(
-                currentTask.transform.position.x, 
-                currentTask.transform.position.y + currentTask.MarkerOffsetY, 
+                currentTask.transform.position.x,
+                currentTask.transform.position.y + currentTask.MarkerOffsetY,
                 currentTask.transform.position.z
                 );
-            marker.SetPosition(markerPos);
-            marker.HintText.SetText(currentTask.LocalizationIndentificator);
+
+            marker.SetMarkerOnTask(currentTask.ShowMarker, markerPos, currentTask.LocalizationIndentificator);
         }
         else
         {

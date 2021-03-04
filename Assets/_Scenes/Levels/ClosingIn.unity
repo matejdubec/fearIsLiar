@@ -1969,6 +1969,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   localizationIndentificator: 
   markerOffsetY: 0
+  showMarker: 0
   animator: {fileID: 0}
   animatorString: 
   audioSource: {fileID: 193462904}
@@ -2543,6 +2544,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   localizationIndentificator: 
   markerOffsetY: 0
+  showMarker: 1
   animator: {fileID: 0}
   animatorString: 
   audioSource: {fileID: 0}
@@ -2787,6 +2789,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   localizationIndentificator: 
   markerOffsetY: 0
+  showMarker: 0
   animator: {fileID: 234076072}
   animatorString: Open
   audioSource: {fileID: 193462904}
@@ -4456,6 +4459,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   localizationIndentificator: 
   markerOffsetY: 0
+  showMarker: 0
   animator: {fileID: 0}
   animatorString: 
   audioSource: {fileID: 193462904}

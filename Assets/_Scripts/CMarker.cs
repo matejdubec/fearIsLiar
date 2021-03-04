@@ -7,19 +7,35 @@ using Valve.VR;
 public class CMarker : MonoBehaviour
 {
     [SerializeField] private CLocalizationIndentificator hintText;
-    public CLocalizationIndentificator HintText { get { return hintText; } }
+    private Transform head = SteamVR_Render.Top().camera.transform;
 
-    public void SetPosition(Vector3 position)
-    {
-        transform.position = position;
+    private void Update()
+	{
+        this.SetRotation();
+	}
 
-        var head = SteamVR_Render.Top().camera.transform;
+    private void SetRotation()
+	{
         if (head)
         {
             transform.LookAt(head.transform);
             transform.Rotate(Vector3.forward, 0.0);
-            transform.Rotate(new Vector3(1,0,0), 0.0);
+            transform.Rotate(new Vector3(1, 0, 0), 0.0);
         }
     }
+
+    public void SetMarkerOnTask(bool _active, Vector3 _position, string _localizationId)
+	{
+        if(this.gameObject.activeSelf != _active)
+		{
+            this.gameObject.SetActive(_active);
+        }
+
+        if(this.gameObject.activeSelf)
+		{
+            transform.position = _position;
+            hintText.SetText(_localizationId);
+		}
+	}
 }
  
