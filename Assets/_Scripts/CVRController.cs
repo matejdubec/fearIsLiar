@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Valve.VR;
+using UnityEngine.SceneManagement;
 
 public class CVRController : MonoBehaviour
 {
@@ -48,6 +49,7 @@ public class CVRController : MonoBehaviour
     {
         cameraRig = SteamVR_Render.Top().origin;
         head = SteamVR_Render.Top().head;
+        pointer.Refresh();
     }
 
     // Update is called once per frame
@@ -144,10 +146,11 @@ public class CVRController : MonoBehaviour
             hintCanvas.gameObject.SetActive(!isVisible);
         }
 
-        if (GrabGripPress.GetStateDown(SteamVR_Input_Sources.RightHand))
+        if (GrabGripPress.GetStateDown(SteamVR_Input_Sources.RightHand) && SceneManager.GetActiveScene().name != ESceneId.MainMenu.ToString())
         {
             bool isVisible = returnToMenuCanvas.gameObject.activeSelf;
             returnToMenuCanvas.Activate(!isVisible);
+            pointer.Activate(isVisible);
         }
     }
 

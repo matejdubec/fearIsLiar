@@ -56,10 +56,12 @@ public class CGameManager : CSingleton<CGameManager>
         if(levelToLoad.MissionId == EMissionId.NoMission)
         {
             loadinator.levelName = ESceneId.MainMenu.ToString();
+            player.Pointer.Activate(true);
         }
         else
         {
             loadinator.levelName = levelToLoad.SceneId.ToString();
+            player.Pointer.Activate(false);
         }
 
         loadinator.Trigger();
@@ -77,8 +79,7 @@ public class CGameManager : CSingleton<CGameManager>
         levelManager = FindObjectOfType<CLevelManager>();
         levelManager.Init();
         levelManager.SpawnPlayer(player);
-        this.Player.Refresh();
-        this.Player.Pointer.Refresh();
+        this.player.Refresh();
 
         GameObject initiator = Instantiate(loadinatorPrefab.gameObject, this.transform);
         loadinator = initiator.GetComponent<SteamVR_LoadLevel>();

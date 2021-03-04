@@ -7,32 +7,22 @@ using Valve.VR;
 public class CBackToMenuCanvasController : MonoBehaviour
 {
     [SerializeField] private Button button;
-    [SerializeField] private CLocalizationIndentificator buttonText;
     private float spawnDistance = 5f;
-
-    public delegate void ButtonAction();
 
     public void Activate(bool state)
     {
         if (state)
         {
             UpdatePosition();
+            button.onClick.AddListener(() => { CGameManager.Instance.ReturnToMenu(); });
+        }
+        else
+        {
+            button.onClick.RemoveAllListeners();
         }
 
-        this.gameObject.SetActive(state);
+        this.gameObject.SetActive(state);      
     }
-
-    public void SetButtonText(string identificator)
-    {
-        buttonText.SetText(identificator);
-    }
-
-    public void SetButtonAction(ButtonAction buttonAction)
-    {
-        button.onClick.RemoveAllListeners();
-        button.onClick.AddListener(() => { buttonAction(); });
-    }
-
 
     private void UpdatePosition()
     {

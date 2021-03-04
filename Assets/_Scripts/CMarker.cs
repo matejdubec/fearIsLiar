@@ -7,9 +7,13 @@ using Valve.VR;
 public class CMarker : MonoBehaviour
 {
     [SerializeField] private CLocalizationIndentificator hintText;
-    private Transform head = SteamVR_Render.Top().camera.transform;
+    private Transform head;
+	private void Start()
+	{
+        head = SteamVR_Render.Top().camera.transform;
+    }
 
-    private void Update()
+	private void Update()
 	{
         this.SetRotation();
 	}

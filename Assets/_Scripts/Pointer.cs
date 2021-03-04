@@ -73,4 +73,9 @@ public class Pointer : MonoBehaviour
         m_InputModule = EventSystem.current.gameObject.GetComponent<VRInputModule>();
         m_InputModule.SetPointer(this);
     }
+
+	public void Activate(bool _activate)
+	{
+		this.gameObject.SetActive(_activate);
+	}
 }
