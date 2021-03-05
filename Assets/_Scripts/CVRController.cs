@@ -150,7 +150,7 @@ public class CVRController : MonoBehaviour
         {
             bool isVisible = returnToMenuCanvas.gameObject.activeSelf;
             returnToMenuCanvas.Activate(!isVisible);
-            pointer.Activate(isVisible);
+            pointer.Activate(!isVisible);
         }
     }
 

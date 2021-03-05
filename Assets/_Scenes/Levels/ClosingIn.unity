@@ -3429,11 +3429,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 813293341018484666, guid: 74e1cb13bf9ded94c8b0bb5907c4c362,
         type: 3}
-      propertyPath: controlledTransform
-      value: 
-      objectReference: {fileID: 1543088764}
-    - target: {fileID: 813293341018484666, guid: 74e1cb13bf9ded94c8b0bb5907c4c362,
-        type: 3}
       propertyPath: leverDesiredState
       value: 1
       objectReference: {fileID: 0}
@@ -3462,12 +3457,6 @@ PrefabInstance:
 --- !u!4 &1543088763 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 813293341018484644, guid: 74e1cb13bf9ded94c8b0bb5907c4c362,
-    type: 3}
-  m_PrefabInstance: {fileID: 1543088762}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1543088764 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 813293342457418609, guid: 74e1cb13bf9ded94c8b0bb5907c4c362,
     type: 3}
   m_PrefabInstance: {fileID: 1543088762}
   m_PrefabAsset: {fileID: 0}

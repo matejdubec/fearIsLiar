@@ -15,6 +15,8 @@ public abstract class CMissionTaskBase : MonoBehaviour
     [SerializeField] private Animator animator = null;
     [SerializeField] private string animatorString = "";
     [SerializeField] private AudioSource audioSource = null;
+    [SerializeField] private List<GameObject> showObjectsOnActive;
+    [SerializeField] private List<GameObject> HideObjectsOnActive;
 
     protected bool isCurrent = false;
 
@@ -40,16 +42,29 @@ public abstract class CMissionTaskBase : MonoBehaviour
     public virtual void Init(CMissionTaskManager _missionManager)
     {
         this.missionManager = _missionManager;
+
+        foreach (GameObject go in showObjectsOnActive)
+        {
+            go.SetActive(false);
+        }
     }
 
     public virtual void Activate()
     {
         isCurrent = true;
         this.gameObject.SetActive(true);
+        foreach(GameObject go in showObjectsOnActive)
+        {
+            go.SetActive(true);
+        }
     }
 
     public virtual void Deactivate()
     {
+        foreach (GameObject go in showObjectsOnActive)
+        {
+            go.SetActive(false);
+        }
         this.gameObject.SetActive(false);
     }
 }

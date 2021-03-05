@@ -7311,6 +7311,7 @@ GameObject:
   - component: {fileID: -2105461695374124656}
   - component: {fileID: 8450026240885526634}
   - component: {fileID: 8477362647610149848}
+  - component: {fileID: 2721105234602246752}
   m_Layer: 0
   m_Name: TifannyKey
   m_TagString: Interactable
@@ -7372,6 +7373,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8d12d1c0071ea4af789df36683c2e764, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2721105234602246752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5558846044494225464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15eedc914eaff9b4094071b398cd6eca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &5567528190124889326
