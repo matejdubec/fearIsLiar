@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Valve.VR;
 
-public class CustomHand : MonoBehaviour
+public class CCustomHand : MonoBehaviour
 {
     [SerializeField]
     private SteamVR_Action_Boolean grabAction = null;
@@ -14,8 +14,8 @@ public class CustomHand : MonoBehaviour
     private SteamVR_Behaviour_Pose pose = null;
     private FixedJoint joint = null;
 
-	public Interactable CurrentInteractable { get; set; } = null;
-	private List<Interactable> contactInteractables = new List<Interactable>();
+	public CInteractable CurrentInteractable { get; set; } = null;
+	private List<CInteractable> contactInteractables = new List<CInteractable>();
 
     private Slot slot;
 
@@ -60,7 +60,7 @@ public class CustomHand : MonoBehaviour
             return;
         }
 
-        contactInteractables.Add(other.gameObject.GetComponent<Interactable>());
+        contactInteractables.Add(other.gameObject.GetComponent<CInteractable>());
 
         slot = other.gameObject.GetComponent<Slot>();        
     }
@@ -72,7 +72,7 @@ public class CustomHand : MonoBehaviour
             return;
         }
 
-        contactInteractables.Remove(other.gameObject.GetComponent<Interactable>());
+        contactInteractables.Remove(other.gameObject.GetComponent<CInteractable>());
 
         if (slot)
         {
@@ -97,7 +97,7 @@ public class CustomHand : MonoBehaviour
         CurrentInteractable.AttachToHand(this);
     }
 
-    public void PickUp(Interactable interactable)
+    public void PickUp(CInteractable interactable)
     {
         CurrentInteractable = interactable;
 
@@ -135,13 +135,13 @@ public class CustomHand : MonoBehaviour
         }
     }
 
-    private Interactable GetNearestInteractable()
+    private CInteractable GetNearestInteractable()
     {
-        Interactable nearest = null;
+        CInteractable nearest = null;
         float minDistance = float.MaxValue;
         float distance = 0.0f;
 
-        foreach(Interactable interactable in contactInteractables)
+        foreach(CInteractable interactable in contactInteractables)
         {
             distance = (interactable.transform.position - this.transform.position).sqrMagnitude;
 

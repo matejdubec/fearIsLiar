@@ -5,7 +5,7 @@ using UnityEngine;
 public class CDoor : MonoBehaviour
 {
 
-    [SerializeField] private Interactable top;
+    [SerializeField] private CInteractable top;
     [SerializeField] private Transform controlledTransform;
     private Vector3 leverBaseForward;
     private Vector3 topOriginPosition;
@@ -29,7 +29,7 @@ public class CDoor : MonoBehaviour
             return;
         }
 
-        if (top.ActiveHand && other.GetComponent<CustomHand>() == top.ActiveHand)
+        if (top.ActiveHand && other.GetComponent<CCustomHand>() == top.ActiveHand)
         {
             // Zaklad co sme robili
             Vector3 leverDirection = (top.transform.position - controlledTransform.position).normalized;

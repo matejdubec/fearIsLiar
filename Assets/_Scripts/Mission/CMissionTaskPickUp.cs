@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Interactable))]
+[RequireComponent(typeof(CInteractable))]
 public class CMissionTaskPickUp : CMissionTaskBase
 {
-    private Interactable interactable = null;
+    private CInteractable interactable = null;
 
     public override void Init(CMissionTaskManager _missionManager)
     {
         base.Init(_missionManager);
-        interactable = GetComponent<Interactable>();
+        interactable = GetComponent<CInteractable>();
     }
 
     private void Update()

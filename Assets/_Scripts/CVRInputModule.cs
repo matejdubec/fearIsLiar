@@ -7,10 +7,10 @@ using Valve.VR;
 
 // https://www.youtube.com/watch?v=vNqHRD4sqPc
 
-public class VRInputModule : BaseInputModule
+public class CVRInputModule : BaseInputModule
 {
 	[SerializeField]
-	private Pointer pointer = null;
+	private CPointer pointer = null;
     [SerializeField] private Canvas[] canvases;
 
     public SteamVR_Input_Sources m_TargetSource;
@@ -23,7 +23,7 @@ public class VRInputModule : BaseInputModule
 
 	}
 
-    public void SetPointer(Pointer _pointer)
+    public void SetPointer(CPointer _pointer)
     {
         pointer = _pointer;
         Data = new PointerEventData(eventSystem);

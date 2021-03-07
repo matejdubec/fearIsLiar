@@ -5,13 +5,13 @@ using UnityEngine;
 public class CKey : MonoBehaviour
 {
     private CMissionTaskKey taskKey;
-    private Interactable interactable;
+    private CInteractable interactable;
     private bool isActive = false;
 
     public void Init(CMissionTaskKey _taskKey)
     {
         taskKey = _taskKey;
-        interactable = GetComponent<Interactable>();
+        interactable = GetComponent<CInteractable>();
     }
 
     private void Update()

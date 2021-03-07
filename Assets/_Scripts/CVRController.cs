@@ -13,8 +13,8 @@ public class CVRController : MonoBehaviour
 
     [SerializeField] private Animator animator;
     [SerializeField] private CBackToMenuCanvasController returnToMenuCanvas;
-    [SerializeField] private Pointer pointer;
-    public Pointer Pointer { get { return pointer; } }
+    [SerializeField] private CPointer pointer;
+    public CPointer Pointer { get { return pointer; } }
 
     [SerializeField] private SteamVR_Action_Boolean movePress = null;
     [SerializeField] private SteamVR_Action_Boolean GrabGripPress = null;
@@ -24,7 +24,7 @@ public class CVRController : MonoBehaviour
 
     [SerializeField] private float snapAngle = 45f;
 
-    [SerializeField] private CustomHand rightHand, leftHand = null;
+    [SerializeField] private CCustomHand rightHand, leftHand = null;
     [SerializeField] private GameObject flashlight = null;
 
     private float currentSpeed = 0.0f;

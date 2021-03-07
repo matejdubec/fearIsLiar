@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using Valve.VR;
 
-public class Slot : Interactable
+public class Slot : CInteractable
 {
-	private Interactable storedObject = null;
+	private CInteractable storedObject = null;
 	private FixedJoint joint = null;
 	private Vector3 minimazeFactor = new Vector3( 0.5f, 0.5f, 0.5f);
 
@@ -14,7 +14,7 @@ public class Slot : Interactable
 		joint = GetComponent<FixedJoint>();
 	}
 
-    public void ReleaseObject(CustomHand hand)
+    public void ReleaseObject(CCustomHand hand)
 	{
 		if (hand)
 		{
@@ -33,7 +33,7 @@ public class Slot : Interactable
 		}
 	}
 
-	public void AttachObject(CustomHand hand)
+	public void AttachObject(CCustomHand hand)
 	{
 		if (hand)
 		{

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Pointer : MonoBehaviour
+public class CPointer : MonoBehaviour
 {
 	[SerializeField]
 	private float m_DefaultLength = 5.0f;
@@ -14,7 +14,7 @@ public class Pointer : MonoBehaviour
     [SerializeField] private Camera _camera;
     public Camera Camera { get { return _camera; } }
 
-	private VRInputModule m_InputModule;
+	private CVRInputModule m_InputModule;
 	private LineRenderer m_LineRenderer = null;
 
     public void Init()
@@ -70,7 +70,7 @@ public class Pointer : MonoBehaviour
 
     public void Refresh()
     {
-        m_InputModule = EventSystem.current.gameObject.GetComponent<VRInputModule>();
+        m_InputModule = EventSystem.current.gameObject.GetComponent<CVRInputModule>();
         m_InputModule.SetPointer(this);
     }
 

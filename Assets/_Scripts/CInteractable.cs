@@ -5,13 +5,13 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(Rigidbody))]
-public class Interactable : MonoBehaviour
+public class CInteractable : MonoBehaviour
 {
-    public CustomHand ActiveHand { get; private set; } = null;
+    public CCustomHand ActiveHand { get; private set; } = null;
 
     public bool IsInteractable { get; set; } = true;
 
-    public void AttachToHand(CustomHand hand)
+    public void AttachToHand(CCustomHand hand)
     {
         if(IsInteractable)
         {

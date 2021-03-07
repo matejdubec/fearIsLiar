@@ -12,7 +12,7 @@ public enum ELeverState
 
 public class CLever : CEmitable
 {
-    [SerializeField] private Interactable top;
+    [SerializeField] private CInteractable top;
     [SerializeField] private Transform controlledTransform;
     [SerializeField] private ELeverState leverDesiredState;
     private ELeverState leverCurrentState;
@@ -53,7 +53,7 @@ public class CLever : CEmitable
             return;
         }
 
-        if (top.ActiveHand && other.GetComponent<CustomHand>() == top.ActiveHand)
+        if (top.ActiveHand && other.GetComponent<CCustomHand>() == top.ActiveHand)
         {
             // Zaklad co sme robili
             Vector3 leverDirection = (top.transform.position - controlledTransform.position).normalized;
