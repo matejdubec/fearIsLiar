@@ -8,6 +8,9 @@ public class CustomHand : MonoBehaviour
     [SerializeField]
     private SteamVR_Action_Boolean grabAction = null;
 
+    [SerializeField] private GameObject handModel = null;
+    private GameObject flashlight = null;
+
     private SteamVR_Behaviour_Pose pose = null;
     private FixedJoint joint = null;
 
@@ -151,4 +154,17 @@ public class CustomHand : MonoBehaviour
 
         return nearest;
     }
+
+    public void ShowFlashlight(GameObject _flashlightModel, bool _show)
+	{
+        flashlight = _flashlightModel;
+        if(flashlight && _show)
+		{
+            flashlight.transform.SetParent(this.transform);
+            flashlight.transform.position = handModel.transform.position;
+            flashlight.transform.rotation = handModel.transform.rotation;
+            handModel.SetActive(!_show);
+            flashlight.SetActive(_show);           
+		}
+	}
 }

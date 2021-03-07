@@ -19,9 +19,10 @@ public class CMissionController : MonoBehaviour
         missionsDictionary = missionsList.ToDictionary(x => x.MissionId, x => x);
     }
 
-    public void MissionCompleted(bool _missionCompletedSuccessfully)
+    public void MissionCompleted(bool _missionCompletedSuccessfully, float _completionTime)
     {
         missionCompletedSuccessfully = _missionCompletedSuccessfully;
+        activeMission.TimeOfCompletion = _completionTime;
         activeMission = missionsDictionary[EMissionId.NoMission];
     }
 }

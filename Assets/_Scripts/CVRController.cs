@@ -9,28 +9,27 @@ public class CVRController : MonoBehaviour
     private float gravity = 9.81f;
     private float fallingVelocity = 0.0f;
     public float accelaration = 0.1f;
-    public float maxSpeed = 1.0f;
+    public float maxSpeed = 2.0f;
 
-    [SerializeField]
-    private Animator animator;
-    [SerializeField] private Canvas hintCanvas;
-
+    [SerializeField] private Animator animator;
     [SerializeField] private CBackToMenuCanvasController returnToMenuCanvas;
     [SerializeField] private Pointer pointer;
     public Pointer Pointer { get { return pointer; } }
 
-    public SteamVR_Action_Boolean movePress = null;
-    public SteamVR_Action_Boolean GrabGripPress = null;
-    public SteamVR_Action_Boolean leftTrackpadButtonPress = null;
-    public SteamVR_Action_Boolean rightTrackpadButtonPress = null;
-    public SteamVR_Action_Vector2 touchPad = null;
+    [SerializeField] private SteamVR_Action_Boolean movePress = null;
+    [SerializeField] private SteamVR_Action_Boolean GrabGripPress = null;
+    [SerializeField] private SteamVR_Action_Boolean leftTrackpadButtonPress = null;
+    [SerializeField] private SteamVR_Action_Boolean rightTrackpadButtonPress = null;
+    [SerializeField] private SteamVR_Action_Vector2 touchPad = null;
 
     [SerializeField] private float snapAngle = 45f;
+
+    [SerializeField] private CustomHand rightHand, leftHand = null;
+    [SerializeField] private GameObject flashlight = null;
 
     private float currentSpeed = 0.0f;
 
     private CharacterController characterController = null;
-    private Transform cameraRig = null;
     private Transform head = null;
 
     private void Awake()
@@ -47,7 +46,6 @@ public class CVRController : MonoBehaviour
 
     public void Refresh()
     {
-        cameraRig = SteamVR_Render.Top().origin;
         head = SteamVR_Render.Top().head;
         pointer.Refresh();
     }
@@ -140,12 +138,6 @@ public class CVRController : MonoBehaviour
 
     private void HandleGrabGrip()
 	{
-        if (GrabGripPress.GetStateDown(SteamVR_Input_Sources.LeftHand))
-        {
-            bool isVisible = hintCanvas.gameObject.activeSelf;
-            hintCanvas.gameObject.SetActive(!isVisible);
-        }
-
         if (GrabGripPress.GetStateDown(SteamVR_Input_Sources.RightHand) && SceneManager.GetActiveScene().name != ESceneId.MainMenu.ToString())
         {
             bool isVisible = returnToMenuCanvas.gameObject.activeSelf;
@@ -154,13 +146,31 @@ public class CVRController : MonoBehaviour
         }
     }
 
-	private void OnDestroy()
-	{
-		//TODO mozno urobi input cez eventy ako v CHandAnimator
-	}
-
     public void SetPosition(Vector3 newPosition)
 	{
         this.transform.position = newPosition;
+    }
+
+    public void ShowFlashlight(bool _show, string _hand)
+	{
+        if(!flashlight)
+		{
+            GameObject temp = Instantiate(flashlight, this.transform);
+            flashlight = temp;
+        }
+
+        if(_hand == "left")
+		{
+            leftHand.ShowFlashlight(flashlight, _show);
+		}
+        else if (_hand == "right")
+        {
+            rightHand.ShowFlashlight(flashlight, _show);
+        }
+        else if (_hand == "both")
+        {
+            leftHand.ShowFlashlight(flashlight, _show);
+            rightHand.ShowFlashlight(flashlight, _show);
+        }
     }
 }

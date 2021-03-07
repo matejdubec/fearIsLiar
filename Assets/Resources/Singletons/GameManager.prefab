@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 569726037020029107}
   - component: {fileID: -199629619353287442}
   - component: {fileID: 1916477009507520709}
+  - component: {fileID: 2211790775883549122}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -45,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20de754a4b3d1504d858e20f96d2f3d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioManager: {fileID: 2211790775883549122}
   languageManager: {fileID: -199629619353287442}
   missionController: {fileID: 1916477009507520709}
   loadinatorPrefab: {fileID: 1017842553284259799, guid: c2223ef38371cac4198b5fe7c5047c1f,
@@ -80,3 +82,20 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4bfe540bae22b9c4dbf5092d1310e4d3, type: 2}
   - {fileID: 11400000, guid: 593e45289f08d1245b0c87301d656245, type: 2}
   - {fileID: 11400000, guid: 3bb35d1a089d250489ec8e417c68e72a, type: 2}
+--- !u!114 &2211790775883549122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8346568372699370197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc7d6573e8d943f468650c511723e809, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: MovingWall
+    clip: {fileID: 8300000, guid: c769cb53d14c57848a1f3909da908bd8, type: 3}
+    volume: 0.5
+    loop: 1

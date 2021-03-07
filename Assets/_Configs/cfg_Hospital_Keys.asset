@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MissionId: 5
   SceneId: 5
-  Description: Level.ClosingIn.Description
+  Description: Level.Hospital.Description
   PhobiaId: 6
   TimeOfCompletion: 0
   Icon: {fileID: 21300000, guid: 74337711d03a44752abe4e157f3f58ed, type: 3}

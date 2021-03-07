@@ -27,9 +27,9 @@ public abstract class CLevelManager : MonoBehaviour
         }
     }
 
-    public virtual void MissionCompleted(bool _missionCompletedSuccessfully)
+    public virtual void MissionCompleted(bool _missionCompletedSuccessfully, float _completionTime = 0.0f)
     {
-        CGameManager.Instance.MissionController.MissionCompleted(_missionCompletedSuccessfully);
+        CGameManager.Instance.MissionController.MissionCompleted(_missionCompletedSuccessfully, _completionTime);
         CGameManager.Instance.ReturnToMenu();
     }
 

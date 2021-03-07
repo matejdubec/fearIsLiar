@@ -20,7 +20,18 @@ public class CMissionTaskManager : MonoBehaviour
     private bool completionState = false;
     public bool IsSuccessfullyDone { get { return completionState; } }
 
-    public void Init(CLevelManager mManager)
+    private float completionTime = 0.0f;
+    private bool missionActive = false;
+
+	private void Update()
+	{
+		if(missionActive)
+		{
+            completionTime += Time.deltaTime;
+		}
+	}
+
+	public void Init(CLevelManager mManager)
 	{
         levelManager = mManager;
         DeactivateOnMissionStart();
@@ -52,6 +63,7 @@ public class CMissionTaskManager : MonoBehaviour
 
 	public void StartMission()
     {
+        missionActive = true;
         NextTask();
     }
 
@@ -84,10 +96,11 @@ public class CMissionTaskManager : MonoBehaviour
 
     private void MissionCompleted()
     {
+        missionActive = false;
         completionState = true;
         ActivateOnMissionComplete();
         marker.gameObject.SetActive(false);
-        levelManager.MissionCompleted(completionState);
+        levelManager.MissionCompleted(completionState, completionTime);
 
         this.gameObject.SetActive(false);
     }

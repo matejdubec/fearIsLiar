@@ -7,7 +7,8 @@ using Valve.VR;
 [CSingleton("Singletons/GameManager", true)]
 public class CGameManager : CSingleton<CGameManager>
 {
-
+    [SerializeField] private CAudioManager audioManager;
+    public CAudioManager AudioManager { get { return audioManager; } }
     [SerializeField] private CLanguageManager languageManager;
     public CLanguageManager LanguageManager { get { return languageManager; } }
     [SerializeField] private CMissionController missionController;
@@ -22,7 +23,8 @@ public class CGameManager : CSingleton<CGameManager>
     protected override void Init()
     {
         base.Init();
-        
+
+        audioManager.Init();
         languageManager.Init();
         missionController.Init();
 

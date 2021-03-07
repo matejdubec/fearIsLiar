@@ -6,7 +6,8 @@ Phobia.Arachnophobia:Arachnophobia
 Phobia.Arachnophobia.Fact.1:Arachnophobia is an intense and irrational fear of spiders and other arachnids.
 Phobia.Claustrophobia:Claustrophobia
 Phobia.Claustrophobia.Fact.1:Claustrophobia is a situational phobia triggered by an irrational and intense fear of tight or crowded spaces.
-Level.ClosingIn.Description:Level is not finished yet.
+Level.ClosingIn.Description:Escape the room by solving clues before it's too late.
+Level.Hospital.Description:Lights are out and flashlight is your only friend in the dark.Find all keys to get out of psychiatric hospital.
 Level.Skyscrapers.Description:Walk on the plank between skycrapers and collect all orbs without shitting yourself.
 Level.Skyscrapers.Description.InGame:Welcome! You are on the roof of the Skyscrapper. To finish this level collect green orbs.
 Level.Skyscrapers:Skyscrapers
@@ -17,9 +18,9 @@ DefaultText.BackToMenu:Back to menu
 DefaultText.Close:Close
 Level.MainMenu:MainMenu
 Level.MainMenu.Fact.Header:Fact
-Level.MainMenu.Fact.Description:Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce magna libero, venenatis ac dapibus et, rhoncus eget nulla
+Level.MainMenu.Fact.Description:Filter phobias to show phobia description
 Level.MainMenu.About.Header:About
-Level.MainMenu.About.Description:Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce magna libero, venenatis ac dapibus et, rhoncus eget nulla
+Level.MainMenu.About.Description:This game was made as my diploma thesis during studies at Menndel Univerzity in Brno.
 Level.MainMenu.Settings.Graphics:Graphics
 Level.MainMenu.Settings.Graphics.Low:Low
 Level.MainMenu.Settings.Graphics.Medium:Medium
@@ -33,3 +34,4 @@ Level.MainMenu.Tutorial.PressTriggerToPickUpBox:Pick up the green box using a tr
 Level.MainMenu.Tutorial.PlaceGreenBoxOnBlueBox:Place the green box on the blue one
 Level.MainMenu.Tutorial.Completed:Tutorial completed!!
 Level.ClosinIn.Description.InGame:You are trapped!! Walls are closing in. Escape before they'll crush you to death.
+Level.Hospital.Description.InGame:Well, you are in an abanoned psychiatric hospital. Lights are out, your only friend is your flashlight. Collect all keys to get out. First key is behind you on director's desk.
