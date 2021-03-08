@@ -44,6 +44,7 @@ public class CAudioManager : MonoBehaviour
         foreach(Sound sound in sounds)
         {
             GameObject temp = new GameObject($"Sound_{sound.name}");
+            temp.transform.SetParent(this.transform);
             sound.SetSource(temp.AddComponent<AudioSource>());
         }
     }

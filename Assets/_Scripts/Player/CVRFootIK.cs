@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class VRFootIK : MonoBehaviour
+public class CVRFootIK : MonoBehaviour
 {
     private Animator animator;
     [SerializeField]
@@ -20,6 +20,8 @@ public class VRFootIK : MonoBehaviour
     [Range(0, 1)]
     private float leftFootRotWeight = 1;
 
+    [SerializeField] private LayerMask layerMask;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,7 +33,7 @@ public class VRFootIK : MonoBehaviour
         Vector3 rightFootPos = animator.GetIKPosition(AvatarIKGoal.RightFoot);
         RaycastHit hit;
 
-        bool hasHit = Physics.Raycast(rightFootPos + Vector3.up, Vector3.down, out hit, LayerMask.GetMask("Player"));
+        bool hasHit = Physics.Raycast(rightFootPos + Vector3.up, Vector3.down, out hit, layerMask);
 		if (hasHit)
 		{
             animator.SetIKPositionWeight(AvatarIKGoal.RightFoot, rightFootPosWeight);
@@ -48,7 +50,7 @@ public class VRFootIK : MonoBehaviour
 
         Vector3 leftFootPos = animator.GetIKPosition(AvatarIKGoal.LeftFoot);
 
-        hasHit = Physics.Raycast(leftFootPos + Vector3.up, Vector3.down, out hit, LayerMask.GetMask("Player"));
+        hasHit = Physics.Raycast(leftFootPos + Vector3.up, Vector3.down, out hit, layerMask);
         if (hasHit)
         {
             animator.SetIKPositionWeight(AvatarIKGoal.LeftFoot, leftFootPosWeight);

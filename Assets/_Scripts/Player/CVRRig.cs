@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class VRMap
+public class CVRMap
 {
     public Transform vrTarget;
     public Transform rigTarget;
@@ -19,10 +19,10 @@ public class VRMap
 
 //https://www.youtube.com/watch?v=tBYl-aSxUe0
 
-public class VRRig : MonoBehaviour
+public class CVRRig : MonoBehaviour
 {
     [SerializeField]
-    private VRMap head;
+    private CVRMap head;
     /*
     [SerializeField]
     private VRMap lefthand;

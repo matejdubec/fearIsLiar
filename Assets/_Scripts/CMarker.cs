@@ -22,7 +22,8 @@ public class CMarker : MonoBehaviour
 	{
         if (head)
         {
-            transform.LookAt(head.transform);
+            Vector3 lookAt = new Vector3(head.position.x, 0, head.position.z);
+            transform.LookAt(lookAt);
             transform.Rotate(Vector3.forward, 0.0);
             transform.Rotate(new Vector3(1, 0, 0), 0.0);
         }
