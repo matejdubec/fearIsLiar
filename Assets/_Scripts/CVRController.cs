@@ -25,7 +25,8 @@ public class CVRController : MonoBehaviour
     [SerializeField] private float snapAngle = 45f;
 
     [SerializeField] private CCustomHand rightHand, leftHand = null;
-    [SerializeField] private GameObject flashlight = null;
+    [SerializeField] private GameObject flashlightPrefab = null;
+    private GameObject flashlight = null;
 
     private float currentSpeed = 0.0f;
 
@@ -155,8 +156,7 @@ public class CVRController : MonoBehaviour
 	{
         if(!flashlight)
 		{
-            GameObject temp = Instantiate(flashlight, this.transform);
-            flashlight = temp;
+            flashlight = Instantiate(flashlightPrefab);
         }
 
         if(_hand == "left")
@@ -165,11 +165,6 @@ public class CVRController : MonoBehaviour
 		}
         else if (_hand == "right")
         {
-            rightHand.ShowFlashlight(flashlight, _show);
-        }
-        else if (_hand == "both")
-        {
-            leftHand.ShowFlashlight(flashlight, _show);
             rightHand.ShowFlashlight(flashlight, _show);
         }
     }
