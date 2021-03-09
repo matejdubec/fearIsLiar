@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CTriggerBase : MonoBehaviour
+public abstract class CTriggerBase : MonoBehaviour
 {
-	[SerializeField] private Animator animator;
-	[SerializeField] private string audioString;
+	[SerializeField] protected Animator animator;
+	[SerializeField] protected string audioString;
+    [SerializeField] protected bool canRepeat = false;
+    protected bool isActive = true;
+
 
 	protected virtual void OnTriggerEnter(Collider other)
 	{
@@ -18,4 +21,10 @@ public class CTriggerBase : MonoBehaviour
 		if (!animator)
 			return;
 	}
+
+    protected virtual void PlaySound()
+    {
+        if (audioString.Length == 0)
+            return;
+    }
 }

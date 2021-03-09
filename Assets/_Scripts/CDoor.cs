@@ -33,6 +33,8 @@ public class CDoor : MonoBehaviour
         {
             // Zaklad co sme robili
             Vector3 leverDirection = (top.transform.position - controlledTransform.position).normalized;
+            leverDirection.y = 0f;
+            leverDirection.Normalize();
             Vector3 handDirection = other.transform.position - controlledTransform.position;
 
             // Projekcia vektoru na rovinu v ktorej sa rotuje
@@ -43,13 +45,14 @@ public class CDoor : MonoBehaviour
             float deltaAngle = Vector3.SignedAngle(leverDirection, transformedHandDirection, controlledTransform.up);
 
             // Rotacia okolo definovanej osy
-            Vector3 transformedLeverDirection = Quaternion.AngleAxis(deltaAngle, controlledTransform.up) * controlledTransform.forward;
+            //Vector3 transformedLeverDirection = Quaternion.AngleAxis(deltaAngle, controlledTransform.up) * controlledTransform.forward;
+            controlledTransform.Rotate(Vector3.up, deltaAngle);
 
             // Ak je mimo 45 stupnov, neaktualizujem
-            if (Vector3.Angle(transformedLeverDirection, leverBaseForward) > 45f)
+            /*if (Vector3.Angle(transformedLeverDirection, leverBaseForward) > 45f)
             {
                 controlledTransform.forward = transformedLeverDirection;
-            }
+            }*/
         }
     }
 }
