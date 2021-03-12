@@ -14,7 +14,7 @@ public class CTriggerShelf : CTriggerBase
             if(isActive != canRepeat)
             {
                 isActive = canRepeat;
-            }          
+            }
         }
     }
 

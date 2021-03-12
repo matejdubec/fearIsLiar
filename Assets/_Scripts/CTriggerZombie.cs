@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CTriggerZombie : CTriggerBase
 {
-    [SerializeField] private CEnemyAgent agent;
+    [SerializeField] private CEnemyAgentBase agent;
 
     protected override void OnTriggerEnter(Collider other)
     {

@@ -4,13 +4,8 @@ using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
-public class CEnemyAgent : MonoBehaviour
+public class CEnemyAgentZombie : CEnemyAgentBase
 {
-    private NavMeshAgent agent = null;
-    private Vector3 destination;
-    private bool isFollowing = false;
-    private Animator animator;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -43,7 +38,7 @@ public class CEnemyAgent : MonoBehaviour
         }
     }
 
-    public void StandUp()
+    public override void StandUp()
     {
         animator.SetBool("stand", true);
         isFollowing = true;

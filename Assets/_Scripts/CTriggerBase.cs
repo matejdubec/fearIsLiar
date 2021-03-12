@@ -12,7 +12,7 @@ public abstract class CTriggerBase : MonoBehaviour
 
 	protected virtual void OnTriggerEnter(Collider other)
 	{
-		if (audioString.Length == 0 || !other.CompareTag("Player"))
+		if (!other.CompareTag("Player"))
 			return;
 	}
 
