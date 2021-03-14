@@ -7,4 +7,5 @@ public enum EMissionId
 	ClosingIn_Room,
     NoMission,
     Hospital_Keys,
+	Room_Escape,
 }

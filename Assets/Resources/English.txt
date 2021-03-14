@@ -8,6 +8,7 @@ Phobia.Claustrophobia:Claustrophobia
 Phobia.Claustrophobia.Fact.1:Claustrophobia is a situational phobia triggered by an irrational and intense fear of tight or crowded spaces.
 Level.ClosingIn.Description:Escape the room by solving clues before it's too late.
 Level.Hospital.Description:Lights are out and flashlight is your only friend in the dark.Find all keys to get out of psychiatric hospital.
+Level.Room.Description:Do you like spiders? Let's find out. It's just you and the room full of spiders.
 Level.Skyscrapers.Description:Walk on the plank between skycrapers and collect all orbs without shitting yourself.
 Level.Skyscrapers.Description.InGame:Welcome! You are on the roof of the Skyscrapper. To finish this level collect green orbs.
 Level.Skyscrapers:Skyscrapers

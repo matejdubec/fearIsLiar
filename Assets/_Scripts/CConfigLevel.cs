@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public enum ESceneId 
 {
-    None = 0, MainMenu = 1, Skyscrapers = 2, ClosingIn = 3, NoLevel = 4, Hospital = 5,
+    None = 0, MainMenu = 1, Skyscrapers = 2, ClosingIn = 3, NoLevel = 4, Hospital = 5, Room = 6,
 }
 
 public enum EPhobiaId

@@ -5,7 +5,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Audio;
 
-public class MainMenuManager : CLevelManager
+public class CMainMenuManager : CLevelManager
 {
     [SerializeField] private AudioMixer audioMixer;
     [SerializeField] private CLevelScrollList scrollList;
