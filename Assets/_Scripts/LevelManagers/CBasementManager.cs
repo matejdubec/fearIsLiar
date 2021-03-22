@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CRoomManager : CLevelManager
+public class CBasementManager : CLevelManager
 {
     public override void Init()
     {
