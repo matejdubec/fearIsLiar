@@ -22,8 +22,8 @@ TagManager:
   - MissionObject
   - HandCollider
   - CollideWithHand
-  - 
-  - 
+  - Interactable
+  - Hand
   - 
   - 
   - 

@@ -9,6 +9,7 @@ public class CDrawer : MonoBehaviour
     [SerializeField] private Transform controlledTransform;
     private Vector3 leverBaseForward;
     private Vector3 topOriginPosition;
+    private Vector3 prevHandPosition = Vector3.zero;
 
     private float offset = 0.0f;
     private Vector3 controlledTransformOriginPosition;
@@ -24,7 +25,7 @@ public class CDrawer : MonoBehaviour
 
     private void Update()
     {
-        //top.transform.localPosition = topOriginPosition;
+        top.transform.localPosition = topOriginPosition;
     }
 
     private void OnTriggerStay(Collider other)
@@ -36,39 +37,25 @@ public class CDrawer : MonoBehaviour
 
         if (top.ActiveHand && other.GetComponent<CCustomHand>() == top.ActiveHand)
         {
+            if (prevHandPosition != Vector3.zero)
+            {
+                //float diff = prevHandPosition.x - other.transform.position.x;
+                //float diff2 = controlledTransform.localPosition.x - diff;
+                //if (diff2 > controlledTransformOriginPosition.x && diff2 < controlledTransformEndPosition.localPosition.x)
+                //{
+                //    //controlledTransform.position = new Vector3(controlledTransform.position.x, controlledTransform.position.y, diff2);
+                //    controlledTransform.Translate(new Vector3(diff2, 0, 0) * (8 * Time.deltaTime));
+                //}
 
-            top.transform.position = new Vector3(0, 0, other.transform.position.z);
-
-            controlledTransform.position = Vector3.Lerp(controlledTransform.position, 
-                new Vector3(controlledTransform.position.x, controlledTransform.position.y, top.transform.position.z - offset), 8 * Time.deltaTime);
-
-            
-            //// Zaklad co sme robili
-            //Vector3 leverDirection = (top.transform.position - controlledTransform.position).normalized;
-            //leverDirection.y = 0f;
-            //leverDirection.Normalize();
-            //Vector3 handDirection = other.transform.position - controlledTransform.position;
-
-            //// Projekcia vektoru na rovinu v ktorej sa rotuje
-            //Vector3 transformedPlaneNormal = Vector3.Dot(controlledTransform.forward, handDirection) * controlledTransform.forward;
-            //Vector3 transformedHandDirection = handDirection - transformedPlaneNormal;
-
-            ////controlledTransform.transform.position = top.
-
-
-            //// Uhol so znamienkom
-            //float deltaAngle = Vector3.SignedAngle(leverDirection, transformedHandDirection, controlledTransform.up);
-
-            //// Rotacia okolo definovanej osy
-            ////Vector3 transformedLeverDirection = Quaternion.AngleAxis(deltaAngle, controlledTransform.up) * controlledTransform.forward;
-            //controlledTransform.Rotate(Vector3.up, deltaAngle);
-
-            //// Ak je mimo 45 stupnov, neaktualizujem
-            ///*if (Vector3.Angle(transformedLeverDirection, leverBaseForward) > 45f)
-            //{
-            //    controlledTransform.forward = transformedLeverDirection;
-            //}*/
-
+                float diff = prevHandPosition.z - other.transform.position.z;
+                float diff2 = controlledTransform.position.z - diff;
+                if (diff2 > controlledTransformOriginPosition.z && diff2 < controlledTransformEndPosition.position.z)
+                {
+                    controlledTransform.position = new Vector3(controlledTransform.position.x, controlledTransform.position.y, diff2);
+                   
+                }
+            }
+            prevHandPosition =  other.transform.position;
         }
     }
 }

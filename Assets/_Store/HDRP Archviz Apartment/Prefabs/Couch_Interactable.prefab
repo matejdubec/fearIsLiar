@@ -114,7 +114,7 @@ GameObject:
   - component: {fileID: 8616923767715747913}
   - component: {fileID: 8366295319717311696}
   - component: {fileID: 3916712393899303391}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: CouchPillow02
   m_TagString: Interactable
   m_Icon: {fileID: 0}
@@ -389,7 +389,7 @@ GameObject:
   - component: {fileID: 6039584688549931307}
   - component: {fileID: 4015216482642668053}
   - component: {fileID: 4852494651414020032}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: CouchPillow01
   m_TagString: Interactable
   m_Icon: {fileID: 0}
@@ -595,7 +595,7 @@ GameObject:
   - component: {fileID: 5840757489903996234}
   - component: {fileID: 2782299250221962394}
   - component: {fileID: 8332381659535009104}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: CouchPillow01
   m_TagString: Interactable
   m_Icon: {fileID: 0}
@@ -720,7 +720,7 @@ GameObject:
   - component: {fileID: 5609980876930991132}
   - component: {fileID: 3962193854635600912}
   - component: {fileID: 1407400315753614053}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: CouchPillow02
   m_TagString: Interactable
   m_Icon: {fileID: 0}
