@@ -9,13 +9,6 @@ public class CEnemyAgentDog : CEnemyAgentBase
     private float distance = 0.0f;
     private int index = 0;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        agent = GetComponent<NavMeshAgent>();
-        animator = GetComponent<Animator>();
-    }
-
     // Update is called once per frame
     void Update()
     {

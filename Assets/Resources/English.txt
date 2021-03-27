@@ -36,3 +36,4 @@ Level.MainMenu.Tutorial.PlaceGreenBoxOnBlueBox:Place the green box on the blue o
 Level.MainMenu.Tutorial.Completed:Tutorial completed!!
 Level.ClosinIn.Description.InGame:You are trapped!! Walls are closing in. Escape before they'll crush you to death.
 Level.Hospital.Description.InGame:Well, you are in an abanoned psychiatric hospital. Lights are out, your only friend is your flashlight. Collect all keys to get out. First key is behind you on director's desk.
+Level.Arachnophobia.Description.InGame:Search the basement and find all keys to get out of this place filled with spiders.

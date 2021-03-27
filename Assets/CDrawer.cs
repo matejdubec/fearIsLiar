@@ -36,14 +36,14 @@ public class CDrawer : MonoBehaviour
         {
             if (prevHandPosition != Vector3.zero)
             {
-                float diff = transform.InverseTransformDirection(other.transform.localPosition - prevHandPosition).x;
+                float diff = transform.InverseTransformDirection(other.transform.position - prevHandPosition).x;
                 float shift = transform.localPosition.x + diff;
                 if (controlledTransformOriginXPosition < shift && shift < controlledTransformEndXPosition)
                 {
                     transform.Translate(Vector3.right * diff);
                 }
             }
-            prevHandPosition =  other.transform.localPosition;
+            prevHandPosition =  other.transform.position;
         }
     }
 }

@@ -13,7 +13,7 @@ public abstract class CEnemyAgentBase : MonoBehaviour
     protected Animator animator;
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
