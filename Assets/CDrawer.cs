@@ -5,7 +5,7 @@ using UnityEngine;
 public class CDrawer : MonoBehaviour
 {
 
-    [SerializeField] private CInteractable top;
+    [SerializeField] private CInteractable handle;
     [SerializeField] private float maxOpenRange = 0.3f;
     private Vector3 topOriginPosition;
     private Vector3 prevHandPosition = Vector3.zero;
@@ -15,14 +15,14 @@ public class CDrawer : MonoBehaviour
 
     private void Awake()
     {
-        topOriginPosition = top.transform.localPosition;
+        topOriginPosition = handle.transform.localPosition;
         controlledTransformOriginXPosition = transform.localPosition.x;
         controlledTransformEndXPosition = controlledTransformOriginXPosition + maxOpenRange;
     }
 
     private void Update()
     {
-        top.transform.localPosition = topOriginPosition;
+        handle.transform.localPosition = topOriginPosition;
     }
 
     private void OnTriggerStay(Collider other)
@@ -32,7 +32,7 @@ public class CDrawer : MonoBehaviour
             return;
         }
 
-        if (top.ActiveHand && other.GetComponent<CCustomHand>() == top.ActiveHand)
+        if (handle.ActiveHand && other.GetComponent<CCustomHand>() == handle.ActiveHand)
         {
             if (prevHandPosition != Vector3.zero)
             {
