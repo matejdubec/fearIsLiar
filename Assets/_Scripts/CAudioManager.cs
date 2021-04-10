@@ -32,6 +32,11 @@ public class Sound
     {
         source.Stop();
     }
+
+    public bool IsPlaying()
+    {
+        return source.isPlaying;
+    }
 }
 
 
@@ -61,6 +66,21 @@ public class CAudioManager : MonoBehaviour
             Debug.LogError($"No sound with name {soundName}");
         }
     }
+
+    public bool IsPlaying(string soundName)
+    {
+        Sound soundToPlay = sounds.Find(x => x.name == soundName);
+        if (soundToPlay != null)
+        {
+            return soundToPlay.IsPlaying();
+        }
+        else
+        {
+            Debug.LogError($"No sound with name {soundName}");
+            return false;
+        }
+    }
+
 
     public void StopSound(string soundName)
     {

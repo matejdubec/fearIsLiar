@@ -155,16 +155,25 @@ public class CCustomHand : MonoBehaviour
         return nearest;
     }
 
-    public void ShowFlashlight(GameObject _flashlightModel, bool _show)
+    public void ShowFlashlight(GameObject _flashlightModel)
 	{
         flashlight = _flashlightModel;
-        if(flashlight && _show)
+        if(flashlight)
 		{
             flashlight.transform.SetParent(this.transform);
             flashlight.transform.position = handModel.transform.position;
             flashlight.transform.rotation = handModel.transform.rotation;
-            handModel.SetActive(!_show);
-            flashlight.SetActive(_show);           
+            handModel.SetActive(false);
+            flashlight.SetActive(true);           
 		}
 	}
+
+    public void HideFlashlight()
+    {
+        if(flashlight)
+        {
+            flashlight.SetActive(false);
+            handModel.SetActive(true);
+        }
+    }
 }

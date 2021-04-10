@@ -18,6 +18,7 @@ Level.Skyscrapers:Skyscrapers
 Level.ClosingIn:ClosingIn
 Level.Hospital:Abandoned Hospital
 Level.Basement:Basement Escape
+Level.Maze:Maze of insanity
 DefaultText.CompletedIn:Completed in
 DefaultText.NoText:NoTextFound
 DefaultText.BackToMenu:Back to menu

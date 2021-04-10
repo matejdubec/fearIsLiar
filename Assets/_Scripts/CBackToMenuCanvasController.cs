@@ -14,6 +14,7 @@ public class CBackToMenuCanvasController : MonoBehaviour
         if (state)
         {
             UpdatePosition();
+            CGameManager.Instance.Player.HideFlashlight();
             button.onClick.AddListener(() => { CGameManager.Instance.ReturnToMenu(); });
         }
         else

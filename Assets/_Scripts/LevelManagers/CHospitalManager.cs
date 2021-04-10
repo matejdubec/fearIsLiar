@@ -11,13 +11,13 @@ public class CHospitalManager : CLevelManager
         if(activeMission)
         {
             activeMission.StartMission();
-            CGameManager.Instance.Player.ShowFlashlight(true, "right");
+            CGameManager.Instance.Player.ShowFlashlight();
         }
     }
 
 	public override void MissionCompleted(bool _missionCompletedSuccessfully, float _completionTime = 0.0f)
 	{
-        CGameManager.Instance.Player.ShowFlashlight(false, "right");
-        base.MissionCompleted(_missionCompletedSuccessfully);      
+        CGameManager.Instance.Player.HideFlashlight();
+        base.MissionCompleted(_missionCompletedSuccessfully);
     }
 }

@@ -96,11 +96,17 @@ public class CVRController : MonoBehaviour
         {
             currentSpeed = 0;
             animator.SetBool("isWalking", false);
+            CGameManager.Instance.AudioManager.StopSound("PlayerRun");
         }          
 
         // if button pressed
         if(movePress.state)
 		{
+            if(!CGameManager.Instance.AudioManager.IsPlaying("PlayerRun"))
+            {
+                CGameManager.Instance.AudioManager.PlaySound("PlayerRun");
+            }
+
             //Add clamp
             currentSpeed += accelaration;
             currentSpeed = Mathf.Clamp(currentSpeed, -maxSpeed, maxSpeed);
@@ -152,20 +158,21 @@ public class CVRController : MonoBehaviour
         this.transform.position = newPosition;
     }
 
-    public void ShowFlashlight(bool _show, string _hand)
+    public void ShowFlashlight()
 	{
         if(!flashlight)
 		{
             flashlight = Instantiate(flashlightPrefab);
         }
 
-        if(_hand == "left")
-		{
-            leftHand.ShowFlashlight(flashlight, _show);
-		}
-        else if (_hand == "right")
+        rightHand.ShowFlashlight(flashlight);
+    }
+
+    public void HideFlashlight()
+    {
+        if (flashlight)
         {
-            rightHand.ShowFlashlight(flashlight, _show);
-        }
+            rightHand.HideFlashlight();
+        }      
     }
 }
