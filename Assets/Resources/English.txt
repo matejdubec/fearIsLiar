@@ -1,11 +1,14 @@
 Phobia.Acrophobia.Fact.1:Acrophobia describes an intense fear of heights that can cause significant anxiety and panic. 
 Phobia.Acrophobia:Acrophobia
-Phobia.Achluophobia:Achluophobia
-Phobia.Achluophobia.Fact.1:A fear of the dark does not always concern darkness itself. It can also be a fear of possible or imagined dangers concealed by darkness.
+Phobia.Nyctophobia:Nyctophobia
+Phobia.Nyctophobia.Fact.1:A fear of the dark does not always concern darkness itself. It can also be a fear of possible or imagined dangers concealed by darkness.
 Phobia.Arachnophobia:Arachnophobia
 Phobia.Arachnophobia.Fact.1:Arachnophobia is an intense and irrational fear of spiders and other arachnids.
 Phobia.Claustrophobia:Claustrophobia
 Phobia.Claustrophobia.Fact.1:Claustrophobia is a situational phobia triggered by an irrational and intense fear of tight or crowded spaces.
+Phobia.Cleithrophobia:Cleithrophobia
+Phobia.Cleithrophobia.Fact.1:Also known as Cleisiophobia is the fear of being trapped, locked in, or unable to leave.
+Level.Cleithrophobia.Description:Find the way out of the bush maze. 
 Level.ClosingIn.Description:Escape the room by solving clues before it's too late.
 Level.Hospital.Description:Lights are out and flashlight is your only friend in the dark.Find all keys to get out of psychiatric hospital.
 Level.Room.Description:Do you like spiders? Let's find out. It's just you and the room full of spiders.
@@ -13,6 +16,8 @@ Level.Skyscrapers.Description:Walk on the plank between skycrapers and collect a
 Level.Skyscrapers.Description.InGame:Welcome! You are on the roof of the Skyscrapper. To finish this level collect green orbs.
 Level.Skyscrapers:Skyscrapers
 Level.ClosingIn:ClosingIn
+Level.Hospital:Abandoned Hospital
+Level.Basement:Basement Escape
 DefaultText.CompletedIn:Completed in
 DefaultText.NoText:NoTextFound
 DefaultText.BackToMenu:Back to menu

@@ -8,4 +8,5 @@ public enum EMissionId
     NoMission,
     Hospital_Keys,
 	Basement_Escape,
+    Maze_Maze,
 }

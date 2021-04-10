@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7966a7e491ceb0843b80dd1aa2eedfd1, type: 3}
-  m_Name: cfg_Basement_Escape
+  m_Name: cfg_Maze_Maze
   m_EditorClassIdentifier: 
-  MissionId: 6
-  SceneId: 6
-  Description: Level.Room.Description
-  PhobiaId: 3
+  MissionId: 7
+  SceneId: 7
+  Description: Level.Cleithrophobia.Description
+  PhobiaId: 6
   TimeOfCompletion: 0
-  Icon: {fileID: 21300000, guid: e26a52d5794b281499e3e8e2daa70feb, type: 3}
+  Icon: {fileID: 21300000, guid: 74337711d03a44752abe4e157f3f58ed, type: 3}

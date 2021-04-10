@@ -15,6 +15,6 @@ MonoBehaviour:
   MissionId: 5
   SceneId: 5
   Description: Level.Hospital.Description
-  PhobiaId: 6
+  PhobiaId: 2
   TimeOfCompletion: 0
-  Icon: {fileID: 21300000, guid: 74337711d03a44752abe4e157f3f58ed, type: 3}
+  Icon: {fileID: 21300000, guid: 42bf00cb2ee3cb344a3cff0a5287adeb, type: 3}

@@ -5,12 +5,12 @@ using UnityEngine.UI;
 
 public enum ESceneId 
 {
-    None = 0, MainMenu = 1, Skyscrapers = 2, ClosingIn = 3, NoLevel = 4, Hospital = 5, Basement = 6,
+    None = 0, MainMenu = 1, Skyscrapers = 2, ClosingIn = 3, NoLevel = 4, Hospital = 5, Basement = 6, Maze = 7,
 }
 
 public enum EPhobiaId
 {
-	None = 0, Acrophobia = 1, Achluophobia = 2, Arachnophobia = 3, Claustrophobia = 4, NoPhobia = 5, Nyctophobia = 6,
+	None = 0, Acrophobia = 1, Nyctophobia = 2, Arachnophobia = 3, Claustrophobia = 4, NoPhobia = 5, Cleithrophobia = 6,
 }
 
 [CreateAssetMenu(menuName = "Configs/Level")]
