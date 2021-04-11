@@ -1586,11 +1586,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 158787b6cf94be84f8839c0dd8944007, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  localizationIndentificator: 
+  localizationIndentificator: DefaultText.ExitLevel
   markerOffsetY: 0
+  showMarker: 1
   animator: {fileID: 0}
   animatorString: 
   audioSource: {fileID: 0}
+  showObjectsOnActive: []
+  HideObjectsOnActive: []
 --- !u!1001 &589618401
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.0031139464, g: 0.00634287, b: 0.014423738, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -24062,7 +24062,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 158787b6cf94be84f8839c0dd8944007, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  localizationIndentificator: 
+  localizationIndentificator: DefaultText.ExitLevel
   markerOffsetY: 0
   showMarker: 1
   animator: {fileID: 0}
@@ -47861,6 +47861,31 @@ PrefabInstance:
     - target: {fileID: 658034423760575425, guid: 86b0274691e7540488d4bc15f398b199,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1270191735958473775, guid: 86b0274691e7540488d4bc15f398b199,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1270191735958473775, guid: 86b0274691e7540488d4bc15f398b199,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1270191735958473775, guid: 86b0274691e7540488d4bc15f398b199,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.000000059604638
+      objectReference: {fileID: 0}
+    - target: {fileID: 1270191735958473775, guid: 86b0274691e7540488d4bc15f398b199,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1270191735958473775, guid: 86b0274691e7540488d4bc15f398b199,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
