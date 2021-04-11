@@ -109,3 +109,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 316a9a0ef3838b9469b5c244c01994f6, type: 3}
     volume: 1
     loop: 0
+  - name: DoorSqueak
+    clip: {fileID: 8300000, guid: 1815607b881c54840a2ec50ed93583c5, type: 3}
+    volume: 1
+    loop: 0

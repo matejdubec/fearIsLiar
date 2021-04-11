@@ -10,9 +10,9 @@ Phobia.Cleithrophobia:Cleithrophobia
 Phobia.Cleithrophobia.Fact.1:Also known as Cleisiophobia is the fear of being trapped, locked in, or unable to leave.
 Level.Cleithrophobia.Description:Find the way out of the bush maze. 
 Level.ClosingIn.Description:Escape the room by solving clues before it's too late.
-Level.Hospital.Description:Lights are out and flashlight is your only friend in the dark.Find all keys to get out of psychiatric hospital.
-Level.Room.Description:Do you like spiders? Let's find out. It's just you and the room full of spiders.
-Level.Skyscrapers.Description:Walk on the plank between skycrapers and collect all orbs without shitting yourself.
+Level.Hospital.Description:Lights are out and flashlight is your only friend in the dark.
+Level.Room.Description:It's just you and the room filled with spiders.
+Level.Skyscrapers.Description:Walk on the plank between skycrapers.
 Level.Skyscrapers.Description.InGame:Welcome! You are on the roof of the Skyscrapper. To finish this level collect green orbs.
 Level.Skyscrapers:Skyscrapers
 Level.ClosingIn:ClosingIn
