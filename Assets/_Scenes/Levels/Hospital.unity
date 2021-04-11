@@ -24062,7 +24062,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 158787b6cf94be84f8839c0dd8944007, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  localizationIndentificator: DefaultText.ExitLevel
+  localizationIndentificator: DefaultText.FinishLevel
   markerOffsetY: 0
   showMarker: 1
   animator: {fileID: 0}

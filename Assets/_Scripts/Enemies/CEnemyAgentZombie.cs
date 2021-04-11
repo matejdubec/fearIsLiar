@@ -6,6 +6,9 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class CEnemyAgentZombie : CEnemyAgentBase
 {
+    private const float timeToSaySomething = 20f;
+    private float timeToSaySomethingCounter = timeToSaySomething;
+
 
     // Update is called once per frame
     void Update()
@@ -29,12 +32,24 @@ public class CEnemyAgentZombie : CEnemyAgentBase
                     animator.SetBool("walking", false);                   
                 }
             }
+
+            if(timeToSaySomethingCounter <= 0f && !CGameManager.Instance.AudioManager.IsPlaying("ZombieBrains"))
+            {
+                CGameManager.Instance.AudioManager.PlaySound("ZombieBrains");
+                timeToSaySomethingCounter = timeToSaySomething;
+            }
+
+            timeToSaySomethingCounter -= Time.deltaTime;
         }
     }
 
     public override void StandUp()
     {
-        animator.SetBool("stand", true);
-        isFollowing = true;
+        if(!isFollowing)
+        {
+            animator.SetBool("stand", true);
+            isFollowing = true;
+            CGameManager.Instance.AudioManager.PlaySound("ZombieBrains");
+        }
     }
 }

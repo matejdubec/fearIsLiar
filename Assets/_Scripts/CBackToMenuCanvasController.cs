@@ -14,10 +14,13 @@ public class CBackToMenuCanvasController : MonoBehaviour
         if (state)
         {
             UpdatePosition();
-            CGameManager.Instance.Player.HideFlashlight();
-            this.gameObject.SetActive(false);
-            CGameManager.Instance.Player.Pointer.gameObject.SetActive(false);
-            button.onClick.AddListener(() => { CGameManager.Instance.ReturnToMenu(); });
+ 
+            button.onClick.AddListener(() => {
+                CGameManager.Instance.Player.HideFlashlight();
+                this.gameObject.SetActive(false);
+                CGameManager.Instance.Player.Pointer.gameObject.SetActive(false);
+                CGameManager.Instance.ReturnToMenu();
+            });
         }
         else
         {

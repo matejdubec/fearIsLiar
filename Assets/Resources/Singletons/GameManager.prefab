@@ -113,3 +113,11 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 1815607b881c54840a2ec50ed93583c5, type: 3}
     volume: 1
     loop: 0
+  - name: ZombieBrains
+    clip: {fileID: 8300000, guid: 60d25bdc99cee464bbfc089509472739, type: 3}
+    volume: 1
+    loop: 0
+  - name: ZombieBark
+    clip: {fileID: 8300000, guid: f93909727ab9a194fabf45671b73aefc, type: 3}
+    volume: 1
+    loop: 0

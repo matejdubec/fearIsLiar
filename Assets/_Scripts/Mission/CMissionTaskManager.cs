@@ -101,7 +101,6 @@ public class CMissionTaskManager : MonoBehaviour
         ActivateOnMissionComplete();
         marker.gameObject.SetActive(false);
         levelManager.MissionCompleted(completionState, completionTime);
-
         this.gameObject.SetActive(false);
     }
 

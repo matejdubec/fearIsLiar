@@ -30,10 +30,11 @@ public class CEnemyAgentDog : CEnemyAgentBase
 
     public override void StandUp()
     {
-        if(destinations.Length != 0)
+        if(destinations.Length != 0 && !isFollowing)
         {
             isFollowing = true;
             destination = destinations[index].position;
+            CGameManager.Instance.AudioManager.PlaySound("ZombieBark");
         }
     }
 

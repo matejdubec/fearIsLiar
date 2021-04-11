@@ -14,6 +14,7 @@ Level.Hospital.Description:Lights are out and flashlight is your only friend in 
 Level.Room.Description:It's just you and the room filled with spiders.
 Level.Skyscrapers.Description:Walk on the plank between skycrapers.
 Level.Skyscrapers.Description.InGame:Welcome! You are on the roof of the Skyscrapper. To finish this level collect green orbs.
+Level.Skyscrapers.OrbDescription: Touch the orb to collect.
 Level.Skyscrapers:Skyscrapers
 Level.ClosingIn:ClosingIn
 Level.Hospital:Abandoned Hospital
@@ -23,7 +24,7 @@ DefaultText.CompletedIn:Completed in
 DefaultText.NoText:NoTextFound
 DefaultText.BackToMenu:Back to menu
 DefaultText.Close:Close
-DefaultText.ExitLevel:Finish level
+DefaultText.FinishLevel:Finish the level
 Level.MainMenu:MainMenu
 Level.MainMenu.Fact.Header:Fact
 Level.MainMenu.Fact.Description:Filter phobias to show phobia description
@@ -42,5 +43,5 @@ Level.MainMenu.Tutorial.PressTriggerToPickUpBox:Pick up the green box using a tr
 Level.MainMenu.Tutorial.PlaceGreenBoxOnBlueBox:Place the green box on the blue one
 Level.MainMenu.Tutorial.Completed:Tutorial completed!!
 Level.ClosinIn.Description.InGame:You are trapped!! Walls are closing in. Escape before they'll crush you to death.
-Level.Hospital.Description.InGame:Well, you are in an abanoned psychiatric hospital. Lights are out, your only friend is your flashlight. Collect all keys to get out. First key is behind you on director's desk.
+Level.Hospital.Description.InGame:Well, you are in an abanoned psychiatric hospital. Lights are out, your only friend is your flashlight. Collect all keys to get out. First key is in this room.
 Level.Arachnophobia.Description.InGame:Search the basement and find all keys to get out of this place filled with spiders.
