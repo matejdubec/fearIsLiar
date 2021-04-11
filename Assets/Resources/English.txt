@@ -23,7 +23,7 @@ DefaultText.CompletedIn:Completed in
 DefaultText.NoText:NoTextFound
 DefaultText.BackToMenu:Back to menu
 DefaultText.Close:Close
-DefaultText.ExitLevel:Exit level
+DefaultText.ExitLevel:Finish level
 Level.MainMenu:MainMenu
 Level.MainMenu.Fact.Header:Fact
 Level.MainMenu.Fact.Description:Filter phobias to show phobia description
