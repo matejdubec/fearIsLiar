@@ -121,3 +121,11 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: f93909727ab9a194fabf45671b73aefc, type: 3}
     volume: 1
     loop: 0
+  - name: GhostISeeYou
+    clip: {fileID: 8300000, guid: 011482e3ff2eb7343890095a64f2d7dc, type: 3}
+    volume: 1
+    loop: 0
+  - name: GhostWhyAnyone
+    clip: {fileID: 8300000, guid: 26101921a6e054041ad6cd743fb9e192, type: 3}
+    volume: 1
+    loop: 0
