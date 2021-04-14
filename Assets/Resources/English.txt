@@ -45,3 +45,5 @@ Level.MainMenu.Tutorial.Completed:Tutorial completed!!
 Level.ClosinIn.Description.InGame:You are trapped!! Walls are closing in. Escape before they'll crush you to death.
 Level.Hospital.Description.InGame:Well, you are in an abanoned psychiatric hospital. Lights are out, your only friend is your flashlight. Collect all keys to get out. First key is in this room.
 Level.Arachnophobia.Description.InGame:Search the basement and find all keys to get out of this place filled with spiders.
+Level.Maze.Description.InGame:Find the way out of the maze! Don't lose it while doing it.
+Level.Maze.Description.DeadEnd:Congrats! You found the dead end. Rest a bit on the bench while processing it. Try to follow round archs and avoid pyramids.
