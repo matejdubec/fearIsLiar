@@ -36,8 +36,8 @@ public class CMainMenuManager : CLevelManager
 		audioMixer.SetFloat("Volume", volume);
 	}
 
-	public void SetQuality(int qualityIndex)
-	{
-		QualitySettings.SetQualityLevel(qualityIndex);
-	}
+    public void QuitApplication()
+    {
+        Application.Quit();
+    }
 }

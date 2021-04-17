@@ -125,8 +125,17 @@ public class CVRController : MonoBehaviour
 
         movement.y -= fallingVelocity;
 
-        //apply
-        characterController.Move(movement * Time.deltaTime);
+        if (movePress.state & touchPad.GetAxis(SteamVR_Input_Sources.RightHand).y > 0.85f)
+        {
+            //apply
+            characterController.Move(movement * Time.deltaTime);
+        }
+        else if (movePress.state & touchPad.GetAxis(SteamVR_Input_Sources.RightHand).y < -0.85f)
+        {
+            movement = new Vector3(-movement.x, movement.y, -movement.z);
+            //apply
+            characterController.Move(movement * Time.deltaTime);
+        }
     }
 
     private void SnapTurn()
