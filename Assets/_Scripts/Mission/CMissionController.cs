@@ -22,7 +22,7 @@ public class CMissionController : MonoBehaviour
     public void MissionCompleted(bool _missionCompletedSuccessfully, float _completionTime)
     {
         missionCompletedSuccessfully = _missionCompletedSuccessfully;
-        activeMission.TimeOfCompletion = _completionTime;
+        activeMission.TimeOfCompletion = Mathf.Round(_completionTime);
         activeMission = missionsDictionary[EMissionId.NoMission];
     }
 }

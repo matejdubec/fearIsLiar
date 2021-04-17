@@ -24,6 +24,7 @@ DefaultText.CompletedIn:Completed in
 DefaultText.NoText:NoTextFound
 DefaultText.BackToMenu:Back to menu
 DefaultText.Close:Close
+DefaultText.QuitGame:Quit Game
 DefaultText.FinishLevel:Finish the level
 Level.MainMenu:MainMenu
 Level.MainMenu.Fact.Header:Fact
