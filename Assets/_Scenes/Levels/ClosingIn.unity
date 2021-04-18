@@ -227,7 +227,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: 3
-  dissolve: {fileID: 2100000, guid: ff04c9fb5d949f04e872d703c1d6c536, type: 2}
+  dissolve: {fileID: 0}
 --- !u!1 &47906190
 GameObject:
   m_ObjectHideFlags: 0
@@ -505,7 +505,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: 2
-  dissolve: {fileID: 2100000, guid: ff04c9fb5d949f04e872d703c1d6c536, type: 2}
+  dissolve: {fileID: 0}
 --- !u!4 &182143657 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3934995788719926206, guid: 12e689e15645ffe499afd6e7e7d77c71,
