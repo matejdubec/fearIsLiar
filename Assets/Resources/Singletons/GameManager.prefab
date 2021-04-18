@@ -129,3 +129,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 26101921a6e054041ad6cd743fb9e192, type: 3}
     volume: 1
     loop: 0
+  - name: Score
+    clip: {fileID: 8300000, guid: 64fe66c9d7234ee4ca2b0c7d590b1b3c, type: 3}
+    volume: 1
+    loop: 0

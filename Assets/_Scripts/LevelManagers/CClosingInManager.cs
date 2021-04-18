@@ -43,7 +43,7 @@ public class CClosingInManager : CLevelManager
             wall.StopMoving();
         }
 
-        CGameManager.Instance.AudioManager.PlaySound("MovingWall");
+        CGameManager.Instance.AudioManager.StopSound("MovingWall");
 
         base.MissionCompleted(_missionCompletitionState);
     }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.82015055, g: 1.2626368, b: 2.267322, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1596,7 +1596,7 @@ MonoBehaviour:
   showMarker: 1
   animator: {fileID: 0}
   animatorString: 
-  audioSource: {fileID: 0}
+  AudioString: 
   showObjectsOnActive: []
   HideObjectsOnActive: []
 --- !u!1001 &589618401
@@ -4900,7 +4900,8 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5791887899531625970, guid: 60c54371abc958748b156a072a8c94a0, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 60c54371abc958748b156a072a8c94a0, type: 3}
 --- !u!4 &1825947009 stripped
 Transform:

@@ -32,6 +32,7 @@ public class CKey : MonoBehaviour
 
     public void Deactivate()
     {
+        CGameManager.Instance.AudioManager.PlaySound("Score");
         isActive = false;
         this.gameObject.SetActive(false);
     }

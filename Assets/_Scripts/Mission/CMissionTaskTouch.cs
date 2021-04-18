@@ -6,17 +6,9 @@ using UnityEngine;
 [RequireComponent(typeof(Collider))]
 public class CMissionTaskTouch : CMissionTaskBase
 {
-    [SerializeField] private Material materialToChangeOnComplete = null;
-    private MeshRenderer meshRenderer;
-
     public override void Init(CMissionTaskManager _missionManager)
     {
         base.Init(_missionManager);
-
-        if (materialToChangeOnComplete)
-        {
-            meshRenderer = GetComponent<MeshRenderer>();
-        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -32,16 +24,12 @@ public class CMissionTaskTouch : CMissionTaskBase
 
     protected override void TaskCompleted()
     {
-        if (materialToChangeOnComplete)
-        {
-            meshRenderer.material = materialToChangeOnComplete;
-        }
-
         base.TaskCompleted();
     }
 
     public override void Deactivate()
     {
-        //base.Deactivate();
+        base.Deactivate();
+        this.transform.parent.gameObject.SetActive(false);
     }
 }

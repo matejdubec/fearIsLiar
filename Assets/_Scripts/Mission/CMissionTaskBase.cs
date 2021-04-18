@@ -14,7 +14,7 @@ public abstract class CMissionTaskBase : MonoBehaviour
 
     [SerializeField] private Animator animator = null;
     [SerializeField] private string animatorString = "";
-    [SerializeField] private AudioSource audioSource = null;
+    [SerializeField] private string AudioString = "";
     [SerializeField] private List<GameObject> showObjectsOnActive;
     [SerializeField] private List<GameObject> HideObjectsOnActive;
 
@@ -31,9 +31,9 @@ public abstract class CMissionTaskBase : MonoBehaviour
             animator.Play(animatorString);
         }
 
-        if (audioSource)
+        if (AudioString != "")
         {
-            audioSource.Play();
+            CGameManager.Instance.AudioManager.PlaySound(AudioString);
         }
 
         missionManager.TaskComplete();

@@ -1977,7 +1977,7 @@ MonoBehaviour:
   showMarker: 0
   animator: {fileID: 0}
   animatorString: 
-  audioSource: {fileID: 193462904}
+  AudioString: Score
   showObjectsOnActive: []
   HideObjectsOnActive: []
   levers:
@@ -2554,7 +2554,7 @@ MonoBehaviour:
   showMarker: 1
   animator: {fileID: 0}
   animatorString: 
-  audioSource: {fileID: 0}
+  AudioString: 
   showObjectsOnActive: []
   HideObjectsOnActive: []
 --- !u!1 &1034044244
@@ -2802,7 +2802,7 @@ MonoBehaviour:
   showMarker: 0
   animator: {fileID: 234076072}
   animatorString: Open
-  audioSource: {fileID: 193462904}
+  AudioString: Score
   showObjectsOnActive: []
   HideObjectsOnActive: []
   collideAreas:
@@ -4677,7 +4677,7 @@ MonoBehaviour:
   showMarker: 0
   animator: {fileID: 0}
   animatorString: 
-  audioSource: {fileID: 193462904}
+  AudioString: Score
   showObjectsOnActive: []
   HideObjectsOnActive: []
   buttons:
