@@ -20,6 +20,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/Levels/Hospital.unity
     guid: ebeb7cfc551e83b439cbc9b72b62c226
+  - enabled: 1
+    path: Assets/_Scenes/Levels/Basement.unity
+    guid: 88fe96f3fbc207f43a42306d2d918aa5
+  - enabled: 1
+    path: Assets/_Scenes/Levels/Maze.unity
+    guid: ab3231dbf83acb14fa9be4da8f925dc7
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: efb304c7b93d74325a6683b4fea743a8,
       type: 2}
