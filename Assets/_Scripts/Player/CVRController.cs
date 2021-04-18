@@ -27,11 +27,13 @@ public class CVRController : MonoBehaviour
     [SerializeField] private CCustomHand rightHand, leftHand = null;
     [SerializeField] private GameObject flashlightPrefab = null;
     private GameObject flashlight = null;
+    [SerializeField] private Camera playerCamera = null;
 
     private float currentSpeed = 0.0f;
 
     private CharacterController characterController = null;
     private Transform head = null;
+
 
     private void Awake()
     {
@@ -136,6 +138,10 @@ public class CVRController : MonoBehaviour
             //apply
             characterController.Move(movement * Time.deltaTime);
         }
+        else
+        {
+            characterController.Move(movement * Time.deltaTime);
+        }
     }
 
     private void SnapTurn()
@@ -165,6 +171,13 @@ public class CVRController : MonoBehaviour
     public void SetPosition(Vector3 newPosition)
 	{
         this.transform.position = newPosition;
+        playerCamera.transform.position = newPosition;
+    }
+
+
+    public Vector3 GetPlayerPosition()
+    {
+        return playerCamera.transform.position;
     }
 
     public void ShowFlashlight()

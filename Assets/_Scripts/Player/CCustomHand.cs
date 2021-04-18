@@ -15,7 +15,7 @@ public class CCustomHand : MonoBehaviour
     private FixedJoint joint = null;
 
 	public CInteractable CurrentInteractable { get; set; } = null;
-	private List<CInteractable> contactInteractables = new List<CInteractable>();
+    private List<CInteractable> contactInteractables = new List<CInteractable>();
 
     private Slot slot;
 
@@ -59,6 +59,7 @@ public class CCustomHand : MonoBehaviour
         {
             return;
         }
+        contactInteractables.Clear();
 
         contactInteractables.Add(other.gameObject.GetComponent<CInteractable>());
 

@@ -27,7 +27,6 @@ public class CMainMenuManager : CLevelManager
 
 		List<CConfigLevel> filteredLevels = (from level in CGameManager.Instance.MissionController.MissionsDictionary.Values where level.PhobiaId == ePhobiaId select level).ToList();
 
-		scrollList.ClearButtons();
 		scrollList.AddButtons(filteredLevels);
 	}
 

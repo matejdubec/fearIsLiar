@@ -29,4 +29,10 @@ public class CMainMenuLevelButton : MonoBehaviour
         CConfigLevel captured = cLevel;
         button.onClick.AddListener(() => { CGameManager.Instance.LoadLevel(captured); });
     }
+
+    private void OnDestroy()
+    {
+        Button button = this.GetComponent<Button>();
+        button.onClick.RemoveAllListeners();
+    }
 }

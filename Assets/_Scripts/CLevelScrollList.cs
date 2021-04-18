@@ -11,6 +11,15 @@ public class CLevelScrollList : MonoBehaviour
 
     public void Init()
 	{
+        if(this.transform.childCount > 0)
+        {
+            foreach (GameObject child in this.transform)
+            {
+                Debug.LogError(child.name);
+                GameObject.Destroy(child);
+            }
+        }
+
         pooledObjects = new List<GameObject>();
         GameObject tmp;
         for (int i = 0; i < amountToPool; i++)
@@ -26,6 +35,7 @@ public class CLevelScrollList : MonoBehaviour
 
     private void AddButtons()
     {
+        this.ClearButtons();
         foreach (CConfigLevel cLevel in CGameManager.Instance.MissionController.MissionsDictionary.Values)
         {
             if (cLevel.SceneId != ESceneId.MainMenu && cLevel.MissionId != EMissionId.NoMission)
@@ -43,6 +53,7 @@ public class CLevelScrollList : MonoBehaviour
 
     public void AddButtons(List<CConfigLevel> levels)
     {
+        this.ClearButtons();
         foreach (CConfigLevel cLevel in levels)
         {
             GameObject button = this.GetPooledObject();
@@ -55,7 +66,7 @@ public class CLevelScrollList : MonoBehaviour
         }
     } 
 
-    public void ClearButtons()
+    private void ClearButtons()
 	{
         for(int i = 0; i < amountToPool; i++)
 		{

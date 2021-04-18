@@ -1888,6 +1888,7 @@ MonoBehaviour:
   leftHand: {fileID: 1205297591}
   flashlightPrefab: {fileID: 6043547344774118737, guid: 308b32d1b69ef6745b7ac07ffda68635,
     type: 3}
+  playerCamera: {fileID: 6544075774476424482}
 --- !u!81 &776884929
 AudioListener:
   m_ObjectHideFlags: 0
