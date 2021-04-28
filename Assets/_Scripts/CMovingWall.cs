@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class CMovingWall : MonoBehaviour
 {
-    [SerializeField] private float movingSpeed = 5f;
-    [SerializeField] private float stoppingDistance = 10f;
-    [SerializeField] private bool moveForward = true;
+    [SerializeField] private float movingSpeed = .5f;
+    [SerializeField] private float stoppingDistance = 1.5f;
     private CClosingInManager manager; 
     private Vector3 origin;
     private bool isMoving = false;
@@ -25,29 +24,14 @@ public class CMovingWall : MonoBehaviour
     {
         if(isMoving)
         {
-            if(moveForward)
+            if (origin.y - stoppingDistance < transform.position.y)
             {
-                if (origin.x + stoppingDistance > transform.position.x)
-                {
-                    transform.Translate(Vector3.forward * movingSpeed * Time.deltaTime);
-                }
-                else
-                {
-                    manager.MissionCompleted(false);
-                }
+                transform.Translate(Vector3.up * movingSpeed * Time.deltaTime);
             }
             else
             {
-                if (origin.x - stoppingDistance < transform.position.x)
-                {
-                    transform.Translate(Vector3.forward * -movingSpeed * Time.deltaTime);
-                }
-                else
-                {
-                    manager.MissionCompleted(false);
-                }
+                manager.MissionCompleted(false);
             }
-
         }
     }
 

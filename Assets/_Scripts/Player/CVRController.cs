@@ -28,6 +28,7 @@ public class CVRController : MonoBehaviour
     [SerializeField] private GameObject flashlightPrefab = null;
     private GameObject flashlight = null;
     [SerializeField] private Camera playerCamera = null;
+    [SerializeField] private CCameraFade cameraFade = null;
 
     private float currentSpeed = 0.0f;
 
@@ -51,6 +52,7 @@ public class CVRController : MonoBehaviour
     {
         head = SteamVR_Render.Top().head;
         pointer.Refresh();
+        cameraFade.TurnOffBlocker();
     }
 
     // Update is called once per frame

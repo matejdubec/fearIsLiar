@@ -8,6 +8,7 @@ TagManager:
   - FxTemporaire
   - Interactable
   - Hand
+  - FadeTest
   layers:
   - Default
   - TransparentFX

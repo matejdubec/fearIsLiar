@@ -41,7 +41,10 @@ public class CLever : CEmitable
     {
         if(isActive)
         {
-            this.StartBlinking();
+            if (!hasCorrectState())
+            {
+                this.StartBlinking();
+            }
             top.transform.localPosition = topOriginPosition;
         }
     }
@@ -69,12 +72,14 @@ public class CLever : CEmitable
             // Rotacia okolo definovanej osy
             Vector3 transformedLeverDirection = Quaternion.AngleAxis(deltaAngle, controlledTransform.right) * controlledTransform.forward;
 
+            var threshold = Vector3.SignedAngle(transformedLeverDirection, leverBaseForward, controlledTransform.right);
+
             // Ak je mimo 45 stupnov, neaktualizujem
-            if (Vector3.SignedAngle(transformedLeverDirection, leverBaseForward, controlledTransform.right) > 45f)
+            if (threshold > 45f)
             {
                 this.ChangeState(ELeverState.Up);
             }
-            else if (Vector3.SignedAngle(transformedLeverDirection, leverBaseForward, controlledTransform.right) < -45f)
+            else if (threshold < -45f)
             {
                 this.ChangeState(ELeverState.Down);
             }
@@ -88,7 +93,12 @@ public class CLever : CEmitable
 
     private void ChangeState(ELeverState _state)
     {
-        if(_state != leverCurrentState)
+        if (hasCorrectState())
+        {
+            this.Emit();
+        }
+
+        if (_state != leverCurrentState)
         {
             leverCurrentState = _state;
             taskLevers.LeverStateChanged();
@@ -103,6 +113,6 @@ public class CLever : CEmitable
     public void Deactivate()
     {
         isActive = false;
-        this.Emit();
+        
     }
 }

@@ -61,7 +61,7 @@ public abstract class CMissionTaskBase : MonoBehaviour
 
     public virtual void Deactivate()
     {
-        foreach (GameObject go in showObjectsOnActive)
+        foreach (GameObject go in HideObjectsOnActive)
         {
             go.SetActive(false);
         }
