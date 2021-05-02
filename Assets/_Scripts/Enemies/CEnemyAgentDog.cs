@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class CEnemyAgentDog : CEnemyAgentBase
 {
-    [SerializeField] private Transform[] destinations;
+    [SerializeField] private Transform disableDestination;
     private float distance = 0.0f;
     private int index = 0;
 
@@ -18,7 +18,7 @@ public class CEnemyAgentDog : CEnemyAgentBase
             agent.SetDestination(destination);
             if (distance < 1)
             {
-                this.ChangeDestination();
+                this.gameObject.SetActive(false);
             }
 
             if (!animator.GetBool("Run"))
@@ -30,25 +30,11 @@ public class CEnemyAgentDog : CEnemyAgentBase
 
     public override void StandUp()
     {
-        if(destinations.Length != 0 && !isFollowing)
+        if(disableDestination && !isFollowing)
         {
             isFollowing = true;
-            destination = destinations[index].position;
+            destination = disableDestination.position;
             CGameManager.Instance.AudioManager.PlaySound("ZombieBark");
         }
-    }
-
-    private void ChangeDestination()
-    {
-        if(index < destinations.Length)
-        {
-            destination = destinations[index].position;
-            agent.SetDestination(destination);
-            index++;
-        }
-        else
-        {
-            index = 0;
-        }        
     }
 }
