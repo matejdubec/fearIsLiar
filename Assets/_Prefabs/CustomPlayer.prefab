@@ -2004,7 +2004,7 @@ MonoBehaviour:
   touchPad:
     actionPath: /actions/default/in/Trackpad
     needsReinit: 0
-  snapAngle: 45
+  snapAngle: 20
   rightHand: {fileID: 1205297587}
   leftHand: {fileID: 1205297591}
   flashlightPrefab: {fileID: 6043547344774118737, guid: 308b32d1b69ef6745b7ac07ffda68635,
